@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p2G-zw-5ng">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DI3-UF-Ot6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -222,6 +222,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yH-Qt-CMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="715" y="-486"/>
+        </scene>
+        <!--Find Friend View Controller-->
+        <scene sceneID="DuG-ym-RJV">
+            <objects>
+                <tableViewController id="DI3-UF-Ot6" customClass="FindFriendViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" id="EQC-oF-csl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="CnG-gL-JD9">
+                                <rect key="frame" x="0.0" y="28" width="600" height="82"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="CnG-gL-JD9" id="7xb-iy-1nN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="81.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PZ-1B-6Jh">
+                                            <rect key="frame" x="18" y="9" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="0oy-Qw-UaN"/>
+                                                <constraint firstAttribute="width" constant="60" id="RYw-bg-gdQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uP-tJ-oVR">
+                                            <rect key="frame" x="100" y="14" width="139" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0PZ-1B-6Jh" firstAttribute="top" secondItem="7xb-iy-1nN" secondAttribute="topMargin" constant="1" id="0a6-Z3-a9m"/>
+                                        <constraint firstItem="0PZ-1B-6Jh" firstAttribute="leading" secondItem="7xb-iy-1nN" secondAttribute="leadingMargin" constant="10" id="Fu1-IU-dN1"/>
+                                        <constraint firstItem="2uP-tJ-oVR" firstAttribute="top" secondItem="7xb-iy-1nN" secondAttribute="topMargin" constant="6" id="JW1-Dz-c6V"/>
+                                        <constraint firstItem="2uP-tJ-oVR" firstAttribute="leading" secondItem="0PZ-1B-6Jh" secondAttribute="trailing" constant="22" id="OCj-De-m1h"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0PZ-1B-6Jh" secondAttribute="bottom" constant="1" id="yON-Zc-pge"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DI3-UF-Ot6" id="ITn-yZ-vrh"/>
+                            <outlet property="delegate" destination="DI3-UF-Ot6" id="m9h-Hn-6vh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dW2-KS-Rap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-924" y="346"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="asE-dT-M59">
