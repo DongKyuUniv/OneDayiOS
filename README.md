@@ -37,3 +37,6 @@ Flask Version : ?
 	When run on iPad, the destination appears in a small popover, and tapping anywhere outside of this popover will dismiss it. On iPhone, popovers are supported as well but by default if it performs a Popover Presentation segue, it will present the destination view controller modally over the full screen.
 	
 	Reference : <http://stackoverflow.com/questions/25966215/whats-the-difference-between-all-the-selection-segues>
+	
+## 2016.07.12
+* Master View Controller에서 Edit->Embeded in->Navigation Controller 선택하면 백버튼 자동으로 생김
