@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90173D491D3B78B40054B0AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D481D3B78B40054B0AF /* User.swift */; };
+		90173D4B1D3B92550054B0AF /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D4A1D3B92550054B0AF /* Notice.swift */; };
 		904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */; };
 		904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */; };
 		905297D51D33508700575A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297D41D33508700575A8B /* AppDelegate.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90173D481D3B78B40054B0AF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		90173D4A1D3B92550054B0AF /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		905297D11D33508700575A8B /* OneDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +82,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90173D461D3B78550054B0AF /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				90173D481D3B78B40054B0AF /* User.swift */,
+				90173D4A1D3B92550054B0AF /* Notice.swift */,
+			);
+			name = dao;
+			sourceTree = "<group>";
+		};
+		90173D471D3B78600054B0AF /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */,
+				904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
 		905297C81D33508700575A8B = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +123,14 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
+				90173D471D3B78600054B0AF /* Friends */,
+				90173D461D3B78550054B0AF /* dao */,
 				905297D41D33508700575A8B /* AppDelegate.swift */,
 				905297D61D33508700575A8B /* ViewController.swift */,
 				905297D81D33508700575A8B /* Main.storyboard */,
 				905297DB1D33508700575A8B /* Assets.xcassets */,
 				905297DD1D33508700575A8B /* LaunchScreen.storyboard */,
 				905297E01D33508700575A8B /* Info.plist */,
-				904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */,
-				904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */,
 			);
 			path = OneDay;
 			sourceTree = "<group>";
@@ -268,6 +290,8 @@
 				904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */,
 				905297D71D33508700575A8B /* ViewController.swift in Sources */,
 				905297D51D33508700575A8B /* AppDelegate.swift in Sources */,
+				90173D4B1D3B92550054B0AF /* Notice.swift in Sources */,
+				90173D491D3B78B40054B0AF /* User.swift in Sources */,
 				904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

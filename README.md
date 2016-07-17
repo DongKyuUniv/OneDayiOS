@@ -40,3 +40,7 @@ Flask Version : ?
 	
 ## 2016.07.12
 * Master View Controller에서 Edit->Embeded in->Navigation Controller 선택하면 백버튼 자동으로 생김
+
+## 2016.07.16
+* swift에서 네트워크를 사용하려면 info.plist를 수정해야한다.
+* Bundle OS Type Code 마우스 우클릭 -> Add Rows -> App Transport Security Settings -> + -> Allow Arbitary Loads -> YES
