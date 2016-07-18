@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Socketio.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>90173D531D3CCAD90054B0AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>905297D01D33508700575A8B</key>
 		<dict>
 			<key>primary</key>

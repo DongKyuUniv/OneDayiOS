@@ -44,3 +44,6 @@ Flask Version : ?
 ## 2016.07.16
 * swift에서 네트워크를 사용하려면 info.plist를 수정해야한다.
 * Bundle OS Type Code 마우스 우클릭 -> Add Rows -> App Transport Security Settings -> + -> Allow Arbitary Loads -> YES
+
+#2016.07.18
+* xcode에서 외부 파일을 추가하기 위해서는 추가 할 위치의 폴더 마우스 우클릭 후 Add File to "Project Name" -> 추가할 파일 or 폴더로 이동 후 하단의 옵션 클릭 -> Folders 에서 위에꺼 선택

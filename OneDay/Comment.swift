@@ -9,8 +9,6 @@
 import Foundation
 
 class Comment {
-    comment : [{ user_id: String, user_img:String, content: String, date : Date, name : String }],
-    
     var notice_id: String!
     var authorId: String!
     var authorProfileImage: String!
