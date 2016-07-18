@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class Notice {
+    var id: String!
+    var author: String!
+    var authorProfileImage: String!
+    var authorName: String!
+    var content: String!
+    var created: NSDate!
+    var images: [String!] = []
+    var comments: [Comment!] = []
+    var likes: [String!] = []
+    var bads: [String!] = []
+}

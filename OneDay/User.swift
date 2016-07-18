@@ -12,4 +12,11 @@ class User {
     var id: String!
     var name: String!
     var profileImageUri: String!
+    var password: String!
+    var birth: NSDate!
+    var email: String!
+    var likes: [String!] = []
+    var bads: [String!] = []
+    var comments: [Comment!] = []
+    var notices: [String!] = []
 }
