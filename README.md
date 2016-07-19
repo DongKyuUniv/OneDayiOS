@@ -59,3 +59,8 @@ Flask Version : ?
 	* 선언 시 !을 사용
 	* 최초에 값을 부여할 수 없어 어쩔 수 없이 초기 값이 nil이지만 이 값은 프로그래밍 동작 시에 무조건 값을 가질 때 사용한다.
 	* 대부분의 API 는 CoCoa 즉 Objective C로 구현되어 있기에 Swift와의 호환을 위해 Implicitly Unwrapped Optional 을 사용한다.
+	
+# 2016.07.19
+* optional 상태에서 isEmpty를 부르면 안된다.
+* String에서 isEmpty함수를 호출하면 비었는지 확인해준다.
+* 

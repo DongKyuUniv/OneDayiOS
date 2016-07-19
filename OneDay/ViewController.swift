@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, loginHandler {
     
-    let socket = SocketIOManager()
-    
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
 
@@ -22,7 +20,7 @@ class ViewController: UIViewController, loginHandler {
         
         if let userId = id {
             if let userPw = pw {
-                self.socket.login(userId, pw: userPw, context: self)
+                SocketIOManager.login(userId, pw: userPw, context: self)
             }
         }
     }
@@ -38,6 +36,8 @@ class ViewController: UIViewController, loginHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SocketIOManager()
     }
 
     override func didReceiveMemoryWarning() {

@@ -12,3 +12,8 @@ protocol loginHandler {
     func onLoginSuccess(user: User)
     func onLoginException(code: Int)
 }
+
+protocol signUpHandler {
+    func onSignUpSuccess()
+    func onSignUpException(code: Int)
+}

@@ -31,4 +31,19 @@ class User {
         self.comments = comments.map({$0})
         self.notices = notices.map({$0})
     }
+    
+    init(dict: NSDictionary) {
+        let keys = dict.allKeys as! [String]
+        let name = dict["userName"] as! String
+        if keys.contains("birth") {
+            self.birth = dict["birth"] as! NSDate
+        }
+        let id = dict["userId"] as! String
+        let profileImageUri = dict["userImage"] as! String
+        let email = dict["mail"] as! String
+        let likes = dict["good"] as! [String]
+        let bads = dict["bad"] as! [String]
+        let comments = dict["comment"] as! [String]
+        let notices = dict["notice"] as! [String]
+    }
 }
