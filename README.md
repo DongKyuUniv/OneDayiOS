@@ -47,3 +47,15 @@ Flask Version : ?
 
 #2016.07.18
 * xcode에서 외부 파일을 추가하기 위해서는 추가 할 위치의 폴더 마우스 우클릭 후 Add File to "Project Name" -> 추가할 파일 or 폴더로 이동 후 하단의 옵션 클릭 -> Folders 에서 위에꺼 선택
+* ? = Optional 
+	* nil을 가질 수 있는 변수를 특별히 관리하기 위함
+	* Java의 NullPointerException을 방지
+* ! = Force Unwrapping
+	* 값의 존재를 확신할 때
+	* 하지만 그 사용을 지양해야함 Optional을 무력화 시키기 때문이다.
+	* !를 많이 쓸 수록 안좋은 코드(위험 요소가 많은 코드이다.)
+	* if let을 많이 써라!
+* Implicitly Unwrapped Optional
+	* 선언 시 !을 사용
+	* 최초에 값을 부여할 수 없어 어쩔 수 없이 초기 값이 nil이지만 이 값은 프로그래밍 동작 시에 무조건 값을 가질 때 사용한다.
+	* 대부분의 API 는 CoCoa 즉 Objective C로 구현되어 있기에 Swift와의 호환을 위해 Implicitly Unwrapped Optional 을 사용한다.
