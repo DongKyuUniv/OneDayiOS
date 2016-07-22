@@ -87,7 +87,7 @@ do {
 	let data = ["id": "아이디", "pw": "비밀번호"]
 	let dataStr = try NSJSONSerialization.dataWithJSONObject(data, option: .PrettyPrinted)
 	let dataJson = try NSJSONSerialization.JSONObjectWithData(dataStr, options: [])
-} except let error as NSError {
+} catch let error as NSError {
 	print(error)
 }
 ~~~~

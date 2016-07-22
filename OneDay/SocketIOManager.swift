@@ -65,4 +65,21 @@ class SocketIOManager {
             print(error)
         }
     }
+    
+    
+    static func getAllNotices(userId: String, handler: getAllNoticeHandler) {
+        do {
+            let reqData = ["userId": userId]
+            let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
+            socket?.emit("readNotice", reqDataJson)
+            socket?.once("readNotice") {
+                data, ack in
+                print(data)
+                print(ack)
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
 }
