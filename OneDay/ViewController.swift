@@ -47,6 +47,7 @@ class ViewController: UIViewController, loginHandler {
     
     func onLoginSuccess(user: User) {
         print("로그인 성공")
+        
     }
     
     func onLoginException(code: Int) {

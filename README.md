@@ -23,6 +23,7 @@ Flask Version : ?
 
 # 배운점
 ## 2016.07.11
+### 스토리보드 관리
 * 스토리보드에서 뷰에 커서를 두고 컨트롤을 누른 뒤 옆 뷰로 드롭하면 Equal Width 옵션을 줄 수 있다.
 * 스토리보드에서 뷰에 커서를 두고 컨트롤을 누른 뒤 다른 스토리보드로 드롭하면 Segue를 설정할 수 있다.
 * Action Segue Type
@@ -39,13 +40,16 @@ Flask Version : ?
 	Reference : <http://stackoverflow.com/questions/25966215/whats-the-difference-between-all-the-selection-segues>
 	
 ## 2016.07.12
+### 네비게이션 백버튼
 * Master View Controller에서 Edit->Embeded in->Navigation Controller 선택하면 백버튼 자동으로 생김
 
 ## 2016.07.16
+### 네트워크 권한 설정
 * swift에서 네트워크를 사용하려면 info.plist를 수정해야한다.
 * Bundle OS Type Code 마우스 우클릭 -> Add Rows -> App Transport Security Settings -> + -> Allow Arbitary Loads -> YES
 
 #2016.07.18
+### 옵셔널
 * xcode에서 외부 파일을 추가하기 위해서는 추가 할 위치의 폴더 마우스 우클릭 후 Add File to "Project Name" -> 추가할 파일 or 폴더로 이동 후 하단의 옵션 클릭 -> Folders 에서 위에꺼 선택
 * ? = Optional 
 	* nil을 가질 수 있는 변수를 특별히 관리하기 위함
@@ -61,6 +65,38 @@ Flask Version : ?
 	* 대부분의 API 는 CoCoa 즉 Objective C로 구현되어 있기에 Swift와의 호환을 위해 Implicitly Unwrapped Optional 을 사용한다.
 	
 # 2016.07.19
+### String nil 체크
 * optional 상태에서 isEmpty를 부르면 안된다.
 * String에서 isEmpty함수를 호출하면 비었는지 확인해준다.
-* 
+
+## 2016.07.22
+### nil 체크
+그냥 if let을 쓰면 되는 줄 알았지만 NSNull의 형태도 있으므로 if let 이후에 !(object is NSNULL)로 한 번 더 체크한다
+
+### Alert 띄우는 법 
+~~~~
+let alert = UIAlertController(title: "타이틀", message: "메세지", preferredStyle: UIAlertController.Alert)
+alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
+self.presentViewController(alert, animated: true, completion: nil)
+~~~~
+
+### JSON 
+####Dicionary to JSON
+~~~~
+do {
+	let data = ["id": "아이디", "pw": "비밀번호"]
+	let dataStr = try NSJSONSerialization.dataWithJSONObject(data, option: .PrettyPrinted)
+	let dataJson = try NSJSONSerialization.JSONObjectWithData(dataStr, options: [])
+} except let error as NSError {
+	print(error)
+}
+~~~~
+
+#### JSON Parse
+`let value = json["key"]` 의 형태로 값을 받아온다.
+
+### Move Segue Programmically
+#### 방금 전 뷰컨트롤러로 이동
+`navigationController?.popViewControllerAnimated(true)`
+
+#### 특정 뷰 컨트롤러로 이동
