@@ -140,6 +140,7 @@
                     <connections>
                         <outlet property="idInput" destination="pIJ-as-PmT" id="xrz-Oq-b8g"/>
                         <outlet property="pwInput" destination="82x-ht-kry" id="LV4-f6-Oih"/>
+                        <segue destination="vqT-sC-5hY" kind="show" identifier="loginSuccess" id="OTO-Id-4hE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -359,7 +360,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VSI-cs-yK4">
             <objects>
-                <navigationController id="vqT-sC-5hY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainStoryboard" id="vqT-sC-5hY" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="QhM-R7-JyE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TTQ-0T-P5o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -371,7 +372,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHY-K6-2OA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="695" y="411"/>
+            <point key="canvasLocation" x="695" y="381"/>
         </scene>
         <!--One Day-->
         <scene sceneID="s3z-8R-a8L">

@@ -95,11 +95,13 @@ do {
 #### JSON Parse
 `let value = json["key"]` 의 형태로 값을 받아온다.
 
-### Move Segue Programmically
+### Move Segue Programmatically
 #### 방금 전 뷰컨트롤러로 이동
 `navigationController?.popViewControllerAnimated(true)`
 
 #### 특정 뷰 컨트롤러로 이동
+`performSegueWithIdentifier(identifier: "loginSuccess", sender: self)`  
+identifier는 StoryBoard에서 FromViewController 선택 후 최상단의 ViewController 컨트롤 클릭 후 ToViewController로 끌어놓는다. 그리고 Segue에 id를 부여한다.
 
 
 ### ViewController Comflict 에러
