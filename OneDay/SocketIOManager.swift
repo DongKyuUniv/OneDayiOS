@@ -30,7 +30,7 @@ class SocketIOManager {
                     if let resJson = res[0] as AnyObject? {
                         if let code = resJson["code"] as? Int {
                             if code == 200 {
-                                var user = User(dict: resJson as! NSDictionary)
+                                let user = User(dict: resJson as! NSDictionary)
                                 context.onLoginSuccess(user)
                             } else {
                                 context.onLoginException(code)

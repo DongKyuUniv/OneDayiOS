@@ -15,10 +15,10 @@ class User {
     var password: String!
     var birth: NSDate!
     var email: String!
-    var likes: [String!] = []
-    var bads: [String!] = []
-    var comments: [String!] = []
-    var notices: [String!] = []
+    var likes: [String] = []
+    var bads: [String] = []
+    var comments: [String] = []
+    var notices: [String] = []
     
     init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[String], notices: [String]) {
         self.id = id
@@ -34,16 +34,40 @@ class User {
     
     init(dict: NSDictionary) {
         let keys = dict.allKeys as! [String]
-        let name = dict["userName"] as! String
-        if keys.contains("birth") {
-            self.birth = dict["birth"] as! NSDate
+        if keys.contains("userName") {
+            name = dict["userName"] as! String
         }
-        let id = dict["userId"] as! String
-        let profileImageUri = dict["userImage"] as! String
-        let email = dict["mail"] as! String
-        let likes = dict["good"] as! [String]
-        let bads = dict["bad"] as! [String]
-        let comments = dict["comment"] as! [String]
-        let notices = dict["notice"] as! [String]
+        if keys.contains("birth") {
+            birth = dict["birth"] as! NSDate
+        }
+        if keys.contains("userId") {
+            id = dict["userId"] as! String
+        }
+        if keys.contains("userImage") {
+            if let userImage = dict["userImage"] && userImage {
+                profileImageUri = userImage as! String
+            }
+        }
+        
+        if keys.contains("userImage") {
+            profileImageUri = dict["userImage"] as! String
+        }
+        
+        if keys.contains("mail") {
+            email = dict["mail"] as! String
+        }
+        if keys.contains("good") {
+            likes = dict["good"] as! [String]
+        }
+        if keys.contains("bad") {
+            bads = dict["bad"] as! [String]
+        }
+        if keys.contains("comment") {
+            comments = dict["comment"] as! [String]
+        }
+        
+        if keys.contains("notice") {
+            notices = dict["notice"] as! [String]
+        }
     }
 }
