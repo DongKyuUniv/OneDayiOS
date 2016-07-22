@@ -41,33 +41,48 @@ class User {
             birth = dict["birth"] as! NSDate
         }
         if keys.contains("userId") {
-            id = dict["userId"] as! String
+            let userId = dict["userId"]
+            if userId != nil && !(userId is NSNull) {
+                id = userId as! String
+            }
         }
         if keys.contains("userImage") {
-            if let userImage = dict["userImage"] && userImage {
+            let userImage = dict["userImage"]
+            if userImage != nil && !(userImage is NSNull) {
                 profileImageUri = userImage as! String
             }
         }
         
-        if keys.contains("userImage") {
-            profileImageUri = dict["userImage"] as! String
-        }
-        
         if keys.contains("mail") {
-            email = dict["mail"] as! String
+            let userMail = dict["mail"]
+            if userMail != nil && !(userMail is NSNull) {
+                email = userMail as! String
+            }
         }
         if keys.contains("good") {
-            likes = dict["good"] as! [String]
+            let userLikes = dict["good"]
+            if userLikes != nil && !(userLikes is NSNull) {
+                likes = userLikes as! [String]
+            }
         }
         if keys.contains("bad") {
-            bads = dict["bad"] as! [String]
+            let userBads = dict["bad"]
+            if userBads != nil && !(userBads is NSNull) {
+                bads = userBads as! [String]
+            }
         }
         if keys.contains("comment") {
-            comments = dict["comment"] as! [String]
+            let userComments = dict["comment"]
+            if userComments != nil && !(userComments is NSNull) {
+                comments = userComments as! [String]
+            }
         }
         
         if keys.contains("notice") {
-            notices = dict["notice"] as! [String]
+            let userNotices = dict["notice"]
+            if userNotices != nil && !(userNotices is NSNull) {
+                notices = userNotices as! [String]
+            }
         }
     }
 }
