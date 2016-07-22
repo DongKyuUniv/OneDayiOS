@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, loginHandler {
+class ViewController: UIViewController, loginHandler, getAllNoticeHandler {
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -18,8 +18,20 @@ class ViewController: UIViewController, loginHandler {
         let id = idInput.text
         let pw = pwInput.text
         
+        SocketIOManager.getAllNotices("test", handler: self)
+        
         if let userId = id {
             if let userPw = pw {
+                if userId.isEmpty {
+                    showAlert("로그인 에러", message: "아이디를 입력해주세요")
+                    return
+                }
+                
+                if userPw.isEmpty {
+                    showAlert("로그인 에러", message: "비밀번호를 입력해주세요")
+                    return
+                }
+                
                 SocketIOManager.login(userId, pw: userPw, context: self)
             }
         }
@@ -48,11 +60,24 @@ class ViewController: UIViewController, loginHandler {
     func onLoginSuccess(user: User) {
         print("로그인 성공")
         performSegueWithIdentifier("loginSuccess", sender: self)
-        perform
     }
     
     func onLoginException(code: Int) {
         print("로그인 실패 = \(code)")
+    }
+    
+    func onGetAllNoticeSuccess() {
+        print("getNotice Success")
+    }
+    
+    func onGetAllNoticeException(code: Int) {
+        print("노티스 받기 에러 = \(code)")
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

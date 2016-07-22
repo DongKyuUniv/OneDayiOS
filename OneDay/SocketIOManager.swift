@@ -72,11 +72,11 @@ class SocketIOManager {
             let reqData = ["userId": userId]
             let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
             let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
-            socket?.emit("readNotice", reqDataJson)
-            socket?.once("readNotice") {
+            socket?.emit("getAllNotice", reqDataJson)
+            socket?.once("getAllNotice") {
                 data, ack in
-                print(data)
-                print(ack)
+                print("data = \(data)")
+                print("ack = \(ack)")
             }
         } catch let error as NSError {
             print(error)
