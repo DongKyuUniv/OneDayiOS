@@ -100,3 +100,11 @@ do {
 `navigationController?.popViewControllerAnimated(true)`
 
 #### 특정 뷰 컨트롤러로 이동
+
+
+### ViewController Comflict 에러
+~~~~
+<inferredMetricsTieBreakers>
+    <segue reference="W66-pd-E0y"/>
+</inferredMetricsTieBreakers>
+~~~~
