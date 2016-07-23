@@ -30,5 +30,5 @@ protocol postNoticeHandler {
 
 protocol likeHandler {
     func onLikeSuccess()
-    func onLikeException()
+    func onLikeException(code: Int)
 }
