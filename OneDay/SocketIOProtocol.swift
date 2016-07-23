@@ -27,3 +27,8 @@ protocol postNoticeHandler {
     func onPostNoticeSuccess()
     func onPostNoticeException(code: Int)
 }
+
+protocol likeHandler {
+    func onLikeSuccess()
+    func onLikeException()
+}

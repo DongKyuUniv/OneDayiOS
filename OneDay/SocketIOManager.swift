@@ -152,4 +152,19 @@ class SocketIOManager {
     }
     
     
+    static func like(userId: String, noticeId: String, flag: Bool, handler: likeHandler) {
+        do {
+            let reqData = ["userId": userId, "noticeId": noticeId, "flag": flag]
+            let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
+            socket?.emit("good", reqJson)
+            socket?.once("good") {
+                data, ack in
+                let resJson = data[0]
+                print("resJson = \(resJson)")
+            }
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
 }

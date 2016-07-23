@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postNoticeHandler {
+class ViewController: UIViewController, loginHandler {
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -17,11 +17,6 @@ class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postN
     @IBAction func login(sender: UIButton) {
         let id = idInput.text
         let pw = pwInput.text
-        
-        let date = NSDate()
-//        print("current datetime = \(date)")
-        SocketIOManager.getAllNotices("test", count: 0, time: date, handler: self)
-//        SocketIOManager.postNotice("test", name: "lee", images: [], content: "haha2", userImage: nil, handler: self)
         
         if let userId = id {
             if let userPw = pw {
@@ -66,22 +61,6 @@ class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postN
     
     func onLoginException(code: Int) {
         print("로그인 실패 = \(code)")
-    }
-    
-    func onGetAllNoticeSuccess(notices: [Notice]) {
-        print("성공")
-    }
-    
-    func onGetAllNoticeException(code: Int) {
-        print("노티스 받기 에러 = \(code)")
-    }
-    
-    func onPostNoticeSuccess() {
-        print("성공.")
-    }
-    
-    func onPostNoticeException(code: Int) {
-        print("노티스 추가 에러 = \(code)")
     }
     
     func showAlert(title: String, message: String) {
