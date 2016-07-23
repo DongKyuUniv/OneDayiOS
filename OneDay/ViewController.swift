@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postNoticeHandler {
+class ViewController: UIViewController, loginHandler, likeHandler {
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -18,10 +18,7 @@ class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postN
         let id = idInput.text
         let pw = pwInput.text
         
-        let date = NSDate()
-//        print("current datetime = \(date)")
-        SocketIOManager.getAllNotices("test", count: 0, time: date, handler: self)
-//        SocketIOManager.postNotice("test", name: "lee", images: [], content: "haha2", userImage: nil, handler: self)
+        SocketIOManager.like("test", noticeId: "5792c1ca5430f40300073734", flag: true, handler: self)
         
         if let userId = id {
             if let userPw = pw {
@@ -51,7 +48,7 @@ class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SocketIOManager()
+        SocketIOManager.create()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,26 +65,18 @@ class ViewController: UIViewController, loginHandler, getAllNoticeHandler, postN
         print("로그인 실패 = \(code)")
     }
     
-    func onGetAllNoticeSuccess(notices: [Notice]) {
-        print("성공")
-    }
-    
-    func onGetAllNoticeException(code: Int) {
-        print("노티스 받기 에러 = \(code)")
-    }
-    
-    func onPostNoticeSuccess() {
-        print("성공.")
-    }
-    
-    func onPostNoticeException(code: Int) {
-        print("노티스 추가 에러 = \(code)")
-    }
-    
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func onLikeSuccess() {
+        print("좋아요 성공")
+    }
+    
+    func onLikeException(code: Int) {
+        print("좋아요 실패")
     }
 }
 

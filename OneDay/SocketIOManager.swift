@@ -11,7 +11,7 @@ import Foundation
 class SocketIOManager {
     static var socket: SocketIOClient? = nil
     
-    init() {
+    static func create() {
         if SocketIOManager.socket == nil {
             SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: "http://windsoft-oneday.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
             SocketIOManager.socket!.connect()
@@ -152,4 +152,34 @@ class SocketIOManager {
     }
     
     
+    static func like(userId: String, noticeId: String, flag: Bool, handler: likeHandler) {
+        do {
+            let reqData = ["userId": userId, "noticeId": noticeId, "flag": flag]
+            let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
+            socket?.emit("good", reqJson)
+            socket?.once("good") {
+                data, ack in
+                let resJson = data[0]
+                print("resJson = \(resJson)")
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onLikeSuccess()
+                } else {
+                    handler.onLikeException(code)
+                }
+            }
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
+    
+    
+    static func bad(userId: String, noticeId: String, flag: Bool, handler: badHandler) {
+        do {
+            
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
 }

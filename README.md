@@ -7,9 +7,7 @@ Language : Swift
 Version : 2.2
 
 ###Server
-Language : 파이썬
 Framework : 플라스크
-Flask Version : ?
 
 ## 개발 규칙
 1. 개발해야 할 내용들을 이슈 등록 해둔다.
@@ -49,8 +47,10 @@ Flask Version : ?
 * Bundle OS Type Code 마우스 우클릭 -> Add Rows -> App Transport Security Settings -> + -> Allow Arbitary Loads -> YES
 
 #2016.07.18
+### Xcode 외부 라이브러리 추가 방법
+xcode에서 외부 파일을 추가하기 위해서는 추가 할 위치의 폴더 마우스 우클릭 후 Add File to "Project Name" -> 추가할 파일 or 폴더로 이동 후 하단의 옵션 클릭 -> Folders 에서 위에꺼 선택
+
 ### 옵셔널
-* xcode에서 외부 파일을 추가하기 위해서는 추가 할 위치의 폴더 마우스 우클릭 후 Add File to "Project Name" -> 추가할 파일 or 폴더로 이동 후 하단의 옵션 클릭 -> Folders 에서 위에꺼 선택
 * ? = Optional 
 	* nil을 가질 수 있는 변수를 특별히 관리하기 위함
 	* Java의 NullPointerException을 방지
@@ -104,7 +104,7 @@ do {
 identifier는 StoryBoard에서 FromViewController 선택 후 최상단의 ViewController 컨트롤 클릭 후 ToViewController로 끌어놓는다. 그리고 Segue에 id를 부여한다.
 
 
-### ViewController Comflict 에러
+### ViewController Conflict 에러
 ~~~~
 <inferredMetricsTieBreakers>
     <segue reference="W66-pd-E0y"/>
