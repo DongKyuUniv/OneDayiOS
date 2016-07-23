@@ -19,6 +19,11 @@ protocol signUpHandler {
 }
 
 protocol getAllNoticeHandler {
-    func onGetAllNoticeSuccess()
+    func onGetAllNoticeSuccess(notices: [Notice])
     func onGetAllNoticeException(code: Int)
+}
+
+protocol postNoticeHandler {
+    func onPostNoticeSuccess()
+    func onPostNoticeException(code: Int)
 }

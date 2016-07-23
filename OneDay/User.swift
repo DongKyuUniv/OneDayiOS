@@ -35,10 +35,16 @@ class User {
     init(dict: NSDictionary) {
         let keys = dict.allKeys as! [String]
         if keys.contains("userName") {
-            name = dict["userName"] as! String
+            let userName = dict["userName"]
+            if userName != nil && !(userName is NSNull) {
+                name = userName as! String
+            }
         }
         if keys.contains("birth") {
-            birth = dict["birth"] as! NSDate
+            let userBirth = dict["birth"]
+            if userBirth != nil && !(userBirth is NSNull) {
+                birth = userBirth as! NSDate
+            }
         }
         if keys.contains("userId") {
             let userId = dict["userId"]
