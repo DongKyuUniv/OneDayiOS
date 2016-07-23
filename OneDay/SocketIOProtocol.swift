@@ -32,3 +32,8 @@ protocol likeHandler {
     func onLikeSuccess()
     func onLikeException(code: Int)
 }
+
+protocol badHandler {
+    func onBadSuccess()
+    func onBadException(code: Int)
+}

@@ -173,4 +173,13 @@ class SocketIOManager {
             print("error = \(error)")
         }
     }
+    
+    
+    static func bad(userId: String, noticeId: String, flag: Bool, handler: badHandler) {
+        do {
+            
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
 }
