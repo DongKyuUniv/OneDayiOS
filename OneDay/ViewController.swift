@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, loginHandler, likeHandler {
+class ViewController: UIViewController, loginHandler, likeHandler, commentHandler {
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -18,7 +18,8 @@ class ViewController: UIViewController, loginHandler, likeHandler {
         let id = idInput.text
         let pw = pwInput.text
         
-        SocketIOManager.like("test", noticeId: "5792c1ca5430f40300073734", flag: true, handler: self)
+        SocketIOManager.comment("test", noticeId: "5792c1ca5430f40300073734", comment: "댓글이다!", name: "lee", handler: self)
+//        SocketIOManager.like("test", noticeId: "5792c1ca5430f40300073734", flag: true, handler: self)
         
         if let userId = id {
             if let userPw = pw {
@@ -77,6 +78,14 @@ class ViewController: UIViewController, loginHandler, likeHandler {
     
     func onLikeException(code: Int) {
         print("좋아요 실패")
+    }
+    
+    func onCommentSucces() {
+        print("댓글달기 성공")
+    }
+    
+    func onCommentException(code: Int) {
+        print("댓글달기 실패")
     }
 }
 
