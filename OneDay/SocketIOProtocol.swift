@@ -17,3 +17,13 @@ protocol signUpHandler {
     func onSignUpSuccess()
     func onSignUpException(code: Int)
 }
+
+protocol getAllNoticeHandler {
+    func onGetAllNoticeSuccess(notices: [Notice])
+    func onGetAllNoticeException(code: Int)
+}
+
+protocol postNoticeHandler {
+    func onPostNoticeSuccess()
+    func onPostNoticeException(code: Int)
+}

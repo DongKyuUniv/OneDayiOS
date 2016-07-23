@@ -46,9 +46,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "User"
-            landmarkType = "3">
+            endingLineNumber = "11">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneDay/ViewController.swift"
-            timestampString = "490607813.998607"
+            timestampString = "490928165.855666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "login(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -96,6 +94,70 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "login(_:pw:context:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OneDay/ViewController.swift"
+            timestampString = "490928101.037879"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "login(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneDay.ViewController.login (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "OneDay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/IronFactory/SwiftProject/OneDay/OneDay/ViewController.swift"
+                  timestampString = "490928101.470711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1380">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneDay.ViewController.login (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "OneDay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/IronFactory/SwiftProject/OneDay/OneDay/ViewController.swift"
+                  timestampString = "490928101.489001"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1459">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OneDay/SocketIOManager.swift"
+            timestampString = "490930048.411942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "getAllNotices(_:count:time:handler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

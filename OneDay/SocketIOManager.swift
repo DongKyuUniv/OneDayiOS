@@ -65,4 +65,91 @@ class SocketIOManager {
             print(error)
         }
     }
+    
+    
+    static func getAllNotices(userId: String, count: Int, time: NSDate, handler: getAllNoticeHandler) {
+        do {
+            let reqData = ["userId": userId, "count": count, "time": Int(time.timeIntervalSince1970 * 1000)]
+            let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
+            socket?.emit("getAllNotices", reqDataJson)
+            socket?.once("getAllNotices") {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                let count = resJson["count"] as! Int
+                if (code == 200) {
+                    let noticeJsonArray = resJson["notice"] as! NSArray
+                    let notices = noticeJsonArray.map({
+                        noticeJsonObject -> Notice in
+                        let notice = Notice(data: noticeJsonObject as! NSDictionary)
+                        return notice
+                    })
+                } else {
+                    handler.onGetAllNoticeException(code)
+                }
+            }
+        } catch let error as NSError {
+            print("getAllNotices Error = \(error)")
+            print("getAllNotices Error = \(error.code)")
+//            socket?.connect()
+        }
+    }
+    
+    
+    static func getAllNotices(userId: String, count: Int, time: NSDate, keyword:String, handler: getAllNoticeHandler) {
+        do {
+            let reqData = ["userId": userId, "count": count, "time": Int(time.timeIntervalSince1970 * 1000), "keyWord": keyword]
+            let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
+            socket?.emit("getAllNotices", reqDataJson)
+            socket?.once("getAllNotices") {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                let count = resJson["count"] as! Int
+                if (code == 200) {
+                    let noticeJsonArray = resJson["notice"] as! NSArray
+                    let notices = noticeJsonArray.map({
+                        noticeJsonObject -> Notice in
+                        let notice = Notice(data: noticeJsonObject as! NSDictionary)
+                        return notice
+                    })
+                } else {
+                    handler.onGetAllNoticeException(code)
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    
+    static func postNotice(userId: String, name: String, images: [String], content: String, userImage: String?, handler: postNoticeHandler) {
+        do {
+            var reqData: [String: AnyObject]
+            if let userImg = userImage {
+                reqData = ["userId" : userId, "userName": name, "image": images, "content": content, "userImg": userImg]
+            } else {
+                reqData = ["userId" : userId, "userName": name, "image": images, "content": content, "userImg": ""]
+            }
+            let reqDataJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataJsonStr, options: [])
+            socket?.emit("postNotice", reqDataJson)
+            socket?.once("postNotice") {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onPostNoticeSuccess()
+                } else {
+                    handler.onPostNoticeException(code)
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    
 }

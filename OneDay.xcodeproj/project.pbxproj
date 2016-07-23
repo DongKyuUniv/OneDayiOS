@@ -215,6 +215,14 @@
 			name = SignUp;
 			sourceTree = "<group>";
 		};
+		9040CBF51D426815001AD800 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				905297D61D33508700575A8B /* ViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		905297C81D33508700575A8B = {
 			isa = PBXGroup;
 			children = (
@@ -238,12 +246,12 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
+				9040CBF51D426815001AD800 /* Login */,
 				9018BE651D3E03450048004A /* SignUp */,
 				90173D601D3CCE4D0054B0AF /* SocketIO */,
 				90173D471D3B78600054B0AF /* Friends */,
 				90173D461D3B78550054B0AF /* dao */,
 				905297D41D33508700575A8B /* AppDelegate.swift */,
-				905297D61D33508700575A8B /* ViewController.swift */,
 				905297D81D33508700575A8B /* Main.storyboard */,
 				905297DB1D33508700575A8B /* Assets.xcassets */,
 				905297DD1D33508700575A8B /* LaunchScreen.storyboard */,
