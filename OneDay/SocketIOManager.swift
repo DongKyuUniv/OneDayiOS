@@ -177,7 +177,41 @@ class SocketIOManager {
     
     static func bad(userId: String, noticeId: String, flag: Bool, handler: badHandler) {
         do {
-            
+            let reqData = ["userId": userId, "noticeId": noticeId, "flag": flag]
+            let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
+            socket?.emit("bad", reqJson)
+            socket?.once("bad") {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onBadSuccess()
+                } else {
+                    handler.onBadException(code)
+                }
+            }
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
+    
+    static func comment(userId: String, noticeId: String, comment: String, name: String, handler: commentHandler) {
+        do {
+            let reqData = ["userId": userId, "noticeId": noticeId, "comment": comment, "name": name]
+            let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
+            socket?.emit("comment", reqJson)
+            socket?.once("comment") {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onCommentSucces()
+                } else {
+                    handler.onCommentException(code)
+                }
+            }
         } catch let error as NSError {
             print("error = \(error)")
         }

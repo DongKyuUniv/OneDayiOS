@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, loginHandler, likeHandler {
+class ViewController: UIViewController, loginHandler {
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -17,8 +17,6 @@ class ViewController: UIViewController, loginHandler, likeHandler {
     @IBAction func login(sender: UIButton) {
         let id = idInput.text
         let pw = pwInput.text
-        
-        SocketIOManager.like("test", noticeId: "5792c1ca5430f40300073734", flag: true, handler: self)
         
         if let userId = id {
             if let userPw = pw {
@@ -69,14 +67,6 @@ class ViewController: UIViewController, loginHandler, likeHandler {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func onLikeSuccess() {
-        print("좋아요 성공")
-    }
-    
-    func onLikeException(code: Int) {
-        print("좋아요 실패")
     }
 }
 

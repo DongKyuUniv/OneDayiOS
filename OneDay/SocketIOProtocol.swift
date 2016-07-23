@@ -37,3 +37,8 @@ protocol badHandler {
     func onBadSuccess()
     func onBadException(code: Int)
 }
+
+protocol commentHandler {
+    func onCommentSucces()
+    func onCommentException(code: Int)
+}
