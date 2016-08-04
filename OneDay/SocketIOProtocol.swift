@@ -42,3 +42,8 @@ protocol commentHandler {
     func onCommentSucces()
     func onCommentException(code: Int)
 }
+
+protocol setImageHandler {
+    func onSetImageSuccess()
+    func onSetImageException(code: Int)
+}

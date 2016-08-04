@@ -32,6 +32,11 @@ class User {
         self.notices = notices.map({$0})
     }
     
+    init(dict: [String:String]) {
+        self.id = dict["id"]
+        self.password = dict["password"]
+    }
+    
     init(dict: NSDictionary) {
         let keys = dict.allKeys as! [String]
         if keys.contains("userName") {
@@ -91,4 +96,5 @@ class User {
             }
         }
     }
+    
 }

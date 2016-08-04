@@ -8,7 +8,10 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, loginHandler {
+    
+    var user: User?
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -47,6 +50,23 @@ class ViewController: UIViewController, loginHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
         SocketIOManager.create()
+        SocketIOManager.socket!.once("connect", callback: {
+            _ in
+            if !DBManager.checkDB() {
+                if !DBManager.initDB() {
+                    self.showAlert("에러", message: "DB 생성에 문제가 발생했습니다.")
+                }
+            } else {
+                if let user = UserDBManager.getUser() {
+                    if user.id != nil && user.password != nil {
+                        self.user = user
+                        print("유저 아이디 = \(user.id)")
+                        print("유저 비밀번호 = \(user.password)")
+                        self.performSegueWithIdentifier("loginSuccess", sender: self)
+                    }
+                }
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +76,11 @@ class ViewController: UIViewController, loginHandler {
     
     func onLoginSuccess(user: User) {
         print("로그인 성공")
-        performSegueWithIdentifier("loginSuccess", sender: self)
+        if UserDBManager.insertUserDB(user.id, password: user.password) {
+            performSegueWithIdentifier("loginSuccess", sender: self)
+        } else {
+            showAlert("로그인 실패", message: "로그인 실패")
+        }
     }
     
     func onLoginException(code: Int) {
@@ -67,6 +91,17 @@ class ViewController: UIViewController, loginHandler {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueId = segue.identifier {
+            print("segueId = \(segueId)")
+            if segueId == "loginSuccess" {
+                let navigationVC = segue.destinationViewController as! UINavigationController
+                let tabBarVC = navigationVC.viewControllers.first as! MainViewController
+                tabBarVC.user = user
+            }
+        }
     }
 }
 
