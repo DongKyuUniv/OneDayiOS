@@ -18,7 +18,7 @@ class SocketIOManager {
     
     static func login(id: String, pw: String, context: loginHandler) -> Void {
         do {
-            let data = ["userId": id, "w": pw]
+            let data = ["userId": id, "userPw": pw]
             let dataData = try NSJSONSerialization.dataWithJSONObject(data, options: .PrettyPrinted)
             let dataJson = try NSJSONSerialization.JSONObjectWithData(dataData, options: [])
             if let socket = self.socket {
@@ -29,7 +29,7 @@ class SocketIOManager {
                         if let code = resJson["code"] as? Int {
                             if code == 200 {
                                 print("resJson = \(resJson)")
-                                let user = User(dict: resJson as! NSDictionary)
+                                let user = User(dict: resJson["user"] as! NSDictionary)
                                 context.onLoginSuccess(user)
                             } else {
                                 context.onLoginException(code)

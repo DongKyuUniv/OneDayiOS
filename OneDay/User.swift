@@ -39,26 +39,33 @@ class User {
     
     init(dict: NSDictionary) {
         let keys = dict.allKeys as! [String]
-        if keys.contains("userName") {
-            let userName = dict["userName"]
+        print("keys = \(keys)")
+        if keys.contains("name") {
+            let userName = dict["name"]
+            print("name = \(userName)")
             if userName != nil && !(userName is NSNull) {
                 name = userName as! String
             }
         }
         if keys.contains("birth") {
             let userBirth = dict["birth"]
+            print("birth = \(userBirth)")
             if userBirth != nil && !(userBirth is NSNull) {
-                birth = userBirth as! NSDate
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                birth = dateFormatter.dateFromString(userBirth as! String)
             }
         }
-        if keys.contains("userId") {
-            let userId = dict["userId"]
+        if keys.contains("user_id") {
+            let userId = dict["user_id"]
+            print("userId = \(userId)")
             if userId != nil && !(userId is NSNull) {
                 id = userId as! String
             }
         }
-        if keys.contains("userImage") {
-            let userImage = dict["userImage"]
+        if keys.contains("image") {
+            let userImage = dict["image"]
+            print("image = \(userImage)")
             if userImage != nil && !(userImage is NSNull) {
                 profileImageUri = userImage as! String
             }
@@ -66,6 +73,7 @@ class User {
         
         if keys.contains("mail") {
             let userMail = dict["mail"]
+            print("mail = \(userMail)")
             if userMail != nil && !(userMail is NSNull) {
                 email = userMail as! String
             }
