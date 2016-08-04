@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0152A0479997C20420F8FCB0 /* Pods_OneDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8329284A5D1B900FF32674E6 /* Pods_OneDay.framework */; };
+		316CCC39F1A5DFC376298FCE /* Pods_OneDayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5976A7BBAED5414FADFA19 /* Pods_OneDayUITests.framework */; };
+		711FFD9C7BA4EA16DA20E14D /* Pods_OneDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 642133FC759890A4F447A8E7 /* Pods_OneDayTests.framework */; };
 		90173D491D3B78B40054B0AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D481D3B78B40054B0AF /* User.swift */; };
 		90173D4B1D3B92550054B0AF /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D4A1D3B92550054B0AF /* Notice.swift */; };
 		90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D4C1D3CB9B90054B0AF /* Comment.swift */; };
@@ -46,6 +49,20 @@
 		905297DF1D33508700575A8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905297DD1D33508700575A8B /* LaunchScreen.storyboard */; };
 		905297EA1D33508700575A8B /* OneDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297E91D33508700575A8B /* OneDayTests.swift */; };
 		905297F51D33508700575A8B /* OneDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297F41D33508700575A8B /* OneDayUITests.swift */; };
+		909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3C1D52023A00809F3C /* DBManager.swift */; };
+		909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3F1D520C7400809F3C /* UserDBManager.swift */; };
+		909E0B681D52111E00809F3C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B5E1D52111E00809F3C /* FMDatabase.m */; };
+		909E0B691D52111E00809F3C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B601D52111E00809F3C /* FMDatabaseAdditions.m */; };
+		909E0B6A1D52111E00809F3C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B621D52111E00809F3C /* FMDatabasePool.m */; };
+		909E0B6B1D52111E00809F3C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B641D52111E00809F3C /* FMDatabaseQueue.m */; };
+		909E0B6C1D52111E00809F3C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B671D52111E00809F3C /* FMResultSet.m */; };
+		909E0B6E1D5212C000809F3C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 909E0B6D1D5212C000809F3C /* libsqlite3.tbd */; };
+		909E0B741D522EA000809F3C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B731D522EA000809F3C /* MainViewController.swift */; };
+		909E0B7B1D5231D400809F3C /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7A1D5231D400809F3C /* TimelineViewController.swift */; };
+		909E0B7D1D5231E500809F3C /* TImelineViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7C1D5231E500809F3C /* TImelineViewControllerTests.swift */; };
+		909E0B7F1D523CD200809F3C /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */; };
+		909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B801D523D3100809F3C /* TimelineProtocol.swift */; };
+		909E0B851D52431B00809F3C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B841D52431B00809F3C /* TimelineCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +83,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B5976A7BBAED5414FADFA19 /* Pods_OneDayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneDayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44BE13228A4038C4A4CAE691 /* Pods-OneDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDayTests/Pods-OneDayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5A409BDEF46E5262F366B1E4 /* Pods-OneDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDay/Pods-OneDay.debug.xcconfig"; sourceTree = "<group>"; };
+		639807AE8FE842DA5B3D6C74 /* Pods-OneDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDay.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDay/Pods-OneDay.release.xcconfig"; sourceTree = "<group>"; };
+		642133FC759890A4F447A8E7 /* Pods_OneDayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneDayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8329284A5D1B900FF32674E6 /* Pods_OneDay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneDay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83BAD2774FE51AE04D3FBCE1 /* Pods-OneDayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDayUITests/Pods-OneDayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		88B17B664A67141BABA9B837 /* Pods-OneDayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDayTests/Pods-OneDayTests.release.xcconfig"; sourceTree = "<group>"; };
 		90173D481D3B78B40054B0AF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90173D4A1D3B92550054B0AF /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		90173D4C1D3CB9B90054B0AF /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -111,6 +136,28 @@
 		905297F01D33508700575A8B /* OneDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		905297F41D33508700575A8B /* OneDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayUITests.swift; sourceTree = "<group>"; };
 		905297F61D33508700575A8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneDay-Bridging-Header.h"; sourceTree = "<group>"; };
+		909E0B3C1D52023A00809F3C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		909E0B3F1D520C7400809F3C /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
+		909E0B5D1D52111E00809F3C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = fmdb/FMDatabase.h; sourceTree = SOURCE_ROOT; };
+		909E0B5E1D52111E00809F3C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = fmdb/FMDatabase.m; sourceTree = SOURCE_ROOT; };
+		909E0B5F1D52111E00809F3C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = fmdb/FMDatabaseAdditions.h; sourceTree = SOURCE_ROOT; };
+		909E0B601D52111E00809F3C /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = fmdb/FMDatabaseAdditions.m; sourceTree = SOURCE_ROOT; };
+		909E0B611D52111E00809F3C /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = fmdb/FMDatabasePool.h; sourceTree = SOURCE_ROOT; };
+		909E0B621D52111E00809F3C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = fmdb/FMDatabasePool.m; sourceTree = SOURCE_ROOT; };
+		909E0B631D52111E00809F3C /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = fmdb/FMDatabaseQueue.h; sourceTree = SOURCE_ROOT; };
+		909E0B641D52111E00809F3C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = fmdb/FMDatabaseQueue.m; sourceTree = SOURCE_ROOT; };
+		909E0B651D52111E00809F3C /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = fmdb/FMDB.h; sourceTree = SOURCE_ROOT; };
+		909E0B661D52111E00809F3C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = fmdb/FMResultSet.h; sourceTree = SOURCE_ROOT; };
+		909E0B671D52111E00809F3C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = fmdb/FMResultSet.m; sourceTree = SOURCE_ROOT; };
+		909E0B6D1D5212C000809F3C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		909E0B731D522EA000809F3C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		909E0B7A1D5231D400809F3C /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		909E0B7C1D5231E500809F3C /* TImelineViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImelineViewControllerTests.swift; sourceTree = "<group>"; };
+		909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
+		909E0B801D523D3100809F3C /* TimelineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineProtocol.swift; sourceTree = "<group>"; };
+		909E0B841D52431B00809F3C /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		96AC94D52F59F18D1B349541 /* Pods-OneDayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDayUITests/Pods-OneDayUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +165,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909E0B6E1D5212C000809F3C /* libsqlite3.tbd in Frameworks */,
+				0152A0479997C20420F8FCB0 /* Pods_OneDay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711FFD9C7BA4EA16DA20E14D /* Pods_OneDayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,12 +182,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316CCC39F1A5DFC376298FCE /* Pods_OneDayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31174A7FED6DA897A523CFB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A409BDEF46E5262F366B1E4 /* Pods-OneDay.debug.xcconfig */,
+				639807AE8FE842DA5B3D6C74 /* Pods-OneDay.release.xcconfig */,
+				44BE13228A4038C4A4CAE691 /* Pods-OneDayTests.debug.xcconfig */,
+				88B17B664A67141BABA9B837 /* Pods-OneDayTests.release.xcconfig */,
+				83BAD2774FE51AE04D3FBCE1 /* Pods-OneDayUITests.debug.xcconfig */,
+				96AC94D52F59F18D1B349541 /* Pods-OneDayUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B653ECA54F9ED6C68BCF59B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B6D1D5212C000809F3C /* libsqlite3.tbd */,
+				8329284A5D1B900FF32674E6 /* Pods_OneDay.framework */,
+				642133FC759890A4F447A8E7 /* Pods_OneDayTests.framework */,
+				1B5976A7BBAED5414FADFA19 /* Pods_OneDayUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		90173D461D3B78550054B0AF /* dao */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +305,8 @@
 				905297E81D33508700575A8B /* OneDayTests */,
 				905297F31D33508700575A8B /* OneDayUITests */,
 				905297D21D33508700575A8B /* Products */,
+				31174A7FED6DA897A523CFB8 /* Pods */,
+				4B653ECA54F9ED6C68BCF59B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,6 +323,9 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
+				909E0B751D52301D00809F3C /* Timeline */,
+				909E0B3E1D520C5800809F3C /* DBManagers */,
+				909E0B1A1D51F85A00809F3C /* FMDB */,
 				9040CBF51D426815001AD800 /* Login */,
 				9018BE651D3E03450048004A /* SignUp */,
 				90173D601D3CCE4D0054B0AF /* SocketIO */,
@@ -256,6 +336,7 @@
 				905297DB1D33508700575A8B /* Assets.xcassets */,
 				905297DD1D33508700575A8B /* LaunchScreen.storyboard */,
 				905297E01D33508700575A8B /* Info.plist */,
+				909E0B731D522EA000809F3C /* MainViewController.swift */,
 			);
 			path = OneDay;
 			sourceTree = "<group>";
@@ -265,6 +346,7 @@
 			children = (
 				905297E91D33508700575A8B /* OneDayTests.swift */,
 				905297EB1D33508700575A8B /* Info.plist */,
+				909E0B7C1D5231E500809F3C /* TImelineViewControllerTests.swift */,
 			);
 			path = OneDayTests;
 			sourceTree = "<group>";
@@ -278,6 +360,45 @@
 			path = OneDayUITests;
 			sourceTree = "<group>";
 		};
+		909E0B1A1D51F85A00809F3C /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B5D1D52111E00809F3C /* FMDatabase.h */,
+				909E0B5E1D52111E00809F3C /* FMDatabase.m */,
+				909E0B5F1D52111E00809F3C /* FMDatabaseAdditions.h */,
+				909E0B601D52111E00809F3C /* FMDatabaseAdditions.m */,
+				909E0B611D52111E00809F3C /* FMDatabasePool.h */,
+				909E0B621D52111E00809F3C /* FMDatabasePool.m */,
+				909E0B631D52111E00809F3C /* FMDatabaseQueue.h */,
+				909E0B641D52111E00809F3C /* FMDatabaseQueue.m */,
+				909E0B651D52111E00809F3C /* FMDB.h */,
+				909E0B661D52111E00809F3C /* FMResultSet.h */,
+				909E0B671D52111E00809F3C /* FMResultSet.m */,
+				909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
+		909E0B3E1D520C5800809F3C /* DBManagers */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B3C1D52023A00809F3C /* DBManager.swift */,
+				909E0B3F1D520C7400809F3C /* UserDBManager.swift */,
+			);
+			name = DBManagers;
+			sourceTree = "<group>";
+		};
+		909E0B751D52301D00809F3C /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B7A1D5231D400809F3C /* TimelineViewController.swift */,
+				909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */,
+				909E0B801D523D3100809F3C /* TimelineProtocol.swift */,
+				909E0B841D52431B00809F3C /* TimelineCell.swift */,
+			);
+			name = Timeline;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,9 +406,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 905297F91D33508700575A8B /* Build configuration list for PBXNativeTarget "OneDay" */;
 			buildPhases = (
+				5EBED21EC64E1B519BD84B36 /* [CP] Check Pods Manifest.lock */,
 				905297CD1D33508700575A8B /* Sources */,
 				905297CE1D33508700575A8B /* Frameworks */,
 				905297CF1D33508700575A8B /* Resources */,
+				C576B36DB7E65DB4CB8A7A35 /* [CP] Embed Pods Frameworks */,
+				4B38C235FDECCF857473AE1F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,9 +426,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 905297FC1D33508700575A8B /* Build configuration list for PBXNativeTarget "OneDayTests" */;
 			buildPhases = (
+				75A5A51C21E2E847370A21BF /* [CP] Check Pods Manifest.lock */,
 				905297E11D33508700575A8B /* Sources */,
 				905297E21D33508700575A8B /* Frameworks */,
 				905297E31D33508700575A8B /* Resources */,
+				12A9234580C7632B71DDF66C /* [CP] Embed Pods Frameworks */,
+				401BFBD17CB3128BBEEAFF4B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,9 +447,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 905297FF1D33508700575A8B /* Build configuration list for PBXNativeTarget "OneDayUITests" */;
 			buildPhases = (
+				C633B3EDBC526F19B0B89E30 /* [CP] Check Pods Manifest.lock */,
 				905297EC1D33508700575A8B /* Sources */,
 				905297ED1D33508700575A8B /* Frameworks */,
 				905297EE1D33508700575A8B /* Resources */,
+				C7BB31A88AEC8A7CB157A9F5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,6 +539,129 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12A9234580C7632B71DDF66C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneDayTests/Pods-OneDayTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		401BFBD17CB3128BBEEAFF4B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneDayTests/Pods-OneDayTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B38C235FDECCF857473AE1F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneDay/Pods-OneDay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EBED21EC64E1B519BD84B36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		75A5A51C21E2E847370A21BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C576B36DB7E65DB4CB8A7A35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneDay/Pods-OneDay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C633B3EDBC526F19B0B89E30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7BB31A88AEC8A7CB157A9F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneDayUITests/Pods-OneDayUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		905297CD1D33508700575A8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -420,33 +672,45 @@
 				904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */,
 				90173D7F1D3CCF5C0054B0AF /* NSCharacterSet.swift in Sources */,
 				905297D71D33508700575A8B /* ViewController.swift in Sources */,
+				909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */,
+				909E0B7B1D5231D400809F3C /* TimelineViewController.swift in Sources */,
 				90173D8C1D3CCF5C0054B0AF /* SocketIOClientOption.swift in Sources */,
 				90173D801D3CCF5C0054B0AF /* SocketAckEmitter.swift in Sources */,
 				90173D821D3CCF5C0054B0AF /* SocketAnyEvent.swift in Sources */,
+				909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */,
 				905297D51D33508700575A8B /* AppDelegate.swift in Sources */,
 				90173D891D3CCF5C0054B0AF /* SocketEngineWebsocket.swift in Sources */,
 				9018BE621D3D21FB0048004A /* SocketIOManager.swift in Sources */,
 				9018BE641D3D2FB30048004A /* SocketIOProtocol.swift in Sources */,
 				90173D8A1D3CCF5C0054B0AF /* SocketEventHandler.swift in Sources */,
+				909E0B851D52431B00809F3C /* TimelineCell.swift in Sources */,
 				90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */,
+				909E0B691D52111E00809F3C /* FMDatabaseAdditions.m in Sources */,
+				909E0B681D52111E00809F3C /* FMDatabase.m in Sources */,
 				90173D851D3CCF5C0054B0AF /* SocketEngineClient.swift in Sources */,
 				90173D8E1D3CCF5C0054B0AF /* SocketIOClientStatus.swift in Sources */,
 				90173D811D3CCF5C0054B0AF /* SocketAckManager.swift in Sources */,
 				90173D8F1D3CCF5C0054B0AF /* SocketLogger.swift in Sources */,
+				909E0B741D522EA000809F3C /* MainViewController.swift in Sources */,
 				90173D951D3CCF5C0054B0AF /* SSLSecurity.swift in Sources */,
 				90173D921D3CCF5C0054B0AF /* SocketStringReader.swift in Sources */,
 				90173D901D3CCF5C0054B0AF /* SocketPacket.swift in Sources */,
 				90173D4B1D3B92550054B0AF /* Notice.swift in Sources */,
+				909E0B6B1D52111E00809F3C /* FMDatabaseQueue.m in Sources */,
 				9018BE671D3E03660048004A /* SignUpViewController.swift in Sources */,
 				90173D931D3CCF5C0054B0AF /* SocketTypes.swift in Sources */,
 				90173D961D3CCF5C0054B0AF /* WebSocket.swift in Sources */,
+				909E0B6A1D52111E00809F3C /* FMDatabasePool.m in Sources */,
 				90173D491D3B78B40054B0AF /* User.swift in Sources */,
+				909E0B7F1D523CD200809F3C /* TimelinePresenter.swift in Sources */,
 				904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */,
 				90173D831D3CCF5C0054B0AF /* SocketClientManager.swift in Sources */,
 				90173D8B1D3CCF5C0054B0AF /* SocketIOClient.swift in Sources */,
 				90173D861D3CCF5C0054B0AF /* SocketEnginePacketType.swift in Sources */,
 				90173D911D3CCF5C0054B0AF /* SocketParsable.swift in Sources */,
+				909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */,
 				90173D881D3CCF5C0054B0AF /* SocketEngineSpec.swift in Sources */,
+				909E0B6C1D52111E00809F3C /* FMResultSet.m in Sources */,
 				90173D841D3CCF5C0054B0AF /* SocketEngine.swift in Sources */,
 				90173D871D3CCF5C0054B0AF /* SocketEnginePollable.swift in Sources */,
 			);
@@ -457,6 +721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				905297EA1D33508700575A8B /* OneDayTests.swift in Sources */,
+				909E0B7D1D5231E500809F3C /* TImelineViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,74 +855,99 @@
 		};
 		905297FA1D33508700575A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A409BDEF46E5262F366B1E4 /* Pods-OneDay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDay-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		905297FB1D33508700575A8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 639807AE8FE842DA5B3D6C74 /* Pods-OneDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = OneDay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDay-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		905297FD1D33508700575A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BE13228A4038C4A4CAE691 /* Pods-OneDayTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneDay.app/OneDay";
 			};
 			name = Debug;
 		};
 		905297FE1D33508700575A8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88B17B664A67141BABA9B837 /* Pods-OneDayTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneDay.app/OneDay";
 			};
 			name = Release;
 		};
 		905298001D33508700575A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83BAD2774FE51AE04D3FBCE1 /* Pods-OneDayUITests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = OneDay;
 			};
 			name = Debug;
 		};
 		905298011D33508700575A8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96AC94D52F59F18D1B349541 /* Pods-OneDayUITests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = OneDay;
 			};
 			name = Release;

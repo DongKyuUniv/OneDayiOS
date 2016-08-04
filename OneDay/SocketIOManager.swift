@@ -6,16 +6,14 @@
 //  Copyright © 2016년 이동규. All rights reserved.
 //
 
-import Foundation
-
 class SocketIOManager {
     static var socket: SocketIOClient? = nil
     
     static func create() {
         if SocketIOManager.socket == nil {
             SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: "http://windsoft-oneday.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
-            SocketIOManager.socket!.connect()
         }
+        SocketIOManager.socket!.connect()
     }
     
     static func login(id: String, pw: String, context: loginHandler) -> Void {
@@ -30,6 +28,7 @@ class SocketIOManager {
                     if let resJson = res[0] as AnyObject? {
                         if let code = resJson["code"] as? Int {
                             if code == 200 {
+                                print("resJson = \(resJson)")
                                 let user = User(dict: resJson as! NSDictionary)
                                 context.onLoginSuccess(user)
                             } else {
@@ -215,5 +214,29 @@ class SocketIOManager {
         } catch let error as NSError {
             print("error = \(error)")
         }
+    }
+    
+    
+    static func setProfileImage(id: String, fileUrl: String, handler: setImageHandler) {
+        let req = NSMutableURLRequest(URL: NSURL(string: "http://windsoft-oneday.herokuapp.com/upload_profile_image")!)
+        req.HTTPMethod = "POST"
+        let postStr = "id=13"
+        req.HTTPBody = postStr.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(req) {
+            data, res, error in
+            guard error == nil && data != nil else {
+                print("error = \(error)")
+                return
+            }
+            
+            if let httpStatus = res as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+                print("status code is not 200!!")
+                print("res = \(res)")
+            }
+            
+            let resStr = String(data: data!, encoding: NSUTF8StringEncoding)
+            print("resStr = \(resStr)")
+        }
+        task.resume()
     }
 }
