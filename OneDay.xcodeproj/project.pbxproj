@@ -63,6 +63,9 @@
 		909E0B7F1D523CD200809F3C /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */; };
 		909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B801D523D3100809F3C /* TimelineProtocol.swift */; };
 		909E0B851D52431B00809F3C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B841D52431B00809F3C /* TimelineCell.swift */; };
+		909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */; };
+		90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2F7141D5894C700E9CD66 /* CommentViewController.swift */; };
+		90B2F7171D5894D600E9CD66 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2F7161D5894D600E9CD66 /* CommentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +160,9 @@
 		909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
 		909E0B801D523D3100809F3C /* TimelineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineProtocol.swift; sourceTree = "<group>"; };
 		909E0B841D52431B00809F3C /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelineViewController.swift; sourceTree = "<group>"; };
+		90B2F7141D5894C700E9CD66 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		90B2F7161D5894D600E9CD66 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		96AC94D52F59F18D1B349541 /* Pods-OneDayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDayUITests/Pods-OneDayUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,7 +329,9 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
-				909E0B751D52301D00809F3C /* Timeline */,
+				90B2F70F1D58927D00E9CD66 /* Comment */,
+				909E0B861D5300C900809F3C /* InsertTimeline */,
+				909E0B751D52301D00809F3C /* PresentTimeline */,
 				909E0B3E1D520C5800809F3C /* DBManagers */,
 				909E0B1A1D51F85A00809F3C /* FMDB */,
 				9040CBF51D426815001AD800 /* Login */,
@@ -388,7 +396,7 @@
 			name = DBManagers;
 			sourceTree = "<group>";
 		};
-		909E0B751D52301D00809F3C /* Timeline */ = {
+		909E0B751D52301D00809F3C /* PresentTimeline */ = {
 			isa = PBXGroup;
 			children = (
 				909E0B7A1D5231D400809F3C /* TimelineViewController.swift */,
@@ -396,7 +404,24 @@
 				909E0B801D523D3100809F3C /* TimelineProtocol.swift */,
 				909E0B841D52431B00809F3C /* TimelineCell.swift */,
 			);
-			name = Timeline;
+			name = PresentTimeline;
+			sourceTree = "<group>";
+		};
+		909E0B861D5300C900809F3C /* InsertTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */,
+			);
+			name = InsertTimeline;
+			sourceTree = "<group>";
+		};
+		90B2F70F1D58927D00E9CD66 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				90B2F7141D5894C700E9CD66 /* CommentViewController.swift */,
+				90B2F7161D5894D600E9CD66 /* CommentCell.swift */,
+			);
+			name = Comment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -673,8 +698,10 @@
 				90173D7F1D3CCF5C0054B0AF /* NSCharacterSet.swift in Sources */,
 				905297D71D33508700575A8B /* ViewController.swift in Sources */,
 				909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */,
+				90B2F7171D5894D600E9CD66 /* CommentCell.swift in Sources */,
 				909E0B7B1D5231D400809F3C /* TimelineViewController.swift in Sources */,
 				90173D8C1D3CCF5C0054B0AF /* SocketIOClientOption.swift in Sources */,
+				90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */,
 				90173D801D3CCF5C0054B0AF /* SocketAckEmitter.swift in Sources */,
 				90173D821D3CCF5C0054B0AF /* SocketAnyEvent.swift in Sources */,
 				909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */,
@@ -687,6 +714,7 @@
 				90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */,
 				909E0B691D52111E00809F3C /* FMDatabaseAdditions.m in Sources */,
 				909E0B681D52111E00809F3C /* FMDatabase.m in Sources */,
+				909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */,
 				90173D851D3CCF5C0054B0AF /* SocketEngineClient.swift in Sources */,
 				90173D8E1D3CCF5C0054B0AF /* SocketIOClientStatus.swift in Sources */,
 				90173D811D3CCF5C0054B0AF /* SocketAckManager.swift in Sources */,

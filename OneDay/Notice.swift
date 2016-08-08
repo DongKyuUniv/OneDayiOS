@@ -64,7 +64,7 @@ class Notice {
             if date != nil && !(date is NSNull) {
                 let dateStr = date as! String
                 let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-ss'T'HH:mm:ss.SSSZ"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                 self.created = dateFormatter.dateFromString(dateStr)
             }
         }
@@ -97,4 +97,6 @@ class Notice {
             }
         }
     }
+    
+    
 }

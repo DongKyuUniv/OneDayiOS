@@ -17,6 +17,13 @@ class UserDBManager {
     static func insertUserDB(id:String, password: String) -> Bool {
         let db = FMDatabase(path: DBManager.DB_PATH)
         if db.open() {
+            let deleteSQL = "DELETE FROM \(UserDBManager.USER_TABLE);"
+            let deleteResult = db.executeUpdate(deleteSQL, withArgumentsInArray: nil)
+            if !deleteResult {
+                return false
+            }
+            
+            
             let insertSQL = "INSERT INTO \(UserDBManager.USER_TABLE) VALUES ('\(id)', '\(password)');"
             let result = db.executeUpdate(insertSQL, withArgumentsInArray: nil)
             

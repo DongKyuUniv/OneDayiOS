@@ -11,12 +11,16 @@ import UIKit
 class MainViewController: UITabBarController {
 
     var user:User?
+    @IBAction func insertNotice(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("insertTimeline", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("아이디 = \(user?.id)")
         print("비밀번호 = \(user?.password)")
+        print("이름 = \(user?.name)")
         
         print("뷰컨트롤러 \(viewControllers)")
         if let vcs = viewControllers {
@@ -27,5 +31,15 @@ class MainViewController: UITabBarController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let id = segue.identifier
+        print("id = \(id)")
+        if id == "insertTimeline" {
+            print("됌?")
+            let vc = segue.destinationViewController as! InsertTimelineViewController
+            vc.user = user
+        }
     }
 }

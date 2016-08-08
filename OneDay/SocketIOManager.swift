@@ -76,7 +76,6 @@ class SocketIOManager {
                 data, ack in
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
-                let count = resJson["count"] as! Int
                 if (code == 200) {
                     let noticeJsonArray = resJson["notice"] as! NSArray
                     let notices = noticeJsonArray.map({
@@ -84,6 +83,7 @@ class SocketIOManager {
                         let notice = Notice(data: noticeJsonObject as! NSDictionary)
                         return notice
                     })
+                    handler.onGetAllNoticeSuccess(notices)
                 } else {
                     handler.onGetAllNoticeException(code)
                 }
@@ -106,7 +106,6 @@ class SocketIOManager {
                 data, ack in
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
-                let count = resJson["count"] as! Int
                 if (code == 200) {
                     let noticeJsonArray = resJson["notice"] as! NSArray
                     let notices = noticeJsonArray.map({
@@ -114,6 +113,7 @@ class SocketIOManager {
                         let notice = Notice(data: noticeJsonObject as! NSDictionary)
                         return notice
                     })
+                    handler.onGetAllNoticeSuccess(notices)
                 } else {
                     handler.onGetAllNoticeException(code)
                 }

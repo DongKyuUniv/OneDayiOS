@@ -62,7 +62,7 @@ class ViewController: UIViewController, loginHandler {
                         self.user = user
                         print("유저 아이디 = \(user.id)")
                         print("유저 비밀번호 = \(user.password)")
-                        self.performSegueWithIdentifier("loginSuccess", sender: self)
+                        SocketIOManager.login(user.id, pw: user.password, context: self)
                     }
                 }
             }
@@ -75,7 +75,7 @@ class ViewController: UIViewController, loginHandler {
     }
     
     func onLoginSuccess(user: User) {
-        print("로그인 성공")
+        self.user = user
         if UserDBManager.insertUserDB(user.id, password: user.password) {
             performSegueWithIdentifier("loginSuccess", sender: self)
         } else {
@@ -92,6 +92,7 @@ class ViewController: UIViewController, loginHandler {
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segueId = segue.identifier {

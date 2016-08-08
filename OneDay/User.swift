@@ -56,6 +56,12 @@ class User {
                 birth = dateFormatter.dateFromString(userBirth as! String)
             }
         }
+        if keys.contains("pw") {
+            let userPassword = dict["pw"]
+            if userPassword != nil && !(userPassword is NSNull) {
+                password = userPassword as! String
+            }
+        }
         if keys.contains("user_id") {
             let userId = dict["user_id"]
             print("userId = \(userId)")

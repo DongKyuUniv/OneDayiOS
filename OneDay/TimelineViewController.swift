@@ -8,22 +8,19 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, loginHandler {
+class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener {
 
     var user: User?
     var notices: [Notice]?
     var handler: TimelineUserActionListener?
+    var notice: Notice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         handler = TimelinePresenter(view: self)
         if let curUser = user {
-            if curUser.name != nil {
-                SocketIOManager.getAllNotices(curUser.id, count: 0, time: NSDate(), handler: self)
-            } else {
-                SocketIOManager.login(curUser.id, pw: curUser.password, context: self)
-            }
+            SocketIOManager.getAllNotices(curUser.id, count: 0, time: NSDate(), handler: self)
         }
     }
 
@@ -37,6 +34,7 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let notices = self.notices {
@@ -46,42 +44,86 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
         return 0
     }
     
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
-        cell.authorName.text = "lee"
+        if let notices = self.notices {
+            let notice = notices[indexPath.row]
+            cell.notice = notice
+            cell.handler = self
+            cell.user = self.user
+            cell.authorName.text = notice.authorName
+            cell.content.text = notice.content
+            cell.created.text = dateToString(notice.created)
+            cell.likeCount.text = "\(notice.likes.count)"
+            cell.badCount.text = "\(notice.bads.count)"
+            cell.commentCount.text = "\(notice.comments.count)"
+            print("like = \(notice.likes)")
+        }
         return cell
     }
+    
+    func dateToString(date: NSDate) -> String {
+        var sec = (Int(NSDate().timeIntervalSince1970) - Int(date.timeIntervalSince1970))
+        var hour = 0
+        var min = 0
+        if sec < 86400 {
+            hour = sec / 3600
+            if hour > 0 {
+                sec /= hour
+            }
+            min = sec / 60
+            
+            if hour == 0 && min == 0 {
+                return "얼마 전"
+            } else if hour == 0 {
+                return "\(min)분 전"
+            } else {
+                return "\(hour)시간 전"
+            }
+        }
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     
     func onGetAllNoticeSuccess(notices: [Notice]) {
         print("글 다 받아오기 성공")
         self.notices = notices
-        self.refreshControl?.refreshing
+        print("글 개수 = \(notices.count)")
+        self.tableView.reloadData()
     }
+    
     
     func onGetAllNoticeException(code: Int) {
         print("글 다 받아오기 실패")
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue = \(segue.identifier)")
+        print("segue id = \(segue.identifier)")
+        if let id = segue.identifier {
+            if id == "commentSegue" {
+                let vc = segue.destinationViewController as! CommentViewController
+                if let notices = self.notices {
+                    vc.notice = notices[0]
+                    vc.user = user
+                }
+            }
+        }
     }
     
-    func onLoginSuccess(user: User) {
-        print("로그인 성공 = \(user)")
-        self.user = user
-        SocketIOManager.getAllNotices(user.id, count: 0, time: NSDate(), handler: self)
-    }
-    
-    func onLoginException(code: Int) {
-        showAlert("로그인 실패", message: "로그인에 실패하였습니다. \n비밀번호가 변경되었는지 확인하십시오.")
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: {
-            action in
-            exit(0)
-        }))
-        self.presentViewController(alertController, animated: true, completion: nil)
+    func onCommentClick(notice: Notice) {
+        print("commentClick")
+        self.notice = notice
     }
 }
