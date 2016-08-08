@@ -343,7 +343,7 @@
                                             <state key="normal" title="comment"/>
                                             <connections>
                                                 <action selector="onCommentClick:" destination="Ufe-Jw-BNH" eventType="touchDown" id="Kzj-SF-TgQ"/>
-                                                <segue destination="uec-7E-6ew" kind="showDetail" identifier="commentSegue" id="L9Q-jc-its"/>
+                                                <segue destination="uec-7E-6ew" kind="show" identifier="commentSegue" action="showDetailViewController:sender:" id="L9Q-jc-its"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pmg-AM-tAc">
@@ -427,13 +427,13 @@
                             <outlet property="delegate" destination="cTt-rC-OGf" id="DKO-8M-5QH"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="타임라인" id="V8m-Rk-c4q"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Fhg-Wr-aLW"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxt-FJ-Wis" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2277" y="-369"/>
+            <point key="canvasLocation" x="3089" y="-369"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="85X-An-ChJ">
@@ -444,8 +444,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="257" id="wy5-5t-IpF" customClass="CommentCell" customModule="OneDay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="257"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="257" id="wy5-5t-IpF" customClass="CommentCell" customModule="OneDay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="257"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wy5-5t-IpF" id="dch-1j-XwP">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="256.5"/>
@@ -458,12 +458,6 @@
                                                 <constraint firstAttribute="height" constant="49" id="mB1-Lw-DRT"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clw-M1-ygp">
-                                            <rect key="frame" x="74" y="13" width="30" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="내용" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOv-7b-kTl">
                                             <rect key="frame" x="74" y="42" width="504" height="201"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -474,6 +468,12 @@
                                             <rect key="frame" x="120" y="13" width="320" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.56618128272251311" green="0.56618128272251311" blue="0.56618128272251311" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clw-M1-ygp">
+                                            <rect key="frame" x="74" y="13" width="30" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -488,6 +488,12 @@
                                         <constraint firstItem="zOv-7b-kTl" firstAttribute="top" secondItem="sP1-5w-mOc" secondAttribute="bottom" constant="8" id="xl0-gG-HVL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="zOv-7b-kTl" id="efw-v6-aRJ"/>
+                                    <outlet property="createdLabel" destination="sP1-5w-mOc" id="RUx-6S-5Lw"/>
+                                    <outlet property="nameLabel" destination="Clw-M1-ygp" id="XEo-e2-8Zf"/>
+                                    <outlet property="profileImage" destination="vZE-FV-osN" id="5Wu-em-D3f"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -498,7 +504,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7X-Im-bAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2927" y="-366"/>
+            <point key="canvasLocation" x="3817" y="-369"/>
         </scene>
         <!--글 쓰기-->
         <scene sceneID="L6j-kg-jpv">
@@ -611,8 +617,8 @@
         <!--Navigation Controller-->
         <scene sceneID="VSI-cs-yK4">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHY-K6-2OA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MainStoryboard" id="vqT-sC-5hY" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QhM-R7-JyE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TTQ-0T-P5o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -621,7 +627,6 @@
                         <segue destination="RcI-fe-BRx" kind="relationship" relationship="rootViewController" id="R2Q-W9-ery"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kHY-K6-2OA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="695" y="381"/>
         </scene>
@@ -642,7 +647,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cTt-rC-OGf" kind="relationship" relationship="viewControllers" id="iXA-QC-aN3"/>
+                        <segue destination="HSz-iu-8ee" kind="relationship" relationship="viewControllers" id="iXA-QC-aN3"/>
                         <segue destination="6Dv-5o-nt1" kind="relationship" relationship="viewControllers" id="Bd4-AP-ud4"/>
                         <segue destination="7aO-ZQ-LUf" kind="relationship" relationship="viewControllers" id="c5f-Zm-Krv"/>
                         <segue destination="kPD-8T-LHG" kind="relationship" relationship="viewControllers" id="nbo-o0-Q3E"/>
@@ -719,6 +724,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WY2-n7-GHY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-946" y="-369"/>
+        </scene>
+        <!--타임라인-->
+        <scene sceneID="xpl-Hw-njx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HSz-iu-8ee" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="타임라인" id="V8m-Rk-c4q"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aqQ-ek-46l">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cTt-rC-OGf" kind="relationship" relationship="rootViewController" id="uGA-gF-jnz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xz0-3U-HRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2277" y="-369"/>
         </scene>
     </scenes>
 </document>

@@ -114,10 +114,8 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
         if let id = segue.identifier {
             if id == "commentSegue" {
                 let vc = segue.destinationViewController as! CommentViewController
-                if let notices = self.notices {
-                    vc.notice = notices[0]
-                    vc.user = user
-                }
+                vc.notice = notice
+                vc.user = user
             }
         }
     }
