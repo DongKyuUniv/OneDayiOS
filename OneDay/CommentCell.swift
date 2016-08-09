@@ -9,5 +9,12 @@
 import UIKit
 
 class CommentCell: UITableViewCell {
-
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var createdLabel: UILabel!
+    
+    @IBOutlet weak var contentLabel: UILabel!    
 }

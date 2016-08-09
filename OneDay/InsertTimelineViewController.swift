@@ -8,28 +8,34 @@
 
 import UIKit
 
-class InsertTimelineViewController: UIViewController, postNoticeHandler {
+class InsertTimelineViewController: UIViewController, postNoticeHandler, updateNoticeHandler {
 
     var user: User?
+    var notice: Notice?
+    
     @IBOutlet weak var contentView: UITextView!
     
+    @IBAction func onSubmitClick(sender: UIBarButtonItem) {
+        if let user = self.user {
+            if let notice = notice {
+                // 수정
+                notice.content = contentView.text
+                SocketIOManager.updateNotice(notice, handler: self)
+            } else {
+                SocketIOManager.postNotice(user.id, name: user.name, images: [], content: contentView.text, userImage: user.profileImageUri, handler: self)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "확인", style: .Plain, target: self, action: "submit")
+        if let notice = notice {
+            contentView.text = notice.content
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func submit() {
-        if let user = self.user {
-            print("id = \(user.id)")
-            print("name = \(user.name)")
-            print("image = \(user.profileImageUri)")
-            SocketIOManager.postNotice(user.id, name: user.name, images: [], content: contentView.text, userImage: user.profileImageUri, handler: self)
-        }
     }
     
     func onPostNoticeSuccess() {
@@ -39,5 +45,14 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler {
     
     func onPostNoticeException(code: Int) {
         print("노티스 작성 실패")
+    }
+    
+    func onUpdateNoticeSuccess(notice: Notice) {
+        print("노티스 업데이트 성공")
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func onUpdateNoticeException(code: Int) {
+        print("노티스 업데이트 실패")
     }
 }

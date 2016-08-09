@@ -19,7 +19,11 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler {
     @IBOutlet weak var authorName: UILabel!
     
     @IBAction func setting(sender: UIButton) {
-        print("setting")
+        if let handler = self.handler {
+            if let notice = self.notice {
+                handler.onSettingClick(notice)
+            }
+        }
     }
     
     @IBOutlet weak var created: UILabel!
@@ -91,4 +95,5 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler {
 
 protocol OnCommentCellClickListener {
     func onCommentClick(notice: Notice)
+    func onSettingClick(notice: Notice)
 }

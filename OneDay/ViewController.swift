@@ -98,8 +98,7 @@ class ViewController: UIViewController, loginHandler {
         if let segueId = segue.identifier {
             print("segueId = \(segueId)")
             if segueId == "loginSuccess" {
-                let navigationVC = segue.destinationViewController as! UINavigationController
-                let tabBarVC = navigationVC.viewControllers.first as! MainViewController
+                let tabBarVC = segue.destinationViewController as! MainViewController
                 tabBarVC.user = user
             }
         }

@@ -22,24 +22,16 @@ class MainViewController: UITabBarController {
         print("비밀번호 = \(user?.password)")
         print("이름 = \(user?.name)")
         
-        print("뷰컨트롤러 \(viewControllers)")
         if let vcs = viewControllers {
-            let timelineVC = vcs[0] as! TimelineViewController
+            let navigationVC = vcs[0] as! UINavigationController
+            print("뷰컨트롤러 \(vcs)")
+            let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
+//            let timelineVC = vcs[0] as! TimelineViewController
             timelineVC.user = user
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let id = segue.identifier
-        print("id = \(id)")
-        if id == "insertTimeline" {
-            print("됌?")
-            let vc = segue.destinationViewController as! InsertTimelineViewController
-            vc.user = user
-        }
     }
 }

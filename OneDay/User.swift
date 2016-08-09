@@ -17,10 +17,10 @@ class User {
     var email: String!
     var likes: [String] = []
     var bads: [String] = []
-    var comments: [String] = []
+    var comments: [Comment] = []
     var notices: [String] = []
     
-    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[String], notices: [String]) {
+    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[Comment], notices: [String]) {
         self.id = id
         self.name = name
         self.profileImageUri = profileImageUri
@@ -97,9 +97,20 @@ class User {
             }
         }
         if keys.contains("comment") {
-            let userComments = dict["comment"]
-            if userComments != nil && !(userComments is NSNull) {
-                comments = userComments as! [String]
+            if let userComments = dict["comment"] {
+                if !(userComments is NSNull) {
+                    do {
+                        let array = userComments as! NSArray
+                        comments = array.map({
+                            commentJson -> Comment in
+                            let comment = Comment(dict: commentJson as! NSDictionary)
+                            return comment
+                        })
+                        print("comments = \(comments)")
+                    } catch {
+                        
+                    }
+                }
             }
         }
         

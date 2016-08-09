@@ -47,3 +47,13 @@ protocol setImageHandler {
     func onSetImageSuccess()
     func onSetImageException(code: Int)
 }
+
+protocol removeNoticeHandler {
+    func onRemoveNoticeSuccess(notice: Notice)
+    func onRemoveNoticeException(code: Int)
+}
+
+protocol updateNoticeHandler {
+    func onUpdateNoticeSuccess(notice: Notice)
+    func onUpdateNoticeException(code: Int)
+}

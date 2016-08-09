@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener {
+class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler {
 
     var user: User?
     var notices: [Notice]?
@@ -19,6 +19,9 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
         super.viewDidLoad()
         
         handler = TimelinePresenter(view: self)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if let curUser = user {
             SocketIOManager.getAllNotices(curUser.id, count: 0, time: NSDate(), handler: self)
         }
@@ -112,12 +115,17 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("segue id = \(segue.identifier)")
         if let id = segue.identifier {
-            if id == "commentSegue" {
+            if id == "CommentSegue" {
                 let vc = segue.destinationViewController as! CommentViewController
-                if let notices = self.notices {
-                    vc.notice = notices[0]
-                    vc.user = user
-                }
+                vc.notice = notice
+                vc.user = user
+            } else if id == "insertTimeline" {
+                let vc = segue.destinationViewController as! InsertTimelineViewController
+                vc.user = user
+            } else if id == "updateTimeline" {
+                let vc = segue.destinationViewController as! InsertTimelineViewController
+                vc.user = user
+                vc.notice = notice
             }
         }
     }
@@ -125,5 +133,35 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
     func onCommentClick(notice: Notice) {
         print("commentClick")
         self.notice = notice
+    }
+    
+    func onSettingClick(notice: Notice) {
+        self.notice = notice
+        let alert = UIAlertController(title: "설정", message: nil, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "삭제", style: .Default, handler: {
+            action in
+            SocketIOManager.removeNotice(notice, handler: self)
+        }))
+        alert.addAction(UIAlertAction(title: "수정", style: .Default, handler: {
+            action in
+            // 수정
+            self.performSegueWithIdentifier("updateTimeline", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func onRemoveNoticeException(code: Int) {
+        print("게시글 삭제 에러")
+    }
+    
+    func onRemoveNoticeSuccess(notice: Notice) {
+        print("게시글 삭제 성공")
+        self.notices?.removeAtIndex((self.notices?.indexOf({
+            data in
+            print("data.content = \(data.content)")
+            return true
+        }))!)
+        tableView.reloadData()
     }
 }
