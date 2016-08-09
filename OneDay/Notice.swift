@@ -77,9 +77,14 @@ class Notice {
         }
         
         if keys.contains("comment") {
-            let comment = data["comment"]
-            if comment != nil && !(comment is NSNull) {
-                self.comments = comment as! [Comment]
+            let commentData = data["comment"]
+            if commentData != nil && !(commentData is NSNull) {
+                let commentJsonArray = commentData as! NSArray
+                self.comments = commentJsonArray.map({
+                    commentJsonObject -> Comment in
+                    let comment = Comment(dict: commentJsonObject as! NSDictionary)
+                    return comment
+                })
             }
         }
         

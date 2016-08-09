@@ -24,23 +24,14 @@ class MainViewController: UITabBarController {
         
         if let vcs = viewControllers {
             let navigationVC = vcs[0] as! UINavigationController
-            print("뷰컨트롤러 \(navigationVC.viewControllers)")
+            print("뷰컨트롤러 \(vcs)")
             let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
+//            let timelineVC = vcs[0] as! TimelineViewController
             timelineVC.user = user
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let id = segue.identifier
-        print("id = \(id)")
-        if id == "insertTimeline" {
-            print("됌?")
-            let vc = segue.destinationViewController as! InsertTimelineViewController
-            vc.user = user
-        }
     }
 }

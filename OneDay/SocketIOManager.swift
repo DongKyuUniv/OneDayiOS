@@ -197,11 +197,11 @@ class SocketIOManager {
     
     static func comment(userId: String, noticeId: String, comment: String, name: String, handler: commentHandler) {
         do {
-            let reqData = ["userId": userId, "noticeId": noticeId, "comment": comment, "name": name]
+            let reqData = ["userId": userId, "noticeId": noticeId, "comment": comment, "userName": name]
             let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
             let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
-            socket?.emit("comment", reqJson)
-            socket?.once("comment") {
+            socket?.emit("insertComment", reqJson)
+            socket?.once("insertComment") {
                 data, ack in
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
@@ -238,5 +238,46 @@ class SocketIOManager {
             print("resStr = \(resStr)")
         }
         task.resume()
+    }
+    
+    static func removeNotice(notice: Notice, handler: removeNoticeHandler) {
+        let reqData = ["noticeId": notice.id]
+        do {
+            let reqJsonStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(reqJsonStr, options: [])
+            socket?.emit("removeNotice", reqJson)
+            socket?.once("removeNotice", callback: {
+                data, aka in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onRemoveNoticeSuccess(notice)
+                } else {
+                    handler.onRemoveNoticeException(code)
+                }
+            })
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+    }
+    
+    static func updateNotice(notice: Notice, handler: updateNoticeHandler) {
+        do {
+            let reqData = ["noticeId": notice.id, "content": notice.content, "image": notice.images]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            socket?.emit("updateNotice", reqJson)
+            socket?.once("updateNotice", callback: {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    handler.onUpdateNoticeSuccess(notice)
+                } else {
+                    handler.onUpdateNoticeException(code)
+                }
+            })
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }
