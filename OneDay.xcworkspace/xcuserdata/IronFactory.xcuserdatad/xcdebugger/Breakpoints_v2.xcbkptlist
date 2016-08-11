@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OneDay/TimelineViewController.swift"
-            timestampString = "492457567.217872"
+            timestampString = "492589797.100226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "onSettingClick(_:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler {
+class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate {
 
     var user: User?
     var notices: [Notice]?
@@ -19,6 +19,12 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
         super.viewDidLoad()
         
         handler = TimelinePresenter(view: self)
+        
+        let searchBar: UISearchBar = UISearchBar()
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "검색"
+        searchBar.delegate = self
+        self.navigationItem.titleView = searchBar
     }
     
     override func viewDidAppear(animated: Bool) {
