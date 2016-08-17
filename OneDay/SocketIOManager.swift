@@ -280,4 +280,126 @@ class SocketIOManager {
             print(error)
         }
     }
+    
+    static func getUsers(keyword: String, handler: getUsersHandler) {
+        do {
+            let reqData = ["keyword": keyword]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            socket?.emit("getUsers", reqJson)
+            socket?.once("getUsers", callback: {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    let userArray = resJson["user"] as! NSArray
+                    var users: [User] = []
+                    for userJson in userArray {
+                        users.append(User(dict: userJson as! NSDictionary))
+                    }
+                    handler.onGetUserSuccess(users)
+                } else {
+                    handler.onGetUserException(code)
+                }
+            })
+        } catch let err as NSError {
+            print("error = \(err)")
+        }
+    }
+    
+    static func getProfile(userId: String, handler: getProfileHandler) {
+        do {
+            let reqData = ["userId": userId]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("profile", reqJson)
+                socket.once("profile", callback: {
+                    data, ack in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        let noticeArray = resJson["notices"] as! NSArray
+                        let notices = noticeArray.map({
+                            noticeJson in
+                            return Notice(data: noticeJson as! NSDictionary)
+                        })
+                        handler.onGetProfileSuccess(notices)
+                    } else {
+                        handler.onGetProfileException(code)
+                    }
+                })
+            }
+        } catch let err as NSError {
+            print("err = \(err)")
+        }
+    }
+    
+    static func getFriendProfile(friends: [String], handler: getFriendProfileHandler) {
+        do {
+            let reqData = ["users", friends]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            socket?.emit("getFriendProfile", reqJson)
+            socket?.once("getFriendProfile", callback: {
+                data, ack in
+                let resJson = data[0]
+                let code = resJson["code"] as! Int
+                if code == 200 {
+                    let friendArray = resJson["friends"] as! NSArray
+                    let friends = friendArray.map({
+                        friendJson in
+                        return User(dict: friendJson as! NSDictionary)
+                    })
+                    handler.onGetFriendProfileSuccess(friends)
+                } else {
+                    handler.onGetFriendProfileException(code)
+                }
+            })
+        } catch let err as NSError {
+            print(err)
+        }
+    }
+    
+    
+    static func setName(userId: String, name: String, handler: setNameHandler) {
+        do {
+            let reqData = ["userId": userId, "userName": name]
+            try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("setName", reqData)
+                socket.once("setName", callback: {
+                    data, ack in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        handler.onSetNameSuccess()
+                    } else {
+                        handler.onSetNameException()
+                    }
+                })
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    static func setMail(userId: String, mail: String, handler: setMailHandler) {
+        do {
+            let reqData = ["userId": userId, "userMail": mail]
+            try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("setMail", reqData)
+                socket.once("setMail", callback: {
+                    data, ack in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        handler.onSetMailSuccess()
+                    } else {
+                        handler.onSetMailException()
+                    }
+                })
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
 }

@@ -8,19 +8,17 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, TimelineView, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate {
+class TimelineViewController: UITableViewController, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate {
 
     var user: User?
     var notices: [Notice]?
-    var handler: TimelineUserActionListener?
     var notice: Notice?
+    
+    let searchBar: UISearchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        handler = TimelinePresenter(view: self)
-        
-        let searchBar: UISearchBar = UISearchBar()
         searchBar.showsCancelButton = false
         searchBar.placeholder = "검색"
         searchBar.delegate = self
@@ -32,6 +30,10 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
             SocketIOManager.getAllNotices(curUser.id, count: 0, time: NSDate(), handler: self)
         }
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.performSegueWithIdentifier("SearchTimelineSegue", sender: self)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,7 +42,6 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -108,15 +109,13 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
     func onGetAllNoticeSuccess(notices: [Notice]) {
         print("글 다 받아오기 성공")
         self.notices = notices
-        print("글 개수 = \(notices.count)")
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     
     func onGetAllNoticeException(code: Int) {
         print("글 다 받아오기 실패")
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("segue id = \(segue.identifier)")
@@ -132,6 +131,10 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
                 let vc = segue.destinationViewController as! InsertTimelineViewController
                 vc.user = user
                 vc.notice = notice
+            } else if id == "SearchTimelineSegue" {
+                let vc = segue.destinationViewController as! SearchTimelineViewController
+                vc.me = user
+                vc.notice = notice
             }
         }
     }
@@ -144,15 +147,19 @@ class TimelineViewController: UITableViewController, TimelineView, getAllNoticeH
     func onSettingClick(notice: Notice) {
         self.notice = notice
         let alert = UIAlertController(title: "설정", message: nil, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "삭제", style: .Default, handler: {
-            action in
-            SocketIOManager.removeNotice(notice, handler: self)
-        }))
-        alert.addAction(UIAlertAction(title: "수정", style: .Default, handler: {
-            action in
-            // 수정
-            self.performSegueWithIdentifier("updateTimeline", sender: self)
-        }))
+        if let user = user {
+            if notice.author == user.id {
+                alert.addAction(UIAlertAction(title: "삭제", style: .Default, handler: {
+                    action in
+                    SocketIOManager.removeNotice(notice, handler: self)
+                }))
+                alert.addAction(UIAlertAction(title: "수정", style: .Default, handler: {
+                    action in
+                    // 수정
+                    self.performSegueWithIdentifier("updateTimeline", sender: self)
+                }))
+            }
+        }
         alert.addAction(UIAlertAction(title: "취소", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

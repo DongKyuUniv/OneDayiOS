@@ -57,3 +57,38 @@ protocol updateNoticeHandler {
     func onUpdateNoticeSuccess(notice: Notice)
     func onUpdateNoticeException(code: Int)
 }
+
+protocol getUsersHandler {
+    func onGetUserSuccess(users: [User])
+    func onGetUserException(code: Int)
+}
+
+protocol getProfileHandler {
+    func onGetProfileSuccess(notices: [Notice])
+    func onGetProfileException(code: Int)
+}
+
+protocol getFriendProfileHandler {
+    func onGetFriendProfileSuccess(user: [User])
+    func onGetFriendProfileException(code: Int)
+}
+
+protocol getFriendReccommendHandler {
+    func onGetFriendReccommendSuccess(user: [User])
+    func onGetFriendReccommendException(code: Int)
+}
+
+protocol setNameHandler {
+    func onSetNameSuccess()
+    func onSetNameException()
+}
+
+protocol setProfileImageHandler {
+    func onSetProfileImageSuccess()
+    func onSetProfileImageException()
+}
+
+protocol setMailHandler {
+    func onSetMailSuccess()
+    func onSetMailException()
+}

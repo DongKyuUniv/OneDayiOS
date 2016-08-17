@@ -49,7 +49,10 @@
 		905297DF1D33508700575A8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 905297DD1D33508700575A8B /* LaunchScreen.storyboard */; };
 		905297EA1D33508700575A8B /* OneDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297E91D33508700575A8B /* OneDayTests.swift */; };
 		905297F51D33508700575A8B /* OneDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297F41D33508700575A8B /* OneDayUITests.swift */; };
-		9059E2BB1D5C4F4400803ACC /* TimelineNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2BA1D5C4F4400803ACC /* TimelineNavigationController.swift */; };
+		9059E2BE1D5C589500803ACC /* SearchTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2BD1D5C589500803ACC /* SearchTimelineViewController.swift */; };
+		9059E2C31D5FE04D00803ACC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */; };
+		9059E2C51D6183FD00803ACC /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */; };
+		9059E2C81D62ED9E00803ACC /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */; };
 		909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3C1D52023A00809F3C /* DBManager.swift */; };
 		909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3F1D520C7400809F3C /* UserDBManager.swift */; };
 		909E0B681D52111E00809F3C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B5E1D52111E00809F3C /* FMDatabase.m */; };
@@ -62,7 +65,6 @@
 		909E0B7B1D5231D400809F3C /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7A1D5231D400809F3C /* TimelineViewController.swift */; };
 		909E0B7D1D5231E500809F3C /* TImelineViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7C1D5231E500809F3C /* TImelineViewControllerTests.swift */; };
 		909E0B7F1D523CD200809F3C /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */; };
-		909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B801D523D3100809F3C /* TimelineProtocol.swift */; };
 		909E0B851D52431B00809F3C /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B841D52431B00809F3C /* TimelineCell.swift */; };
 		909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */; };
 		90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2F7141D5894C700E9CD66 /* CommentViewController.swift */; };
@@ -140,7 +142,10 @@
 		905297F01D33508700575A8B /* OneDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		905297F41D33508700575A8B /* OneDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayUITests.swift; sourceTree = "<group>"; };
 		905297F61D33508700575A8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9059E2BA1D5C4F4400803ACC /* TimelineNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineNavigationController.swift; sourceTree = "<group>"; };
+		9059E2BD1D5C589500803ACC /* SearchTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTimelineViewController.swift; sourceTree = "<group>"; };
+		9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneDay-Bridging-Header.h"; sourceTree = "<group>"; };
 		909E0B3C1D52023A00809F3C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		909E0B3F1D520C7400809F3C /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
@@ -160,7 +165,6 @@
 		909E0B7A1D5231D400809F3C /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		909E0B7C1D5231E500809F3C /* TImelineViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImelineViewControllerTests.swift; sourceTree = "<group>"; };
 		909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
-		909E0B801D523D3100809F3C /* TimelineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineProtocol.swift; sourceTree = "<group>"; };
 		909E0B841D52431B00809F3C /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelineViewController.swift; sourceTree = "<group>"; };
 		90B2F7141D5894C700E9CD66 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +335,9 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
+				9059E2C61D62ED7F00803ACC /* UpdateProfile */,
+				9059E2C11D5FDFF100803ACC /* PresentProfile */,
+				9059E2BC1D5C584900803ACC /* SearchTimeline */,
 				90B2F70F1D58927D00E9CD66 /* Comment */,
 				909E0B861D5300C900809F3C /* InsertTimeline */,
 				909E0B751D52301D00809F3C /* PresentTimeline */,
@@ -370,6 +377,31 @@
 			path = OneDayUITests;
 			sourceTree = "<group>";
 		};
+		9059E2BC1D5C584900803ACC /* SearchTimeline */ = {
+			isa = PBXGroup;
+			children = (
+				9059E2BD1D5C589500803ACC /* SearchTimelineViewController.swift */,
+			);
+			name = SearchTimeline;
+			sourceTree = "<group>";
+		};
+		9059E2C11D5FDFF100803ACC /* PresentProfile */ = {
+			isa = PBXGroup;
+			children = (
+				9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */,
+				9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */,
+			);
+			name = PresentProfile;
+			sourceTree = "<group>";
+		};
+		9059E2C61D62ED7F00803ACC /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */,
+			);
+			name = UpdateProfile;
+			sourceTree = "<group>";
+		};
 		909E0B1A1D51F85A00809F3C /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,9 +435,7 @@
 			children = (
 				909E0B7A1D5231D400809F3C /* TimelineViewController.swift */,
 				909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */,
-				909E0B801D523D3100809F3C /* TimelineProtocol.swift */,
 				909E0B841D52431B00809F3C /* TimelineCell.swift */,
-				9059E2BA1D5C4F4400803ACC /* TimelineNavigationController.swift */,
 			);
 			name = PresentTimeline;
 			sourceTree = "<group>";
@@ -700,14 +730,15 @@
 				904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */,
 				90173D7F1D3CCF5C0054B0AF /* NSCharacterSet.swift in Sources */,
 				905297D71D33508700575A8B /* ViewController.swift in Sources */,
-				909E0B811D523D3100809F3C /* TimelineProtocol.swift in Sources */,
 				90B2F7171D5894D600E9CD66 /* CommentCell.swift in Sources */,
 				909E0B7B1D5231D400809F3C /* TimelineViewController.swift in Sources */,
 				90173D8C1D3CCF5C0054B0AF /* SocketIOClientOption.swift in Sources */,
+				9059E2BE1D5C589500803ACC /* SearchTimelineViewController.swift in Sources */,
+				9059E2C51D6183FD00803ACC /* ProfileViewCell.swift in Sources */,
 				90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */,
 				90173D801D3CCF5C0054B0AF /* SocketAckEmitter.swift in Sources */,
 				90173D821D3CCF5C0054B0AF /* SocketAnyEvent.swift in Sources */,
-				9059E2BB1D5C4F4400803ACC /* TimelineNavigationController.swift in Sources */,
+				9059E2C81D62ED9E00803ACC /* UpdateProfileViewController.swift in Sources */,
 				909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */,
 				905297D51D33508700575A8B /* AppDelegate.swift in Sources */,
 				90173D891D3CCF5C0054B0AF /* SocketEngineWebsocket.swift in Sources */,
@@ -718,6 +749,7 @@
 				90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */,
 				909E0B691D52111E00809F3C /* FMDatabaseAdditions.m in Sources */,
 				909E0B681D52111E00809F3C /* FMDatabase.m in Sources */,
+				9059E2C31D5FE04D00803ACC /* ProfileViewController.swift in Sources */,
 				909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */,
 				90173D851D3CCF5C0054B0AF /* SocketEngineClient.swift in Sources */,
 				90173D8E1D3CCF5C0054B0AF /* SocketIOClientStatus.swift in Sources */,

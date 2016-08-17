@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FriendTableViewController: UITableViewController {
-
-    var friends: [String:String] = ["이동규":"http://mimgnews2.naver.net/image/030/2016/07/06/article_06104845857903_99_20160706110317.png?type=w540", "김동희":"http://mimgnews2.naver.net/image/030/2016/07/06/article_06104845857903_99_20160706110317.png?type=w540"]
+class FriendTableViewController: UITableViewController, getFriendProfileHandler {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var user: User?
+    var friends: [User]?
+    
+    override func viewDidAppear(animated: Bool) {
+        if let user = user {
+            SocketIOManager.getFriendProfile(user.friends, handler: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,17 +28,19 @@ class FriendTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        if let friends = friends {
+            return friends.count
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
-        let friendNames = Array(friends.keys)
-        let friendImages = Array(friends.values)
-        let friendName = friendNames[indexPath.row]
-        let friendImage = friendImages[indexPath.row]
-        cell.nameLabel.text = friendName
-        loadImage(cell.imageView!, url: friendImage)
+        if let friends = friends {
+            let friend = friends[indexPath.row]
+            cell.nameLabel.text = friend.name
+            loadImage(cell.imageView!, url: friend.profileImageUri)
+        }
         return cell
     }
     
@@ -55,5 +60,13 @@ class FriendTableViewController: UITableViewController {
             }
         }
         task.resume()
+    }
+    
+    func onGetFriendProfileSuccess(user: [User]) {
+        self.friends = user
+    }
+    
+    func onGetFriendProfileException(code: Int) {
+        print("getProfile 실패")
     }
 }

@@ -47,8 +47,11 @@ class Notice {
         
         if keys.contains("name") {
             let userName = data["name"]
-            if userName != nil && !(userName is NSNull) {
-                authorName = userName as! String
+            if let name = userName {
+                print("name = \(name)")
+                if !(name is NSNull) {
+                    authorName = name as! String
+                }
             }
         }
         
