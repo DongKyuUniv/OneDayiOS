@@ -53,6 +53,7 @@
 		9059E2C31D5FE04D00803ACC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */; };
 		9059E2C51D6183FD00803ACC /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */; };
 		9059E2C81D62ED9E00803ACC /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */; };
+		9059E2CA1D655B5400803ACC /* imageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C91D655B5400803ACC /* imageViewCell.swift */; };
 		909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3C1D52023A00809F3C /* DBManager.swift */; };
 		909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3F1D520C7400809F3C /* UserDBManager.swift */; };
 		909E0B681D52111E00809F3C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B5E1D52111E00809F3C /* FMDatabase.m */; };
@@ -146,6 +147,7 @@
 		9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		9059E2C91D655B5400803ACC /* imageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewCell.swift; sourceTree = "<group>"; };
 		909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneDay-Bridging-Header.h"; sourceTree = "<group>"; };
 		909E0B3C1D52023A00809F3C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		909E0B3F1D520C7400809F3C /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */,
+				9059E2C91D655B5400803ACC /* imageViewCell.swift */,
 			);
 			name = InsertTimeline;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				90173D8E1D3CCF5C0054B0AF /* SocketIOClientStatus.swift in Sources */,
 				90173D811D3CCF5C0054B0AF /* SocketAckManager.swift in Sources */,
 				90173D8F1D3CCF5C0054B0AF /* SocketLogger.swift in Sources */,
+				9059E2CA1D655B5400803ACC /* imageViewCell.swift in Sources */,
 				909E0B741D522EA000809F3C /* MainViewController.swift in Sources */,
 				90173D951D3CCF5C0054B0AF /* SSLSecurity.swift in Sources */,
 				90173D921D3CCF5C0054B0AF /* SocketStringReader.swift in Sources */,
