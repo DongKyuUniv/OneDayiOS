@@ -8,13 +8,8 @@
 
 import Foundation
 
-class TimelinePresenter: TimelineUserActionListener {
+class TimelinePresenter {
     
-    var view: TimelineView?
-    
-    init(view: TimelineView) {
-        self.view = view
-    }
     
     
 }

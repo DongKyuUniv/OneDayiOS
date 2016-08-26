@@ -85,6 +85,7 @@ class ViewController: UIViewController, loginHandler {
     
     func onLoginException(code: Int) {
         print("로그인 실패 = \(code)")
+        showAlert("로그인 실패", message: "로그인 실패")
     }
     
     func showAlert(title: String, message: String) {

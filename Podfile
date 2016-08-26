@@ -1,20 +1,9 @@
-# Uncomment this line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
-
+use_frameworks!
+ 
 target 'OneDay' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-  
-  # Pods for OneDay
-
-  target 'OneDayTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'OneDayUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    pod 'SwiftHTTP', '~> 1.0.4'
+    pod 'Kingfisher', '~> 2.4'
 
 end

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class MainViewController: UITabBarController, UpdateUserDelegate {
 
     var user:User?
     @IBAction func insertNotice(sender: UIBarButtonItem) {
@@ -17,21 +17,39 @@ class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("아이디 = \(user?.id)")
-        print("비밀번호 = \(user?.password)")
-        print("이름 = \(user?.name)")
         
         if let vcs = viewControllers {
             let navigationVC = vcs[0] as! UINavigationController
             print("뷰컨트롤러 \(vcs)")
             let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
-//            let timelineVC = vcs[0] as! TimelineViewController
+            
+            let friendsVC = vcs[1] as! FriendTableViewController
+            
+            let profileNavigationVC = vcs[2] as! UINavigationController
+            let profileVC = profileNavigationVC.viewControllers[0] as! ProfileViewController
+            
             timelineVC.user = user
+            tabHeight = self.tabBar.frame.size.height
+            friendsVC.user = user
+            profileVC.user = user
+            profileVC.userDelegate = self
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func updateUser(user: User) {
+        self.user = user
+        
+        if let vcs = viewControllers {
+            let navigationVC = vcs[0] as! UINavigationController
+            let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
+            let friendsVC = vcs[1] as! FriendTableViewController
+            
+            timelineVC.user = user
+            friendsVC.user = user
+        }
     }
 }

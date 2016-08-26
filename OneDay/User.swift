@@ -19,8 +19,9 @@ class User {
     var bads: [String] = []
     var comments: [Comment] = []
     var notices: [String] = []
+    var friends: [String] = []
     
-    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[Comment], notices: [String]) {
+    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[Comment], notices: [String], friends: [String]) {
         self.id = id
         self.name = name
         self.profileImageUri = profileImageUri
@@ -30,6 +31,7 @@ class User {
         self.bads = bads.map({$0})
         self.comments = comments.map({$0})
         self.notices = notices.map({$0})
+        self.friends = notices.map({$0})
     }
     
     init(dict: [String:String]) {
@@ -99,17 +101,12 @@ class User {
         if keys.contains("comment") {
             if let userComments = dict["comment"] {
                 if !(userComments is NSNull) {
-                    do {
-                        let array = userComments as! NSArray
-                        comments = array.map({
-                            commentJson -> Comment in
-                            let comment = Comment(dict: commentJson as! NSDictionary)
-                            return comment
-                        })
-                        print("comments = \(comments)")
-                    } catch {
-                        
-                    }
+                    let array = userComments as! NSArray
+                    comments = array.map({
+                        commentJson -> Comment in
+                        let comment = Comment(dict: commentJson as! NSDictionary)
+                        return comment
+                    })
                 }
             }
         }
@@ -118,6 +115,14 @@ class User {
             let userNotices = dict["notice"]
             if userNotices != nil && !(userNotices is NSNull) {
                 notices = userNotices as! [String]
+            }
+        }
+        
+        if keys.contains("friends") {
+            if let userFriends = dict["friends"] {
+                if !(userFriends is NSNull) {
+                    self.friends = userFriends as! [String]
+                }
             }
         }
     }
