@@ -587,11 +587,19 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+<<<<<<< Updated upstream
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="219" id="mik-kf-gMe" customClass="CommentCell" customModule="OneDay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mik-kf-gMe" id="GpI-8g-bQS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
+=======
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="257" id="mik-kf-gMe" customClass="CommentCell" customModule="OneDay" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="257"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mik-kf-gMe" id="GpI-8g-bQS">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="257"/>
+>>>>>>> Stashed changes
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EF9-e7-Lim">
