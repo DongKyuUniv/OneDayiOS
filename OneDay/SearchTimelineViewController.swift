@@ -17,7 +17,14 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
         super.viewDidLoad()
         
         searchBar.becomeFirstResponder()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
     }
+    
+    func dismissKeyboard() {
+        searchBar.endEditing(true)
+    }
+    
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if let user = me {
@@ -50,7 +57,9 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            return super.tableView(tableView, cellForRowAtIndexPath: indexPath) as! TimelineCell
+            let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as! TimelineCell
+            cell.user = me
+            return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell") as! FriendTableViewCell
             if let users = users {

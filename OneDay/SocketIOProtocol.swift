@@ -24,7 +24,7 @@ protocol getAllNoticeHandler {
 }
 
 protocol postNoticeHandler {
-    func onPostNoticeSuccess()
+    func onPostNoticeSuccess(notice: Notice)
     func onPostNoticeException(code: Int)
 }
 

@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate {
+class TimelineViewController: UITableViewController, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate, ImageTabDelegate {
 
     var user: User?
     var notices: [Notice]?
     var notice: Notice?
+    var image: UIImage?
+    var tabHeight: CGFloat?
     
     let searchBar: UISearchBar = UISearchBar()
     
@@ -23,6 +25,7 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         searchBar.placeholder = "검색"
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -68,6 +71,7 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
             cell.likeCount.text = "\(notice.likes.count)"
             cell.badCount.text = "\(notice.bads.count)"
             cell.commentCount.text = "\(notice.comments.count)"
+            cell.imageTabHandler = self
             print("like = \(notice.likes)")
         }
         return cell
@@ -135,12 +139,16 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
                 let vc = segue.destinationViewController as! SearchTimelineViewController
                 vc.me = user
                 vc.notice = notice
+            } else if id == "ImageDetailSegue" {
+                let vc = segue.destinationViewController as! ImageDetailViewController
+                if let image = image {
+                    vc.image = image
+                }
             }
         }
     }
     
     func onCommentClick(notice: Notice) {
-        print("commentClick")
         self.notice = notice
     }
     
@@ -176,5 +184,10 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
             return true
         }))!)
         tableView.reloadData()
+    }
+    
+    func imageTabbed(image: UIImage) {
+        self.image = image
+        self.performSegueWithIdentifier("ImageDetailSegue", sender: self)
     }
 }

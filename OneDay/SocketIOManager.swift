@@ -140,7 +140,8 @@ class SocketIOManager {
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
                 if code == 200 {
-                    handler.onPostNoticeSuccess()
+                    let notice = Notice(data: resJson["notice"] as! NSDictionary)
+                    handler.onPostNoticeSuccess(notice)
                 } else {
                     handler.onPostNoticeException(code)
                 }
@@ -317,7 +318,7 @@ class SocketIOManager {
                     let resJson = data[0]
                     let code = resJson["code"] as! Int
                     if code == 200 {
-                        let noticeArray = resJson["notices"] as! NSArray
+                        let noticeArray = resJson["notice"] as! NSArray
                         let notices = noticeArray.map({
                             noticeJson in
                             return Notice(data: noticeJson as! NSDictionary)

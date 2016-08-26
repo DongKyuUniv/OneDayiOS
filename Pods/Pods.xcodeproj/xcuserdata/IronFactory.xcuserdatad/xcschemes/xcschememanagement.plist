@@ -4,17 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-OneDay.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-OneDayTests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-OneDayUITests.xcscheme</key>
+		<key>SwiftHTTP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>24F0D7FAE0DDF85ADF6954A777D4DF0C</key>
+		<key>491950E1C462501D57A1E2C06A36EE57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5696DD605C4CA292F02B0CB61FC555E8</key>
+		<key>CA8EE7F18DE95E4618E356CB87AE3D8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F20ADA174C7EEF2135BCCC43BAA7EF6E</key>
+		<key>E96E13C4D3B5B5FC0651440734C2BF4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

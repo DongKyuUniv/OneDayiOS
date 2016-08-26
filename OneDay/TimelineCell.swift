@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Kingfisher
 
-class TimelineCell: UITableViewCell, likeHandler, badHandler {
+class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationControllerDelegate, UICollectionViewDataSource {
     
     var notice: Notice?
     var user: User?
     var handler: OnCommentCellClickListener?
+    var imageTabHandler: ImageTabDelegate?
+    
+    override func layoutSubviews() {
+        imageCollectionView.dataSource = self
+        
+    }
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -76,6 +83,35 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler {
         }
     }
     
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var imageCollectionViewHeight: NSLayoutConstraint!
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let notice = notice {
+            imageCollectionViewHeight.constant = 220
+            return notice.images.count
+        }
+        imageCollectionViewHeight.constant = 0
+        return 0
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimelimeImageCell", forIndexPath: indexPath) as! TimelineImageCell
+        if let notice = notice {
+            print("limage = \(notice.images[indexPath.row])")
+            if let imageTabHandler = imageTabHandler {
+                cell.handler = self.imageTabHandler
+            }
+            cell.imageView.kf_setImageWithURL(NSURL(string: "http://windsoft-oneday.herokuapp.com/images/\(notice.images[indexPath.row])"))
+        }
+        return cell
+    }
+    
     func onLikeSuccess() {
         print("좋아요 성공")
     }
@@ -92,6 +128,8 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler {
         print("싫어요 실패")
     }
 }
+
+
 
 protocol OnCommentCellClickListener {
     func onCommentClick(notice: Notice)

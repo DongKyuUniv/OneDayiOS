@@ -13,6 +13,12 @@ class FriendTableViewController: UITableViewController, getFriendProfileHandler 
     var user: User?
     var friends: [User]?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.tableFooterView = UIView()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         if let user = user {
             SocketIOManager.getFriendProfile(user.friends, handler: self)

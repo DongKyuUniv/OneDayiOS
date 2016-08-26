@@ -29,6 +29,7 @@ class MainViewController: UITabBarController, UpdateUserDelegate {
             let profileVC = profileNavigationVC.viewControllers[0] as! ProfileViewController
             
             timelineVC.user = user
+            tabHeight = self.tabBar.frame.size.height
             friendsVC.user = user
             profileVC.user = user
             profileVC.userDelegate = self

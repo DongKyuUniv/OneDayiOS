@@ -25,6 +25,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                         SocketIOManager.comment(user.id, noticeId: notice.id, comment: comment, name: user.name, handler: self)
                         notice.comments.append(Comment(id: user.id, notice_id: notice.id, authorId: user.id, authorProfileImage: user.profileImageUri, authorName: user.name, content: comment, created: NSDate()))
                         tableView.reloadData()
+                        commentTextField.text = ""
                     }
                 }
             }
@@ -37,6 +38,49 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @IBOutlet weak var commentTextFieldMarginBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var submitMarginBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var submit: UIButton!
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue?)?.CGRectValue() {
+                print("tabHeight = \(tabHeight)")
+                if let tabHeight = self.tabBarController?.tabBar.frame.size.height {
+                    commentTextFieldMarginBottom.constant += keyboardSize.height - tabHeight
+                    submitMarginBottom.constant += keyboardSize.height - tabHeight
+                    submit.frame.origin.y -= keyboardSize.height - tabHeight
+                    commentTextField.frame.origin.y -= keyboardSize.height - tabHeight
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue?)?.CGRectValue() {
+                if let tabHeight = self.tabBarController?.tabBar.frame.size.height {
+                    commentTextFieldMarginBottom.constant -= keyboardSize.height - tabHeight
+                    submitMarginBottom.constant -= keyboardSize.height - tabHeight
+                    submit.frame.origin.y += keyboardSize.height - tabHeight
+                    commentTextField.frame.origin.y += keyboardSize.height - tabHeight
+                }
+            }
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

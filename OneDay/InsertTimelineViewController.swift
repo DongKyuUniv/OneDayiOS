@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SwiftHTTP
+
 
 class InsertTimelineViewController: UIViewController, postNoticeHandler, updateNoticeHandler, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, removeImageDelegate {
 
     var user: User?
     var notice: Notice?
     var images = [UIImage]()
+    var imageUrls = [NSURL]()
     
     let imagePicker: UIImagePickerController? = UIImagePickerController()
     
@@ -62,14 +65,32 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil)
         if images.count == 0 {
             imageCollectionViewHeight.constant = 220
         }
+        
+        let url = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let path = url.path! as NSString
+        let name = path.lastPathComponent
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDir = paths.first as String!
+        let localPath = documentDir + "/" + name
+        
+        let data = UIImageJPEGRepresentation(image, 0.5)
+        data?.writeToFile(localPath, atomically: true)
+        
+        print("url = \(url)")
+        print("localPath = \(localPath)")
+        print("name = \(name)")
+        imageUrls.append(NSURL(fileURLWithPath: localPath))
         images.append(image)
         imageCollectionView.reloadData()
     }
+    
+    
     
     
     @IBAction func onSubmitClick(sender: UIBarButtonItem) {
@@ -81,60 +102,16 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
                 SocketIOManager.updateNotice(notice, handler: self)
             } else {
                 SocketIOManager.postNotice(user.id, name: user.name, images: [], content: contentView.text, userImage: user.profileImageUri, handler: self)
-                
-                if images.count == 0 {
-                    return
-                }
-                
-                let url = NSURL(string: "http://windsoft-oneday.herokuapp.com/upload_images")
-                if let url = url {
-                    let request = NSMutableURLRequest(URL: url)
-                    request.HTTPMethod = "POST"
-                    
-                    let boundary = "Boundary-\(NSUUID().UUIDString)"
-                    request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-                    
-                    let image_data = UIImagePNGRepresentation(images[0])
-                    
-                    let body = NSMutableData()
-                    let file_name = "test.jpg"
-                    let mimetype = "image/jpeg"
-                    
-                    body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    body.appendData("Content-Disposition:form-data; name=\"test\"\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    body.appendData("hi\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    
-                    
-                    
-                    body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    body.appendData("Content-Disposition:form-data; name=\"file\"; filename=\"\(file_name)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    body.appendData("Content-Type: \(mimetype)\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    body.appendData(image_data!)
-                    body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    
-                    
-                    body.appendData("--\(boundary)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    
-                    request.HTTPBody = body
-                    
-                    let session = NSURLSession.sharedSession()
-                    
-                    let task = session.dataTaskWithRequest(request) {
-                        (let data, let response, let error) in
-                        guard let _:NSData = data, let _:NSURLResponse = response where error == nil else {
-                            print("error = \(error)")
-                            return
-                        }
-                        
-                        let data_string = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                        print("data_string = \(data_string)")
-                    }
-                    
-                    task.resume()
-                }
             }
         }
     }
+    
+    
+    func toData(string: String) -> NSData {
+        return string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,6 +121,26 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         
         imageCollectionView.dataSource = self
         imageCollectionViewHeight.constant = 0
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let size = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue?)?.CGRectValue() {
+                self.view.frame.size.height -= size.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let size = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue?)?.CGRectValue() {
+                self.view.frame.size.height += size.height
+            }
+        }
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -162,9 +159,29 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         super.didReceiveMemoryWarning()
     }
     
-    func onPostNoticeSuccess() {
+    func onPostNoticeSuccess(notice: Notice) {
         print("노티스 작성 성공")
         navigationController?.popViewControllerAnimated(true)
+        
+        do {
+            for url in imageUrls {
+                let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["noticeId":notice.id, "file": Upload(fileUrl: url)])
+                print("noticeId = \(notice.id)")
+                opt.start {
+                    response in
+                    print("code = \(response.statusCode)")
+                    print("data = \(response.data)")
+                    print("description = \(response.description)")
+                    print("headers = \(response.headers)")
+                    print("text = \(response.text)")
+                    print("URL = \(response.URL)")
+                    print("error = \(response.error)")
+                    print("filename = \(response.suggestedFilename)")
+                }
+            }
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
     }
     
     func onPostNoticeException(code: Int) {
@@ -173,6 +190,26 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
     
     func onUpdateNoticeSuccess(notice: Notice) {
         print("노티스 업데이트 성공")
+        
+        do {
+            for url in imageUrls {
+                let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["file": url, "noticeId":notice.id])
+                opt.start {
+                    response in
+                    print("code = \(response.statusCode)")
+                    print("data = \(response.data)")
+                    print("description = \(response.description)")
+                    print("headers = \(response.headers)")
+                    print("text = \(response.text)")
+                    print("URL = \(response.URL)")
+                    print("error = \(response.error)")
+                    print("filename = \(response.suggestedFilename)")
+                }
+            }
+        } catch let error as NSError {
+            print("error = \(error)")
+        }
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
     
