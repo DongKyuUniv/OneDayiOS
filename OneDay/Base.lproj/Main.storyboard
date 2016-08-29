@@ -45,8 +45,8 @@
                                     <segue destination="JtN-u5-EWL" kind="show" id="c7i-Rz-AbV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIh-b4-30I">
-                                <rect key="frame" x="70" y="484" width="228" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIh-b4-30I">
+                                <rect key="frame" x="70" y="484" width="228" height="60"/>
                                 <color key="backgroundColor" red="0.94268578290000005" green="0.36256253719999998" blue="0.51804888250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="vrs-4D-0tL"/>
@@ -1696,19 +1696,15 @@
         <!--친구-->
         <scene sceneID="JDH-Oz-Wry">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2f0-vE-Lzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="친구" id="kPD-8T-LHG" customClass="FriendTableViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="WYk-xt-HLc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="wTE-CQ-Q0K">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="75" id="rRO-MF-OvK" customClass="FriendTableViewCell" customModule="OneDay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="75"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rRO-MF-OvK" id="GgF-Bh-PJd">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
@@ -1772,7 +1768,6 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="친구" id="0k1-gw-KEM"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2f0-vE-Lzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="678" y="1173"/>
         </scene>

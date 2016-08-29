@@ -41,7 +41,9 @@ class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUs
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 
                 cell.birthLabel.text = dateFormatter.stringFromDate(user.birth)
-                cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(user.profileImageUri)"))
+                if let profileImage = user.profileImageUri {
+                    cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(profileImage)"))
+                }
                 cell.handler = self
             }
             return cell
