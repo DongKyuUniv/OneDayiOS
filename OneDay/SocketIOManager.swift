@@ -11,7 +11,7 @@ class SocketIOManager {
     
     static func create() {
         if SocketIOManager.socket == nil {
-            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: "http://windsoft-oneday.herokuapp.com")!, options: [.Log(true), .ForcePolling(true)])
+            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: rootServerURL)!, options: [.Log(true), .ForcePolling(true)])
         }
         SocketIOManager.socket!.connect()
     }
@@ -43,9 +43,10 @@ class SocketIOManager {
         }
     }
     
-    static func signUp(id: String, password: String, birth: NSDate, email: String, name: String, handler: signUpHandler) {
+    static func signUp(id: String, password: String, birth: NSDate, email: String, name: String, phone: String?, handler: signUpHandler) {
         do {
-            let req = ["userId": id, "userPw": password, "userBirth": Int(birth.timeIntervalSince1970 * 1000), "userMail": email, "name": name]
+            print("signUp \(phone)")
+            let req = ["userId": id, "userPw": password, "userBirth": Int(birth.timeIntervalSince1970 * 1000), "userMail": email, "name": name, "phone": phone!]
             let reqData = try NSJSONSerialization.dataWithJSONObject(req, options: .PrettyPrinted)
             let reqJson = try NSJSONSerialization.JSONObjectWithData(reqData, options: [])
             print("reqJson = \(reqJson)")
@@ -336,7 +337,7 @@ class SocketIOManager {
     
     static func getFriendProfile(friends: [String], handler: getFriendProfileHandler) {
         do {
-            let reqData = ["users", friends]
+            let reqData = ["users": friends]
             let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
             socket?.emit("getFriendProfile", reqJson)
             socket?.once("getFriendProfile", callback: {
@@ -363,9 +364,9 @@ class SocketIOManager {
     static func setName(userId: String, name: String, handler: setNameHandler) {
         do {
             let reqData = ["userId": userId, "userName": name]
-            try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
             if let socket = socket {
-                socket.emit("setName", reqData)
+                socket.emit("setName", reqJson)
                 socket.once("setName", callback: {
                     data, ack in
                     let resJson = data[0]
@@ -385,9 +386,9 @@ class SocketIOManager {
     static func setMail(userId: String, mail: String, handler: setMailHandler) {
         do {
             let reqData = ["userId": userId, "userMail": mail]
-            try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
             if let socket = socket {
-                socket.emit("setMail", reqData)
+                socket.emit("setMail", reqJson)
                 socket.once("setMail", callback: {
                     data, ack in
                     let resJson = data[0]
@@ -400,6 +401,27 @@ class SocketIOManager {
                 })
             }
         } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    static func setBirth(userId: String, birth: NSDate, handler: setBirthHandler) {
+        do {
+            let reqData = ["userId": userId, "userBirth": Int(birth.timeIntervalSince1970 * 1000)]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("setBirth", reqJson)
+                socket.once("setBirth", callback: { data, ack in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        handler.onSetBirthSuccess()
+                    } else {
+                        handler.onSetBirthException()
+                    }
+                })
+            }
+        } catch let error {
             print(error)
         }
     }

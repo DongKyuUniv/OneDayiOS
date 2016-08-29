@@ -92,3 +92,8 @@ protocol setMailHandler {
     func onSetMailSuccess()
     func onSetMailException()
 }
+
+protocol setBirthHandler {
+    func onSetBirthSuccess()
+    func onSetBirthException()
+}

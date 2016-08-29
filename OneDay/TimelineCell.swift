@@ -89,7 +89,11 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let notice = notice {
-            imageCollectionViewHeight.constant = 220
+            if notice.images.count == 0 {
+                imageCollectionViewHeight.constant = 0
+            } else {
+                imageCollectionViewHeight.constant = 220
+            }
             return notice.images.count
         }
         imageCollectionViewHeight.constant = 0
@@ -107,7 +111,7 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
             if let imageTabHandler = imageTabHandler {
                 cell.handler = self.imageTabHandler
             }
-            cell.imageView.kf_setImageWithURL(NSURL(string: "http://windsoft-oneday.herokuapp.com/images/\(notice.images[indexPath.row])"))
+            cell.imageView.kf_setImageWithURL(NSURL(string: "\(UPLOAD_IMAGE_URL)\(notice.images[indexPath.row])"))
         }
         return cell
     }

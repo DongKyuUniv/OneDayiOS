@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateProfileViewController: UIViewController, setNameHandler, setMailHandler {
+class UpdateProfileViewController: UIViewController, setNameHandler, setMailHandler, setBirthHandler {
 
     var user: User?
     var count = 0
@@ -32,6 +32,16 @@ class UpdateProfileViewController: UIViewController, setNameHandler, setMailHand
                     user.email = mail
                     count += 1
                 }
+            }
+            
+            if user.birth != birthDatePicker.date {
+                SocketIOManager.setBirth(user.id, birth: birthDatePicker.date, handler: self)
+                user.birth = birthDatePicker.date
+                count += 1
+            }
+            
+            if count == 0 {
+                dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
@@ -88,6 +98,26 @@ class UpdateProfileViewController: UIViewController, setNameHandler, setMailHand
     
     func onSetNameException() {
         let alert = UIAlertController(title: "에러", message: "이름 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func onSetBirthSuccess() {
+        count -= 1
+        if count == 0 {
+            if let vc = navigationController {
+                vc.popViewControllerAnimated(true)
+                if let user = user {
+                    if let delegate = userDelegate {
+                        delegate.updateUser(user)
+                    }
+                }
+            }
+        }
+    }
+    
+    func onSetBirthException() {
+        let alert = UIAlertController(title: "에러", message: "생일 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }

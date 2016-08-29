@@ -72,7 +72,9 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
             cell.badCount.text = "\(notice.bads.count)"
             cell.commentCount.text = "\(notice.comments.count)"
             cell.imageTabHandler = self
-            print("like = \(notice.likes)")
+            if let image = notice.authorProfileImage {
+                cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(image)"))
+            }
         }
         return cell
     }

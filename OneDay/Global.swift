@@ -9,3 +9,6 @@
 import UIKit
 
 var tabHeight: CGFloat?
+let rootServerURL = "http://windsoft-oneday.herokuapp.com/"
+let imageURL = "\(rootServerURL)images/"
+let UPLOAD_IMAGE_URL = "\(rootServerURL)/upload_images/"

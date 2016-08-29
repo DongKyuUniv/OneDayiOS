@@ -18,12 +18,16 @@ class ProfileViewCell: UITableViewCell {
     
     @IBOutlet weak var birthLabel: UILabel!
     
+    var handler: UpdateProfileDelegate?
+    
     @IBAction func onUpdateProfileClick(sender: UIButton) {
         
     }
     
     @IBAction func updateProfileImage(sender: UIButton) {
-        
+        if let handler = handler {
+            handler.onPickImage()
+        }
     }
     
     override func awakeFromNib() {
@@ -36,4 +40,8 @@ class ProfileViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+protocol UpdateProfileDelegate {
+    func onPickImage()
 }

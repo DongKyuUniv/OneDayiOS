@@ -10,12 +10,15 @@ import UIKit
 
 class SignUpViewController: UIViewController, signUpHandler {
     
+    var isKeyboardShow = false
+    
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var confirmInput: UITextField!
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var birthPicker: UIDatePicker!
+    @IBOutlet weak var phone: UITextField!
     
     
     @IBAction func signUp(sender: UIButton) {
@@ -25,6 +28,16 @@ class SignUpViewController: UIViewController, signUpHandler {
         let confirm = confirmInput.text!
         let email = emailInput.text!
         let birth = birthPicker.date
+        let phoneNum = phone.text
+        
+        if let  phoneNum = phoneNum {
+            if !phoneNum.isEmpty {
+                if let number = Int(phoneNum) {
+                } else {
+                    showError("번호 형식이 맞지 않습니다.")
+                }
+            }
+        }
         
         print("name = \(name)")
         if name.isEmpty {
@@ -40,12 +53,47 @@ class SignUpViewController: UIViewController, signUpHandler {
         } else if password != confirm {
             showError("비밀번호가 일치하지 않습니다")
         } else {
-            SocketIOManager.signUp(id, password: password, birth: birth, email: email, name: name, handler: self)
+            SocketIOManager.signUp(id, password: password, birth: birth, email: email, name: name, phone: phoneNum, handler: self)
         }
     }
     
+    @IBAction func tab(sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+    }
+    
+    func keyboardDidShow(sender: NSNotification) {
+        if !isKeyboardShow {
+            if let userInfo = sender.userInfo {
+                if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue?)??.CGRectValue() {
+                    scrollViewHeight.constant -= keyboardSize.height
+                    
+                    isKeyboardShow = true
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        if isKeyboardShow {
+            if let userInfo = sender.userInfo {
+                if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue?)?.CGRectValue() {
+                    scrollViewHeight.constant += keyboardSize.height
+                    
+                    isKeyboardShow = false
+                }
+            }
+        }
     }
     
     func showError(msg: String) {

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import SwiftHTTP
 
-class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUserDelegate {
+class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUserDelegate, UpdateProfileDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var userDelegate: UpdateUserDelegate?
+    
+    let imagePicker = UIImagePickerController()
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -38,6 +41,8 @@ class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUs
                 dateFormatter.dateFormat = "yyyy.MM.dd"
                 
                 cell.birthLabel.text = dateFormatter.stringFromDate(user.birth)
+                cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(user.profileImageUri)"))
+                cell.handler = self
             }
             return cell
         }
@@ -48,6 +53,12 @@ class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUs
         if let user = user {
             SocketIOManager.getProfile(user.id, handler: self)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imagePicker.delegate = self
     }
     
     func onGetProfileSuccess(notices: [Notice]) {
@@ -76,5 +87,55 @@ class ProfileViewController: TimelineViewController, getProfileHandler, UpdateUs
         if let delegate = userDelegate {
             delegate.updateUser(user)
         }
+        
+        tableView.reloadData()
+    }
+    
+    func onPickImage() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let url = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let path = url.path as! NSString
+        let name = path.lastPathComponent
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDir = paths.first as String!
+        let localPath = documentDir + "/" + name
+        
+        let data = UIImagePNGRepresentation(image)
+        data?.writeToFile(localPath, atomically: true)
+        
+        print("user = \(user)")
+        if let user = user {
+            do {
+                let fileURL = NSURL(fileURLWithPath: localPath)
+                let opt = try HTTP.POST(UPLOAD_IMAGE_URL, parameters: ["userId": user.id, "file": Upload(fileUrl: fileURL)])
+                opt.start { res in
+                    let code = res.statusCode
+                    let filename = res.text
+                    if let code = code {
+                        if code == 200 {
+                            if let filename = filename {
+                                user.profileImageUri = filename
+                                SocketIOManager.getProfile(user.id, handler: self)
+                                if let delegate = self.userDelegate {
+                                    delegate.updateUser(user)
+                                }
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            } catch let error {
+                print(error)
+            }
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

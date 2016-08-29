@@ -13,11 +13,20 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var friendRequestWidth: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBOutlet weak var numberOfSameFriends: UILabel!
+    
+    @IBAction func onClickFriendRequest(sender: UIButton) {
+        
+    }
+    
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

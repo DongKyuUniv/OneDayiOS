@@ -122,8 +122,8 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         imageCollectionView.dataSource = self
         imageCollectionViewHeight.constant = 0
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(InsertTimelineViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(InsertTimelineViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWillShow(sender: NSNotification) {
@@ -164,19 +164,16 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         navigationController?.popViewControllerAnimated(true)
         
         do {
+            var count = 0
             for url in imageUrls {
                 let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["noticeId":notice.id, "file": Upload(fileUrl: url)])
                 print("noticeId = \(notice.id)")
                 opt.start {
                     response in
-                    print("code = \(response.statusCode)")
-                    print("data = \(response.data)")
-                    print("description = \(response.description)")
-                    print("headers = \(response.headers)")
-                    print("text = \(response.text)")
-                    print("URL = \(response.URL)")
-                    print("error = \(response.error)")
-                    print("filename = \(response.suggestedFilename)")
+                    count = count + 1
+                    if count == self.imageUrls.count {
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
                 }
             }
         } catch let error as NSError {
@@ -192,25 +189,20 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         print("노티스 업데이트 성공")
         
         do {
+            var count = 0
             for url in imageUrls {
                 let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["file": url, "noticeId":notice.id])
                 opt.start {
                     response in
-                    print("code = \(response.statusCode)")
-                    print("data = \(response.data)")
-                    print("description = \(response.description)")
-                    print("headers = \(response.headers)")
-                    print("text = \(response.text)")
-                    print("URL = \(response.URL)")
-                    print("error = \(response.error)")
-                    print("filename = \(response.suggestedFilename)")
+                    count = count + 1
+                    if count == self.imageUrls.count {
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
                 }
             }
         } catch let error as NSError {
             print("error = \(error)")
         }
-        
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func onUpdateNoticeException(code: Int) {

@@ -20,8 +20,9 @@ class User {
     var comments: [Comment] = []
     var notices: [String] = []
     var friends: [String] = []
+    var phone: String!
     
-    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[Comment], notices: [String], friends: [String]) {
+    init(id: String, name: String, profileImageUri: String, birth: NSDate, email: String, likes: [String], bads: [String], comments:[Comment], notices: [String], friends: [String], phone: String) {
         self.id = id
         self.name = name
         self.profileImageUri = profileImageUri
@@ -32,6 +33,7 @@ class User {
         self.comments = comments.map({$0})
         self.notices = notices.map({$0})
         self.friends = notices.map({$0})
+        self.phone = phone
     }
     
     init(dict: [String:String]) {
@@ -122,6 +124,14 @@ class User {
             if let userFriends = dict["friends"] {
                 if !(userFriends is NSNull) {
                     self.friends = userFriends as! [String]
+                }
+            }
+        }
+        
+        if keys.contains("phone") {
+            if let userPhone = dict["phone"] {
+                if !(userPhone is NSNull) {
+                    self.phone = userPhone as! String
                 }
             }
         }
