@@ -111,7 +111,7 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
             if let imageTabHandler = imageTabHandler {
                 cell.handler = self.imageTabHandler
             }
-            cell.imageView.kf_setImageWithURL(NSURL(string: "\(UPLOAD_IMAGE_URL)\(notice.images[indexPath.row])"))
+            cell.imageView.kf_setImageWithURL(NSURL(string: "http://windsoft-oneday.herokuapp.com/images/\(notice.images[indexPath.row])"))
         }
         return cell
     }
