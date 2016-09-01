@@ -49,6 +49,8 @@ class ViewController: UIViewController, loginHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = DARK_BLACK
+        
         SocketIOManager.create()
         SocketIOManager.socket!.once("connect", callback: {
             _ in

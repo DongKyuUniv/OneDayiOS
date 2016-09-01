@@ -46,7 +46,7 @@ class SocketIOManager {
     static func signUp(id: String, password: String, birth: NSDate, email: String, name: String, phone: String?, handler: signUpHandler) {
         do {
             print("signUp \(phone)")
-            let req = ["userId": id, "userPw": password, "userBirth": Int(birth.timeIntervalSince1970 * 1000), "userMail": email, "name": name, "phone": phone!]
+            let req : [String: AnyObject] = ["userId": id, "userPw": password, "userBirth": birth.timeIntervalSince1970 * 1000 as NSNumber, "userMail": email, "name": name, "phone": phone!]
             let reqData = try NSJSONSerialization.dataWithJSONObject(req, options: .PrettyPrinted)
             let reqJson = try NSJSONSerialization.JSONObjectWithData(reqData, options: [])
             print("reqJson = \(reqJson)")
@@ -69,7 +69,7 @@ class SocketIOManager {
     
     static func getAllNotices(userId: String, count: Int, time: NSDate, handler: getAllNoticeHandler) {
         do {
-            let reqData = ["userId": userId, "count": count, "time": Int(time.timeIntervalSince1970 * 1000)]
+            let reqData = ["userId": userId, "count": count, "time": (time.timeIntervalSince1970 * 1000) as! NSNumber]
             let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
             let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
             socket?.emit("getAllNotices", reqDataJson)
@@ -423,6 +423,38 @@ class SocketIOManager {
             }
         } catch let error {
             print(error)
+        }
+    }
+    
+    
+    static func recommendFriendByPhoneNumber(userId: String, friendPhoneNumbers: [String], handler: recommendFriendByPhoneNumberHandler) {
+        do {
+            let reqData = ["userId": userId, "phoneNumbers": friendPhoneNumbers]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("recommendFriendByPhoneNumber", reqJson)
+                socket.once("recommendFriendByPhoneNumber", callback: {
+                    data, ack in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        var friends = [User]()
+                        if !(resJson["friends"] is NSNull) {
+                            let friendsJsonArray = resJson["friends"] as! [NSDictionary]
+                            friends = friendsJsonArray.map({
+                                friendJsonObject in
+                                return User(dict: friendJsonObject)
+                            })
+                        }
+                        
+                        handler.onRecommendFriendByPhoneNumberSuccess(friends)
+                    } else {
+                        handler.onRecommendFriendByPhoneNumberException()
+                    }
+                })
+            }
+        } catch let err {
+            print(err)
         }
     }
 }

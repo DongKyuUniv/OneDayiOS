@@ -97,3 +97,8 @@ protocol setBirthHandler {
     func onSetBirthSuccess()
     func onSetBirthException()
 }
+
+protocol recommendFriendByPhoneNumberHandler {
+    func onRecommendFriendByPhoneNumberSuccess(user: [User])
+    func onRecommendFriendByPhoneNumberException()
+}

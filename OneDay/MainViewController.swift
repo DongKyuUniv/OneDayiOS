@@ -23,7 +23,8 @@ class MainViewController: UITabBarController, UpdateUserDelegate {
             print("뷰컨트롤러 \(vcs)")
             let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
             
-            let friendsVC = vcs[1] as! FriendTableViewController
+            let friendNavigationVC = vcs[1] as! UINavigationController
+            let friendsVC = friendNavigationVC.viewControllers[0] as! FriendTableViewController
             
             let profileNavigationVC = vcs[2] as! UINavigationController
             let profileVC = profileNavigationVC.viewControllers[0] as! ProfileViewController
