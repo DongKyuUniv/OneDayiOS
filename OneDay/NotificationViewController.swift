@@ -9,14 +9,7 @@
 import UIKit
 import Contacts
 
-class SettingViewController: UIViewController {
-
-    @IBOutlet weak var lastContractSyncTimeLabel: UILabel!
-    
-    @IBAction func SyncContract(sender: UIButton) {
-        // 동기화 버튼 클릭
-        
-    }
+class NotificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -35,6 +35,9 @@ class MainViewController: UITabBarController, UpdateUserDelegate {
             profileVC.user = user
             profileVC.userDelegate = self
         }
+        
+        tabBar.tintColor = MAIN_RED
+        tabBar.barTintColor = LIGHT_BLACK
     }
 
     override func didReceiveMemoryWarning() {

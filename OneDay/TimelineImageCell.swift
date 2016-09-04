@@ -14,7 +14,7 @@ class TimelineImageCell: UICollectionViewCell {
     var handler: ImageTabDelegate?
     
     override func layoutSubviews() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("imageTapped:"))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TimelineImageCell.imageTapped(_:)))
         imageView.userInteractionEnabled = true
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }

@@ -8,17 +8,33 @@
 
 import UIKit
 
-class ImageDetailViewController: UIViewController {
+class ImageDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var image: UIImage?
     
-    @IBOutlet weak var imageView: UIImageView!
+    var scrollView: UIScrollView!
+    var imageView: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView = UIScrollView(frame: view.bounds)
+        imageView = UIImageView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height))
         imageView.image = image
+//        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.clipsToBounds = true
+        
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 10.0
+        scrollView.contentSize = imageView.bounds.size
+        print("zoomScale = \(scrollView.zoomScale)")
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageView)
+        
+        self.view.sendSubviewToBack(scrollView)
     }
     
     @IBAction func onGoOut(sender: UIButton) {
@@ -28,5 +44,10 @@ class ImageDetailViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }

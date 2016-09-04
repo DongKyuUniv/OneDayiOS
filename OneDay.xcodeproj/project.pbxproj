@@ -44,7 +44,7 @@
 		9018BE671D3E03660048004A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE661D3E03660048004A /* SignUpViewController.swift */; };
 		903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */; };
 		903DBF471D6FCFF3005E9434 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF461D6FCFF3005E9434 /* Global.swift */; };
-		903DBF4A1D703569005E9434 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* SettingViewController.swift */; };
+		903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* NotificationViewController.swift */; };
 		904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */; };
 		904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */; };
 		905297D51D33508700575A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297D41D33508700575A8B /* AppDelegate.swift */; };
@@ -134,7 +134,7 @@
 		9018BE661D3E03660048004A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		903DBF461D6FCFF3005E9434 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		903DBF491D703569005E9434 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		903DBF491D703569005E9434 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		905297D11D33508700575A8B /* OneDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,12 +310,12 @@
 			name = SignUp;
 			sourceTree = "<group>";
 		};
-		903DBF481D70355A005E9434 /* Setting */ = {
+		903DBF481D70355A005E9434 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				903DBF491D703569005E9434 /* SettingViewController.swift */,
+				903DBF491D703569005E9434 /* NotificationViewController.swift */,
 			);
-			name = Setting;
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		9040CBF51D426815001AD800 /* Login */ = {
@@ -351,7 +351,7 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
-				903DBF481D70355A005E9434 /* Setting */,
+				903DBF481D70355A005E9434 /* Notification */,
 				9059E2C61D62ED7F00803ACC /* UpdateProfile */,
 				9059E2C11D5FDFF100803ACC /* PresentProfile */,
 				9059E2BC1D5C584900803ACC /* SearchTimeline */,
@@ -781,7 +781,7 @@
 				909E0B741D522EA000809F3C /* MainViewController.swift in Sources */,
 				90173D951D3CCF5C0054B0AF /* SSLSecurity.swift in Sources */,
 				90173D921D3CCF5C0054B0AF /* SocketStringReader.swift in Sources */,
-				903DBF4A1D703569005E9434 /* SettingViewController.swift in Sources */,
+				903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */,
 				90173D901D3CCF5C0054B0AF /* SocketPacket.swift in Sources */,
 				90173D4B1D3B92550054B0AF /* Notice.swift in Sources */,
 				909E0B6B1D52111E00809F3C /* FMDatabaseQueue.m in Sources */,

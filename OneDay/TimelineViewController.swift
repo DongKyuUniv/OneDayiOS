@@ -21,9 +21,13 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = BLACK
+        navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
+        
         searchBar.showsCancelButton = false
         searchBar.placeholder = "검색"
         searchBar.delegate = self
+        searchBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationItem.titleView = searchBar
         tableView.tableFooterView = UIView()
     }
@@ -51,7 +55,6 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let notices = self.notices {
-            print("notices count = \(notices.count)")
             return notices.count
         }
         return 0
@@ -143,9 +146,7 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
                 vc.notice = notice
             } else if id == "ImageDetailSegue" {
                 let vc = segue.destinationViewController as! ImageDetailViewController
-                if let image = image {
-                    vc.image = image
-                }
+                vc.image = self.image
             }
         }
     }

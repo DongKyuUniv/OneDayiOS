@@ -82,9 +82,6 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         let data = UIImageJPEGRepresentation(image, 0.5)
         data?.writeToFile(localPath, atomically: true)
         
-        print("url = \(url)")
-        print("localPath = \(localPath)")
-        print("name = \(name)")
         imageUrls.append(NSURL(fileURLWithPath: localPath))
         images.append(image)
         imageCollectionView.reloadData()
@@ -114,6 +111,9 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
         
         if let notice = notice {
             contentView.text = notice.content

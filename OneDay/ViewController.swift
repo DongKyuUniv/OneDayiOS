@@ -38,18 +38,10 @@ class ViewController: UIViewController, loginHandler {
         }
     }
     
-    @IBAction func signUp(sender: UIButton) {
-    }
-    
-    @IBAction func findId(sender: UIButton) {
-    }
-    
-    @IBAction func findPw(sender: UIButton) {
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = DARK_BLACK
+        navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
         
         SocketIOManager.create()
         SocketIOManager.socket!.once("connect", callback: {
@@ -69,6 +61,12 @@ class ViewController: UIViewController, loginHandler {
                 }
             }
         })
+    }
+    
+    @IBAction func findId(sender: AnyObject) {
+    }
+    
+    @IBAction func findPw(sender: AnyObject) {
     }
 
     override func didReceiveMemoryWarning() {

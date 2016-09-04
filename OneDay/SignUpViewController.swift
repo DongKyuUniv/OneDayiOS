@@ -67,6 +67,9 @@ class SignUpViewController: UIViewController, signUpHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SignUpViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)

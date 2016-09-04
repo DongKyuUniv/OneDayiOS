@@ -15,10 +15,25 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     var user: User?
     var handler: OnCommentCellClickListener?
     var imageTabHandler: ImageTabDelegate?
+    @IBOutlet var likeImage: UIImageView!
+    @IBOutlet var likeButtonImage: UIImageView!
+    @IBOutlet var likeBtn: UIButton!
+    
+    
     
     override func layoutSubviews() {
         imageCollectionView.dataSource = self
         
+        likeImage.image = likeImage.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        likeImage.tintColor = MAIN_RED
+        
+        if let notice = notice {
+            if notice.images.count == 0 {
+                imageCollectionViewHeight.constant = 0
+            } else {
+                imageCollectionViewHeight.constant = 220
+            }
+        }
     }
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -44,9 +59,17 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
                     // 이미 좋아요 했다면
                     SocketIOManager.like(user.id, noticeId: notice.id, flag: false, handler: self)
                     notice.likes.removeAtIndex(notice.likes.indexOf(user.id)!)
+                    
+                    likeBtn.tintColor = UIColor.whiteColor()
+                    likeBtn.setImage(UIImage(named: "ic_favorite_border_white"), forState: .Normal)
+                    likeBtn.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 } else {
                     SocketIOManager.like(user.id, noticeId: notice.id, flag: true, handler: self)
                     notice.likes.append(user.id)
+                    
+                    likeBtn.tintColor = MAIN_RED
+                    likeBtn.setImage(UIImage(named: "ic_favorite_white"), forState: .Normal)
+                    likeBtn.setTitleColor(MAIN_RED, forState: .Normal)
                 }
                 likeCount.text = "\(notice.likes.count)"
             }
@@ -89,14 +112,8 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let notice = notice {
-            if notice.images.count == 0 {
-                imageCollectionViewHeight.constant = 0
-            } else {
-                imageCollectionViewHeight.constant = 220
-            }
             return notice.images.count
         }
-        imageCollectionViewHeight.constant = 0
         return 0
     }
     
@@ -107,7 +124,6 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimelimeImageCell", forIndexPath: indexPath) as! TimelineImageCell
         if let notice = notice {
-            print("limage = \(notice.images[indexPath.row])")
             if let imageTabHandler = imageTabHandler {
                 cell.handler = self.imageTabHandler
             }
