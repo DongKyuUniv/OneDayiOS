@@ -9,7 +9,7 @@
         <!--로그인-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="로그인" id="BYZ-38-t0r" customClass="ViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="로그인" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -132,6 +132,7 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="TuZ-cg-Lnc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="171" id="4CX-dn-tuQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="82x-ht-kry" secondAttribute="trailing" constant="50" id="4k6-T9-m2u"/>
@@ -162,6 +163,9 @@
                                 <exclude reference="MBj-5t-bkq"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mtr-ku-vip" appends="YES" id="ldV-oq-Xjw"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="MtN-Fd-ffr">
                         <barButtonItem key="rightBarButtonItem" title="회원가입" id="OWC-N8-NSR">
@@ -178,6 +182,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="mtr-ku-vip">
+                    <connections>
+                        <action selector="tab:" destination="BYZ-38-t0r" id="HO0-p1-WEd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-134" y="-369"/>
         </scene>
@@ -707,7 +716,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="463"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KxW-tR-xoH" id="CdP-Gf-dIM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="462.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4HM-kH-tON">
@@ -806,7 +815,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelimeImageCell" id="nTS-RK-lh4" customClass="TimelineImageCell" customModule="OneDay" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1" width="220" height="220"/>
+                                                    <rect key="frame" x="0.0" y="0.5" width="220" height="220"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
@@ -999,7 +1008,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mik-kf-gMe" id="GpI-8g-bQS">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="218.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EF9-e7-Lim">
@@ -1094,7 +1103,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="463"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pUx-cb-xCF" id="UYt-Dd-eLP">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="462.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-Jp-qME">
@@ -1184,7 +1193,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelimeImageCell" id="Wif-bq-isf" customClass="TimelineImageCell" customModule="OneDay" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1" width="220" height="220"/>
+                                                    <rect key="frame" x="0.0" y="0.5" width="220" height="220"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
@@ -1300,7 +1309,7 @@
                                 <rect key="frame" x="0.0" y="555" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JNt-R8-QmZ" id="1Hc-5s-dgQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aa7-cT-fIG">
@@ -1390,7 +1399,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionItem" id="KwF-lm-vBx" customClass="imageViewCell" customModule="OneDay" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="10" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="9.5" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -1543,7 +1552,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="146"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QwY-zg-Xvr" id="oFM-Wl-Fe3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="146"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="145.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O7r-19-C6f">
@@ -1624,7 +1633,7 @@
                                 <rect key="frame" x="0.0" y="238" width="600" height="463"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3B-xC-hSh" id="1BK-JI-KeI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="462.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iDN-1M-ZXh">
@@ -1718,7 +1727,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelimeImageCell" id="3e2-Pj-aqf" customClass="TimelineImageCell" customModule="OneDay" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="1" width="220" height="220"/>
+                                                    <rect key="frame" x="0.0" y="0.5" width="220" height="220"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
@@ -1927,7 +1936,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rRO-MF-OvK" id="GgF-Bh-PJd">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3KV-Pf-zpn">

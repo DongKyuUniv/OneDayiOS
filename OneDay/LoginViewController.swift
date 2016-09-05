@@ -8,10 +8,24 @@
 
 import UIKit
 
+// 프레젠터 -> 뷰
+protocol LoginViewOutput: class {
+    func showIdEmptyError()
+    func showPasswordEmptyError()
+    func showLoginError(code: Int)
+}
 
-class ViewController: UIViewController, loginHandler {
+// 뷰 -> 프레젠터
+protocol LoginViewInput: class {
+    func login(id: String, password: String)
+}
+
+
+class LoginViewController: UIViewController, loginHandler, LoginViewOutput {
     
     var user: User?
+    
+    var presenter: LoginViewInput!
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -23,17 +37,7 @@ class ViewController: UIViewController, loginHandler {
         
         if let userId = id {
             if let userPw = pw {
-                if userId.isEmpty {
-                    showAlert("로그인 에러", message: "아이디를 입력해주세요")
-                    return
-                }
-                
-                if userPw.isEmpty {
-                    showAlert("로그인 에러", message: "비밀번호를 입력해주세요")
-                    return
-                }
-                
-                SocketIOManager.login(userId, pw: userPw, context: self)
+                presenter.login(userId, password: userPw)
             }
         }
     }
@@ -41,6 +45,9 @@ class ViewController: UIViewController, loginHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = LoginPresenter(view: self)
+        
         navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
         
         SocketIOManager.create()
@@ -102,6 +109,30 @@ class ViewController: UIViewController, loginHandler {
                 let tabBarVC = segue.destinationViewController as! MainViewController
                 tabBarVC.user = user
             }
+        }
+    }
+    
+    @IBAction func tab(sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
+    }
+    
+    // LoginViewOutput
+    
+    func showIdEmptyError() {
+        showAlert("로그인 에러", message: "아이디를 입력해주세요")
+    }
+    
+    func showPasswordEmptyError() {
+        showAlert("로그인 에러", message: "비밀번호를 입력해주세요")
+    }
+    
+    func showLoginError(code: Int) {
+        switch code {
+        case 500:
+            showAlert("dd", message: "dd")
+        default:
+            print("dd")
         }
     }
 }
