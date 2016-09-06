@@ -18,7 +18,7 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
         
         searchBar.becomeFirstResponder()
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SearchTimelineViewController.dismissKeyboard)))
     }
     
     func dismissKeyboard() {

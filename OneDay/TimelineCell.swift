@@ -124,7 +124,7 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimelimeImageCell", forIndexPath: indexPath) as! TimelineImageCell
         if let notice = notice {
-            if let imageTabHandler = imageTabHandler {
+            if imageTabHandler != nil {
                 cell.handler = self.imageTabHandler
             }
             cell.imageView.kf_setImageWithURL(NSURL(string: "\(imageURL)\(notice.images[indexPath.row])"))

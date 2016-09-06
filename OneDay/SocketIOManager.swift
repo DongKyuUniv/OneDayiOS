@@ -69,7 +69,7 @@ class SocketIOManager {
     
     static func getAllNotices(userId: String, count: Int, time: NSDate, handler: getAllNoticeHandler) {
         do {
-            let reqData = ["userId": userId, "count": count, "time": (time.timeIntervalSince1970 * 1000) as! NSNumber]
+            let reqData = ["userId": userId, "count": count, "time": (time.timeIntervalSince1970 * 1000) as NSNumber]
             let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
             let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
             socket?.emit("getAllNotices", reqDataJson)
