@@ -14,11 +14,14 @@ protocol LoginViewOutput: class {
     func showPasswordEmptyError()
     func showLoginError(code: Int)
     func showDBError()
+    func showFindId()
+    func showFindPassword()
+    func showTimeline(user: User)
 }
 
 // 뷰 -> 프레젠터
 protocol LoginViewInput: class {
-    func login(id: String, password: String)
+    func login(id: String, password: String) -> Bool
     func findId()
     func findPw()
 }
@@ -28,7 +31,7 @@ class LoginViewController: UIViewController, LoginViewOutput {
     
     var user: User?
     
-    var presenter: LoginViewInput!
+    var presenter: LoginPresenter!
     
     @IBOutlet weak var idInput: UITextField!
     @IBOutlet weak var pwInput: UITextField!
@@ -45,11 +48,23 @@ class LoginViewController: UIViewController, LoginViewOutput {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let id = segue.identifier
+        if let id = id {
+            if id == "ShowTimelineSegue" {
+                let tableVc = segue.destinationViewController as! MainViewController
+                tableVc.user = self.user
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = LoginPresenter(view: self)
+        presenter = LoginPresenter()
+        presenter.view = self
+        
         
         navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
     }
@@ -70,17 +85,6 @@ class LoginViewController: UIViewController, LoginViewOutput {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segueId = segue.identifier {
-            print("segueId = \(segueId)")
-            if segueId == "loginSuccess" {
-                let tabBarVC = segue.destinationViewController as! MainViewController
-                tabBarVC.user = user
-            }
-        }
     }
     
     @IBAction func tab(sender: UITapGestureRecognizer) {
@@ -105,11 +109,26 @@ class LoginViewController: UIViewController, LoginViewOutput {
         case 501:
             // db저장 실패
             showAlert("로그인 실패", message: "로그인 실패")
+        default:
+            print("dd")
         }
     }
     
     func showDBError() {
         self.showAlert("에러", message: "DB 생성에 문제가 발생했습니다.")
+    }
+    
+    func showTimeline(user: User) {
+        self.user = user
+        self.performSegueWithIdentifier("ShowTimelineSegue", sender: self)
+    }
+    
+    func showFindId() {
+        
+    }
+    
+    func showFindPassword() {
+        
     }
 }
 

@@ -177,5 +177,68 @@
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OneDay/LoginPresenter.swift"
+            timestampString = "494871951.705847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "LoginPresenter"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneDay.LoginPresenter.init (view : OneDay.LoginViewOutput) -&gt; OneDay.LoginPresenter"
+                  moduleName = "OneDay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/IronFactory/SwiftProject/OneDay/OneDay/LoginPresenter.swift"
+                  timestampString = "494870141.57876"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneDay.LoginPresenter.view.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;OneDay.LoginViewOutput&gt;"
+                  moduleName = "OneDay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/IronFactory/SwiftProject/OneDay/OneDay/LoginPresenter.swift"
+                  timestampString = "494870141.5828"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneDay.LoginPresenter.view.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;OneDay.LoginViewOutput&gt;"
+                  moduleName = "OneDay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/IronFactory/SwiftProject/OneDay/OneDay/LoginPresenter.swift"
+                  timestampString = "494870141.582928"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

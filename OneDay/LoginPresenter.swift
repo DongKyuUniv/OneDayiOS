@@ -6,30 +6,23 @@
 //  Copyright © 2016년 이동규. All rights reserved.
 //
 
-import Foundation
-
 
 // 프레젠터는 다른 바이퍼 모듈과의 연결만을 담당한다.
 class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
-    weak var view: LoginViewOutput!
+    var view: LoginViewOutput!
     
     var interactor: LoginInteractorInput!
     
-    var wireframe: LoginWireframe!
-    
-    init (view: LoginViewOutput) {
-        self.view = view
-        
+    init () {
         interactor = LoginInteractor(output: self)
-        wireframe = LoginWireframe(loginViewController: <#T##LoginViewController#>)
         
         SocketIOManager.create()
         SocketIOManager.socket!.once("connect", callback: {
             _ in
             if !DBManager.checkDB() {
                 if !DBManager.initDB() {
-                    view.showDBError()
+                    self.view.showDBError()
                 }
             } else {
                 if let user = UserDBManager.getUser() {
@@ -44,25 +37,26 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
     // LoginViewInput
     
-    func login(id: String, password: String) {
+    func login(id: String, password: String) -> Bool {
         if id.isEmpty {
             view.showIdEmptyError()
-            return
+            return false
         }
         
         if password.isEmpty {
             view.showPasswordEmptyError()
-            return
+            return false
         }
         
         interactor.login(id, password: password)
+        return true
     }
     
     
     // LoginInteractorOutput
     
     func loginSuccess(user: User) {
-        wireframe.showTimeline(user)
+        view.showTimeline(user)
     }
     
     func loginFailed(code: Int) {
@@ -70,10 +64,10 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     }
     
     func findId() {
-        
+        view.showFindId()
     }
     
     func findPw() {
-        
+        view.showFindPassword()
     }
 }
