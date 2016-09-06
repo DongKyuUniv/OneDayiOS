@@ -22,7 +22,23 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
         self.view = view
         
         interactor = LoginInteractor(output: self)
-        wireframe = LoginWireframe()
+        wireframe = LoginWireframe(loginViewController: <#T##LoginViewController#>)
+        
+        SocketIOManager.create()
+        SocketIOManager.socket!.once("connect", callback: {
+            _ in
+            if !DBManager.checkDB() {
+                if !DBManager.initDB() {
+                    view.showDBError()
+                }
+            } else {
+                if let user = UserDBManager.getUser() {
+                    if user.id != nil && user.password != nil {
+                        self.interactor.login(user.id, password: user.password)
+                    }
+                }
+            }
+        })
     }
     
     
@@ -46,10 +62,18 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     // LoginInteractorOutput
     
     func loginSuccess(user: User) {
-        wireframe.showTimeline()
+        wireframe.showTimeline(user)
     }
     
     func loginFailed(code: Int) {
         view.showLoginError(code)
+    }
+    
+    func findId() {
+        
+    }
+    
+    func findPw() {
+        
     }
 }

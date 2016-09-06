@@ -34,7 +34,11 @@ class LoginInteractor: LoginInteractorInput, loginHandler {
     }
     
     func onLoginSuccess(user: User) {
-        output.loginSuccess(user)
+        if UserDBManager.insertUserDB(user.id, password: user.password) {
+            output.loginSuccess(user)
+        } else {
+            output.loginFailed(501)
+        }
     }
     
     func onLoginException(code: Int) {

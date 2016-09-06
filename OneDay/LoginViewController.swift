@@ -13,15 +13,18 @@ protocol LoginViewOutput: class {
     func showIdEmptyError()
     func showPasswordEmptyError()
     func showLoginError(code: Int)
+    func showDBError()
 }
 
 // 뷰 -> 프레젠터
 protocol LoginViewInput: class {
     func login(id: String, password: String)
+    func findId()
+    func findPw()
 }
 
 
-class LoginViewController: UIViewController, loginHandler, LoginViewOutput {
+class LoginViewController: UIViewController, LoginViewOutput {
     
     var user: User?
     
@@ -49,49 +52,17 @@ class LoginViewController: UIViewController, loginHandler, LoginViewOutput {
         presenter = LoginPresenter(view: self)
         
         navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
-        
-        SocketIOManager.create()
-        SocketIOManager.socket!.once("connect", callback: {
-            _ in
-            if !DBManager.checkDB() {
-                if !DBManager.initDB() {
-                    self.showAlert("에러", message: "DB 생성에 문제가 발생했습니다.")
-                }
-            } else {
-                if let user = UserDBManager.getUser() {
-                    if user.id != nil && user.password != nil {
-                        self.user = user
-                        print("유저 아이디 = \(user.id)")
-                        print("유저 비밀번호 = \(user.password)")
-                        SocketIOManager.login(user.id, pw: user.password, context: self)
-                    }
-                }
-            }
-        })
     }
     
     @IBAction func findId(sender: AnyObject) {
+        presenter.findId()
     }
     
     @IBAction func findPw(sender: AnyObject) {
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func onLoginSuccess(user: User) {
-        self.user = user
-        if UserDBManager.insertUserDB(user.id, password: user.password) {
-            performSegueWithIdentifier("loginSuccess", sender: self)
-        } else {
-            showAlert("로그인 실패", message: "로그인 실패")
-        }
+        presenter.findPw()
     }
     
     func onLoginException(code: Int) {
-        print("로그인 실패 = \(code)")
         showAlert("로그인 실패", message: "로그인 실패")
     }
     
@@ -113,7 +84,6 @@ class LoginViewController: UIViewController, loginHandler, LoginViewOutput {
     }
     
     @IBAction func tab(sender: UITapGestureRecognizer) {
-        
         view.endEditing(true)
     }
     
@@ -128,12 +98,18 @@ class LoginViewController: UIViewController, loginHandler, LoginViewOutput {
     }
     
     func showLoginError(code: Int) {
+        showAlert("로그인 에러", message: "로그인 에러")
         switch code {
         case 500:
             showAlert("dd", message: "dd")
-        default:
-            print("dd")
+        case 501:
+            // db저장 실패
+            showAlert("로그인 실패", message: "로그인 실패")
         }
+    }
+    
+    func showDBError() {
+        self.showAlert("에러", message: "DB 생성에 문제가 발생했습니다.")
     }
 }
 

@@ -6,18 +6,24 @@
 //  Copyright © 2016년 이동규. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol LoginWireframeInput {
     func showSignUp()
     func showFindId()
     func showFindPw()
-    func showTimeline()
+    func showTimeline(user: User)
 }
 
 
 // 라우터는 모듈들 사이의 항해를 담당한다.
 class LoginWireframe: NSObject, LoginWireframeInput {
+    
+    weak var viewController: UIViewController!
+    
+    init(loginViewController vc: LoginViewController) {
+        viewController = vc
+    }
     
     func showSignUp() {
         
@@ -31,7 +37,7 @@ class LoginWireframe: NSObject, LoginWireframeInput {
         
     }
     
-    func showTimeline() {
-        
+    func showTimeline(user: User) {
+        viewController.performSegueWithIdentifier("loginSuccess", sender: self)
     }
 }
