@@ -25,10 +25,6 @@ class LoginInteractor: LoginInteractorInput, loginHandler {
     
     var output: LoginInteractorOutput!
     
-    init (output: LoginInteractorOutput) {
-        self.output = output
-    }
-    
     func login(id: String, password: String) {
         SocketIOManager.login(id, pw: password, context: self)
     }

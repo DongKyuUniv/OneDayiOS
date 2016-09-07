@@ -24,6 +24,7 @@ protocol LoginViewInput: class {
     func login(id: String, password: String) -> Bool
     func findId()
     func findPw()
+    func signUp()
 }
 
 
@@ -48,6 +49,10 @@ class LoginViewController: UIViewController, LoginViewOutput {
         }
     }
     
+    @IBAction func signUp(sender: AnyObject) {
+        presenter.signUp()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let id = segue.identifier
         if let id = id {
@@ -61,10 +66,6 @@ class LoginViewController: UIViewController, LoginViewOutput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presenter = LoginPresenter()
-        presenter.view = self
-        
         
         navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
     }

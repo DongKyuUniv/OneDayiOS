@@ -102,3 +102,13 @@ protocol recommendFriendByPhoneNumberHandler {
     func onRecommendFriendByPhoneNumberSuccess(user: [User])
     func onRecommendFriendByPhoneNumberException()
 }
+
+protocol findIdHandler {
+    func onFindIdSuccess(id: String)
+    func onFindIdException(code: Int)
+}
+
+protocol findPasswordHandler {
+    func onFindPasswordSuccess(password: String)
+    func onFindPasswordException(code: Int)
+}

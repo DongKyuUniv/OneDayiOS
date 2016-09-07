@@ -14,9 +14,9 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
     var interactor: LoginInteractorInput!
     
+    var wireFrame: LoginWireframe!
+    
     init () {
-        interactor = LoginInteractor(output: self)
-        
         SocketIOManager.create()
         SocketIOManager.socket!.once("connect", callback: {
             _ in
@@ -52,6 +52,18 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
         return true
     }
     
+    func signUp() {
+        wireFrame.presentSignUpInterface()
+    }
+    
+    func findId() {
+        view.showFindId()
+    }
+    
+    func findPw() {
+        view.showFindPassword()
+    }
+    
     
     // LoginInteractorOutput
     
@@ -61,13 +73,5 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
     func loginFailed(code: Int) {
         view.showLoginError(code)
-    }
-    
-    func findId() {
-        view.showFindId()
-    }
-    
-    func findPw() {
-        view.showFindPassword()
     }
 }

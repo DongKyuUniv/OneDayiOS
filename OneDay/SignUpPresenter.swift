@@ -10,15 +10,11 @@ class SignUpPresenter: SignUpViewInput, SignUpInteractorOutput {
     
     var view: SignUpViewOutput!
     
-    var interactor = SignUpInteractor()
+    var interactor: SignUpInteractor!
     
-    
+    var wireframe: SignUpWireframe!
     
     // SignUpViewInput
-    
-    func notiViewDidLoad() {
-        interactor.output = self
-    }
     
     func signUp(user: User, password: String, confirm: String) -> Bool {
         if let  phoneNum = user.phone {
@@ -53,7 +49,7 @@ class SignUpPresenter: SignUpViewInput, SignUpInteractorOutput {
     // SignUpIneteractorOutput
     
     func signUpSuccess() {
-        view.showSignIn()
+        wireframe.dismissSignUpInterface()
     }
     
     func signUpException(code: Int) {

@@ -457,4 +457,48 @@ class SocketIOManager {
             print(err)
         }
     }
+    
+    static func findId(email: String, handler: findIdHandler) {
+        do {
+            let reqData = ["userMail": email]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("findId", reqJson)
+                socket.once("findId", callback: { data, _ in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        let id = resJson["userId"] as! String
+                        handler.onFindIdSuccess(id)
+                    } else {
+                        handler.onFindIdException(code)
+                    }
+                })
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func findPassword(userId id: String, email: String, handler: findPasswordHandler) {
+        do {
+            let reqData = ["userMail": email, "userId": id]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("findPw", reqJson)
+                socket.once("findPw", callback: { data, _ in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        let password = resJson["password"] as! String
+                        handler.onFindPasswordSuccess(password)
+                    } else {
+                        handler.onFindPasswordException(code)
+                    }
+                })
+            }
+        } catch let error {
+            print(error)
+        }
+    }
 }

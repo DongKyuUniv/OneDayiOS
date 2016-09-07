@@ -22,11 +22,9 @@ enum SignUpError {
 
 protocol SignUpViewOutput: class {
     func showError(err: SignUpError)
-    func showSignIn()
 }
 
 protocol SignUpViewInput: class {
-    func notiViewDidLoad()
     func signUp(user: User, password: String, confirm: String) -> Bool
 }
 
@@ -34,7 +32,7 @@ class SignUpViewController: UIViewController, SignUpViewOutput {
     
     var isKeyboardShow = false
     
-    var presenter = SignUpPresenter()
+    var presenter: SignUpPresenter!
     
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var idInput: UITextField!
@@ -67,9 +65,6 @@ class SignUpViewController: UIViewController, SignUpViewOutput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presenter.view = self
-        presenter.notiViewDidLoad()
         
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
@@ -110,10 +105,6 @@ class SignUpViewController: UIViewController, SignUpViewOutput {
     }
     
     // SignUpViewOutput
-    
-    func showSignIn() {
-        navigationController?.popViewControllerAnimated(true)
-    }
     
     func showError(err: SignUpError) {
         switch err {
