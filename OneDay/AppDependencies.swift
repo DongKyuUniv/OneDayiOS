@@ -20,7 +20,8 @@ class AppDependencies {
         
         loginInteractor.output = loginPresenter
         loginPresenter.interactor = loginInteractor
-        loginPresenter.wireFrame = loginWireframe
+        loginPresenter.loginWireframe = loginWireframe
+        
         
         let signUpPresenter = SignUpPresenter()
         let signUpInteractor = SignUpInteractor()
@@ -31,6 +32,26 @@ class AppDependencies {
         signUpPresenter.wireframe = signUpWireframe
         signUpWireframe.signUpPresenter = signUpPresenter
         
+        let findPasswordPresenter = FindPasswordPresenter()
+        let findPasswordInteractor = FindPasswordInteractor()
+        let findPasswordWireframe = FindPasswordWireframe()
+        
+        findPasswordPresenter.interactor = findPasswordInteractor
+        findPasswordPresenter.wireframe = findPasswordWireframe
+        findPasswordInteractor.presenter = findPasswordPresenter
+        findPasswordWireframe.presenter = findPasswordPresenter
+        
+        let findIdPresenter = FindIdPresenter()
+        let findIdInteractor = FindIdInteractor()
+        let findIdWireframe = FindIdWireframe()
+        
+        findIdPresenter.interactor = findIdInteractor
+        findIdPresenter.wireframe = findIdWireframe
+        findIdWireframe.presenter = findIdPresenter
+        findIdInteractor.output = findIdPresenter
+        
+        loginWireframe.findPasswordWireframe = findPasswordWireframe
+        loginWireframe.findIdWireframe = findIdWireframe
         loginWireframe.signUpWireframe = signUpWireframe
         loginWireframe.rootWireframe = rootWireframe
         loginWireframe.loginPresenter = loginPresenter

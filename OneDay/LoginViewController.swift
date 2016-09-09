@@ -14,17 +14,15 @@ protocol LoginViewOutput: class {
     func showPasswordEmptyError()
     func showLoginError(code: Int)
     func showDBError()
-    func showFindId()
-    func showFindPassword()
     func showTimeline(user: User)
 }
 
 // 뷰 -> 프레젠터
 protocol LoginViewInput: class {
     func login(id: String, password: String) -> Bool
-    func findId()
-    func findPw()
-    func signUp()
+    func findIdClick()
+    func findPwClick()
+    func signUpClick()
 }
 
 
@@ -50,7 +48,7 @@ class LoginViewController: UIViewController, LoginViewOutput {
     }
     
     @IBAction func signUp(sender: AnyObject) {
-        presenter.signUp()
+        presenter.signUpClick()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -71,11 +69,11 @@ class LoginViewController: UIViewController, LoginViewOutput {
     }
     
     @IBAction func findId(sender: AnyObject) {
-        presenter.findId()
+        presenter.findIdClick()
     }
     
     @IBAction func findPw(sender: AnyObject) {
-        presenter.findPw()
+        presenter.findPwClick()
     }
     
     func onLoginException(code: Int) {
@@ -122,14 +120,6 @@ class LoginViewController: UIViewController, LoginViewOutput {
     func showTimeline(user: User) {
         self.user = user
         self.performSegueWithIdentifier("ShowTimelineSegue", sender: self)
-    }
-    
-    func showFindId() {
-        
-    }
-    
-    func showFindPassword() {
-        
     }
 }
 

@@ -10,7 +10,9 @@ class FindIdPresenter: FindIdViewInput, FindIdInteractorOutput {
     
     var view: FindIdViewOutput!
     
-    var interactor = FindIdInteractor()
+    var interactor: FindIdInteractor!
+    
+    var wireframe: FindIdWireframe!
     
     // FindIdViewInput
     

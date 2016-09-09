@@ -14,7 +14,7 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
     var interactor: LoginInteractorInput!
     
-    var wireFrame: LoginWireframe!
+    var loginWireframe: LoginWireframe!
     
     init () {
         SocketIOManager.create()
@@ -52,16 +52,16 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
         return true
     }
     
-    func signUp() {
-        wireFrame.presentSignUpInterface()
+    func signUpClick() {
+        loginWireframe.presentSignUpInterface()
     }
     
-    func findId() {
-        view.showFindId()
+    func findIdClick() {
+        loginWireframe.presentFindIdInterface()
     }
     
-    func findPw() {
-        view.showFindPassword()
+    func findPwClick() {
+        loginWireframe.presentFindPasswordInterface()
     }
     
     

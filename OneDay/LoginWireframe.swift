@@ -14,6 +14,8 @@ class LoginWireframe {
     var loginViewController: LoginViewController?
     var rootWireframe: RootWireframe?
     var signUpWireframe: SignUpWireframe?
+    var findIdWireframe: FindIdWireframe?
+    var findPasswordWireframe: FindPasswordWireframe?
     
     func presentLoginInterfaceFromWindow(window: UIWindow) {
         let viewController = loginViewControllerFromStoryboard()
@@ -25,6 +27,14 @@ class LoginWireframe {
     
     func presentSignUpInterface() {
         signUpWireframe?.presentSignUpInterfaceFromViewController(loginViewController!)
+    }
+    
+    func presentFindIdInterface() {
+        findIdWireframe?.presentFindIdViewController(loginViewController!)
+    }
+    
+    func presentFindPasswordInterface() {
+        findPasswordWireframe?.presentFindPasswordViewController(viewController: loginViewController!)
     }
     
     func loginViewControllerFromStoryboard() -> LoginViewController {

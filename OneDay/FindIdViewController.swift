@@ -31,18 +31,11 @@ class FindIdViewController: UIViewController, FindIdViewOutput {
     
     @IBOutlet var idLabel: UILabel!
     
-    var presenter = FindIdPresenter()
+    var presenter: FindIdPresenter!
     
-    @IBAction func submit(sender: AnyObject) {
+    func submit() {
         presenter.findId(emailInput.text!)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        presenter.view = self
-    }
-    
     
     // FindIdViewOutput
     
@@ -59,6 +52,15 @@ class FindIdViewController: UIViewController, FindIdViewOutput {
         case .NO_SEARCH_MAIL:
             showAlert("아이디 찾기 에러", message: "입력하신 메일이 없습니다")
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "확인", style: .Plain, target: self, action: #selector(submit))
+        self.navigationItem.rightBarButtonItem?.tintColor = MAIN_RED
+        self.navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
     }
     
     func showAlert(title: String, message: String) {

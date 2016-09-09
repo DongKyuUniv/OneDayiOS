@@ -10,13 +10,11 @@ class FindPasswordPresenter: FindPasswordViewInput, FindPasswordInteractorOutput
     
     var view: FindPasswordViewOutput!
     
-    var interactor = FindPasswordInteractor()
+    var interactor: FindPasswordInteractor!
+    
+    var wireframe: FindPasswordWireframe!
     
     // FindPasswordViewInput
-    
-    func notiViewDidLoad() {
-        interactor.output = self
-    }
     
     func findPassword(id: String?, email: String?) -> Bool {
         if let email = email {

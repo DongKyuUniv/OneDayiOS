@@ -17,7 +17,6 @@ enum FindPasswordError {
 
 protocol FindPasswordViewInput: class {
     func findPassword(id: String?, email: String?) -> Bool
-    func notiViewDidLoad()
 }
 
 protocol FindPasswordViewOutput: class {
@@ -33,9 +32,11 @@ class FindPasswordViewController: UIViewController, FindPasswordViewOutput {
     
     @IBOutlet var passwordLabel: UILabel!
     
-    var presenter = FindPasswordPresenter()
+    var presenter: FindPasswordPresenter!
     
-    @IBAction func submit(sender: AnyObject) {
+    let submitBtn = UIBarButtonItem()
+    
+    func submit() {
         presenter.findPassword(idInput.text, email: mailInput.text)
     }
     
@@ -43,7 +44,10 @@ class FindPasswordViewController: UIViewController, FindPasswordViewOutput {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.view = self
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "확인", style: .Plain, target: self, action: #selector(submit))
+        self.navigationItem.rightBarButtonItem?.tintColor = MAIN_RED
+        self.navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
     }
     
     func showPassword(password: String) {

@@ -138,6 +138,11 @@
 		907DC1E31D8052080069BC36 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E21D8052080069BC36 /* LoginWireframe.swift */; };
 		907DC1E51D8054F00069BC36 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E41D8054F00069BC36 /* RootWireframe.swift */; };
 		907DC1E71D805ED20069BC36 /* SignUpWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E61D805ED20069BC36 /* SignUpWireframe.swift */; };
+		907DC1E91D80F4090069BC36 /* FindPasswordWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E81D80F4090069BC36 /* FindPasswordWireframe.swift */; };
+		907DC1EA1D80F77C0069BC36 /* FindPasswordWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E81D80F4090069BC36 /* FindPasswordWireframe.swift */; };
+		907DC1EB1D80F7860069BC36 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E21D8052080069BC36 /* LoginWireframe.swift */; };
+		907DC1EC1D80F7890069BC36 /* SignUpWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E61D805ED20069BC36 /* SignUpWireframe.swift */; };
+		907DC1EE1D811F8E0069BC36 /* FindIdWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1ED1D811F8E0069BC36 /* FindIdWireframe.swift */; };
 		909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3C1D52023A00809F3C /* DBManager.swift */; };
 		909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3F1D520C7400809F3C /* UserDBManager.swift */; };
 		909E0B681D52111E00809F3C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B5E1D52111E00809F3C /* FMDatabase.m */; };
@@ -256,6 +261,8 @@
 		907DC1E21D8052080069BC36 /* LoginWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
 		907DC1E41D8054F00069BC36 /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		907DC1E61D805ED20069BC36 /* SignUpWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWireframe.swift; sourceTree = "<group>"; };
+		907DC1E81D80F4090069BC36 /* FindPasswordWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordWireframe.swift; sourceTree = "<group>"; };
+		907DC1ED1D811F8E0069BC36 /* FindIdWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdWireframe.swift; sourceTree = "<group>"; };
 		909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneDay-Bridging-Header.h"; sourceTree = "<group>"; };
 		909E0B3C1D52023A00809F3C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		909E0B3F1D520C7400809F3C /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
@@ -556,6 +563,7 @@
 				907DC1C91D7FB8BD0069BC36 /* FindIdViewPresenter.swift */,
 				907DC1CB1D7FB8D40069BC36 /* FindIdViewController.swift */,
 				907DC1CD1D7FB8DE0069BC36 /* FindIdInteractor.swift */,
+				907DC1ED1D811F8E0069BC36 /* FindIdWireframe.swift */,
 			);
 			name = FindId;
 			sourceTree = "<group>";
@@ -566,6 +574,7 @@
 				907DC1D01D7FB9080069BC36 /* FindPasswordPresenter.swift */,
 				907DC1D21D7FB9120069BC36 /* FindPasswordInteractor.swift */,
 				907DC1D41D7FB91C0069BC36 /* FindPasswordViewController.swift */,
+				907DC1E81D80F4090069BC36 /* FindPasswordWireframe.swift */,
 			);
 			name = FindPassword;
 			sourceTree = "<group>";
@@ -907,6 +916,7 @@
 				9059E2BE1D5C589500803ACC /* SearchTimelineViewController.swift in Sources */,
 				9059E2C51D6183FD00803ACC /* ProfileViewCell.swift in Sources */,
 				90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */,
+				907DC1E91D80F4090069BC36 /* FindPasswordWireframe.swift in Sources */,
 				90173D801D3CCF5C0054B0AF /* SocketAckEmitter.swift in Sources */,
 				907DC1D31D7FB9120069BC36 /* FindPasswordInteractor.swift in Sources */,
 				90173D821D3CCF5C0054B0AF /* SocketAnyEvent.swift in Sources */,
@@ -930,6 +940,7 @@
 				909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */,
 				90173D851D3CCF5C0054B0AF /* SocketEngineClient.swift in Sources */,
 				90173D8E1D3CCF5C0054B0AF /* SocketIOClientStatus.swift in Sources */,
+				907DC1EE1D811F8E0069BC36 /* FindIdWireframe.swift in Sources */,
 				90173D811D3CCF5C0054B0AF /* SocketAckManager.swift in Sources */,
 				90173D8F1D3CCF5C0054B0AF /* SocketLogger.swift in Sources */,
 				907DC1C31D7F3E500069BC36 /* SignUpPresenter.swift in Sources */,
@@ -985,6 +996,7 @@
 				907DC1901D7F24760069BC36 /* Notice.swift in Sources */,
 				907DC19A1D7F25100069BC36 /* SocketAckEmitter.swift in Sources */,
 				907DC1BA1D7F25730069BC36 /* SearchTimelineViewController.swift in Sources */,
+				907DC1EC1D80F7890069BC36 /* SignUpWireframe.swift in Sources */,
 				907DC1DA1D7FE7910069BC36 /* FindPasswordInteractor.swift in Sources */,
 				907DC1B81D7F25700069BC36 /* CommentViewController.swift in Sources */,
 				907DC1A01D7F25100069BC36 /* SocketEnginePollable.swift in Sources */,
@@ -993,10 +1005,12 @@
 				907DC1D71D7FE78D0069BC36 /* FindIdViewController.swift in Sources */,
 				907DC1961D7F24B40069BC36 /* SocketTypes.swift in Sources */,
 				907DC1B21D7F256A0069BC36 /* TimelineViewController.swift in Sources */,
+				907DC1EB1D80F7860069BC36 /* LoginWireframe.swift in Sources */,
 				907DC1A51D7F25100069BC36 /* SocketIOClientSpec.swift in Sources */,
 				907DC1A91D7F25100069BC36 /* SocketStringReader.swift in Sources */,
 				907DC1BD1D7F25780069BC36 /* UpdateProfileViewController.swift in Sources */,
 				907DC1A71D7F25100069BC36 /* SocketLogger.swift in Sources */,
+				907DC1EA1D80F77C0069BC36 /* FindPasswordWireframe.swift in Sources */,
 				907DC1AA1D7F25100069BC36 /* String.swift in Sources */,
 				907DC1B41D7F256A0069BC36 /* TimelineCell.swift in Sources */,
 				907DC1A41D7F25100069BC36 /* SocketIOClientOption.swift in Sources */,

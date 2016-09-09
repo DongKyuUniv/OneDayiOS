@@ -18,7 +18,7 @@ protocol FindPasswordInteractorOutput: class {
 
 class FindPasswordInteractor: FindPasswordInteractorInput, findPasswordHandler {
     
-    var output: FindPasswordInteractorOutput!
+    var presenter: FindPasswordInteractorOutput!
     
     // FindPasswordInteractorInput
     
@@ -27,10 +27,10 @@ class FindPasswordInteractor: FindPasswordInteractorInput, findPasswordHandler {
     }
     
     func onFindPasswordSuccess(password: String) {
-        output.findPasswordSuccess(password)
+        presenter.findPasswordSuccess(password)
     }
     
     func onFindPasswordException(code: Int) {
-        output.findPasswordFailed(code)
+        presenter.findPasswordFailed(code)
     }
 }
