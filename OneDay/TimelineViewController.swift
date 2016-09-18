@@ -8,7 +8,16 @@
 
 import UIKit
 
-class TimelineViewController: UITableViewController, getAllNoticeHandler, OnCommentCellClickListener, removeNoticeHandler, UISearchBarDelegate, ImageTabDelegate {
+protocol TimelineViewInput {
+    func searchBarClick(viewController: UITableViewController)
+    func addTimeline(viewController: UITableViewController, user: User)
+}
+
+protocol TimelineViewOutput {
+    
+}
+
+class TimelineViewController: UITableViewController, getAllNoticeHandler, OnCommentCellClickListener, UISearchBarDelegate, ImageTabDelegate, TimelineViewOutput {
 
     var user: User?
     var notices: [Notice]?
@@ -16,20 +25,37 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     var image: UIImage?
     var tabHeight: CGFloat?
     
+    var presenter: TimelinePresenter!
+    
     let searchBar: UISearchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = BLACK
-        navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
-        
+        let navBar = getNavigationBar(self.view.frame.width, title: "")
+        let button = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: #selector(addTimeline))
+        button.tintColor = MAIN_RED
         searchBar.showsCancelButton = false
         searchBar.placeholder = "검색"
         searchBar.delegate = self
         searchBar.barStyle = UIBarStyle.BlackTranslucent
-        self.navigationItem.titleView = searchBar
+        navBar.items?[0].titleView = searchBar
+        navBar.items?[0].rightBarButtonItem = button
+        self.view.addSubview(navBar)
+        
+        view.backgroundColor = BLACK
+        
         tableView.tableFooterView = UIView()
+        
+        self.tabBarItem = UITabBarItem(title: "타임라인", image: UIImage(named: "ic_face_white"), tag: 1)
+        super.tabBarController?.selectedIndex = 0
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    }
+    
+    func addTimeline() {
+        if let user = user {
+            presenter.addTimeline(self, user: user)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,7 +65,9 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.performSegueWithIdentifier("SearchTimelineSegue", sender: self)
+        if let user = user {
+            presenter.searchBarClick(self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,48 +90,13 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
         if let notices = self.notices {
             let notice = notices[indexPath.row]
-            cell.notice = notice
-            cell.handler = self
-            cell.user = self.user
-            cell.authorName.text = notice.authorName
-            cell.content.text = notice.content
-            cell.created.text = dateToString(notice.created)
-            cell.likeCount.text = "\(notice.likes.count)"
-            cell.badCount.text = "\(notice.bads.count)"
-            cell.commentCount.text = "\(notice.comments.count)"
-            cell.imageTabHandler = self
-            if let image = notice.authorProfileImage {
-                cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(image)"))
+            if let user = user {
+                return TimelineCell.cell(tableView, cellForRowAtIndexPath: indexPath, notice: notice, user: user)
             }
         }
-        return cell
-    }
-    
-    func dateToString(date: NSDate) -> String {
-        var sec = (Int(NSDate().timeIntervalSince1970) - Int(date.timeIntervalSince1970))
-        var hour = 0
-        var min = 0
-        if sec < 86400 {
-            hour = sec / 3600
-            if hour > 0 {
-                sec /= hour
-            }
-            min = sec / 60
-            
-            if hour == 0 && min == 0 {
-                return "얼마 전"
-            } else if hour == 0 {
-                return "\(min)분 전"
-            } else {
-                return "\(hour)시간 전"
-            }
-        }
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
-        return dateFormatter.stringFromDate(date)
+        return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -140,10 +133,6 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
                 let vc = segue.destinationViewController as! InsertTimelineViewController
                 vc.user = user
                 vc.notice = notice
-            } else if id == "SearchTimelineSegue" {
-                let vc = segue.destinationViewController as! SearchTimelineViewController
-                vc.me = user
-                vc.notice = notice
             } else if id == "ImageDetailSegue" {
                 let vc = segue.destinationViewController as! ImageDetailViewController
                 vc.image = self.image
@@ -155,35 +144,16 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         self.notice = notice
     }
     
-    func onSettingClick(notice: Notice) {
-        self.notice = notice
-        let alert = UIAlertController(title: "설정", message: nil, preferredStyle: .Alert)
+    func onSettingClick(cell: TimelineCell, notice: Notice) {
+//        self.notice = notice
         if let user = user {
-            if notice.author == user.id {
-                alert.addAction(UIAlertAction(title: "삭제", style: .Default, handler: {
-                    action in
-                    SocketIOManager.removeNotice(notice, handler: self)
-                }))
-                alert.addAction(UIAlertAction(title: "수정", style: .Default, handler: {
-                    action in
-                    // 수정
-                    self.performSegueWithIdentifier("updateTimeline", sender: self)
-                }))
-            }
+            cell.presentSetting(viewController: self, notice: notice, user: user)
         }
-        alert.addAction(UIAlertAction(title: "취소", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func onRemoveNoticeException(code: Int) {
-        print("게시글 삭제 에러")
-    }
-    
-    func onRemoveNoticeSuccess(notice: Notice) {
-        print("게시글 삭제 성공")
+    func onRemoveNotice(notice: Notice) {
         self.notices?.removeAtIndex((self.notices?.indexOf({
             data in
-            print("data.content = \(data.content)")
             return true
         }))!)
         tableView.reloadData()

@@ -9,13 +9,24 @@
 import UIKit
 import SwiftHTTP
 
+protocol InsertTimelineViewInput {
+    func updateNotice(notice: Notice, imageUrls: [NSURL])
+    func insertNotice(user: User, content: String, imageUrls: [NSURL])
+}
 
-class InsertTimelineViewController: UIViewController, postNoticeHandler, updateNoticeHandler, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, removeImageDelegate {
+protocol InsertTimelineViewOutput {
+    
+}
+
+
+class InsertTimelineViewController: UIViewController, postNoticeHandler, updateNoticeHandler, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, removeImageDelegate, InsertTimelineViewOutput {
 
     var user: User?
     var notice: Notice?
     var images = [UIImage]()
     var imageUrls = [NSURL]()
+    
+    var presenter: InsertTimelinePresenter!
     
     let imagePicker: UIImagePickerController? = UIImagePickerController()
     
@@ -96,9 +107,9 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
             if let notice = notice {
                 // 수정
                 notice.content = contentView.text
-                SocketIOManager.updateNotice(notice, handler: self)
+                presenter.updateNotice(notice, imageUrls: imageUrls)
             } else {
-                SocketIOManager.postNotice(user.id, name: user.name, images: [], content: contentView.text, userImage: user.profileImageUri, handler: self)
+                presenter.insertNotice(user, content: contentView.text, imageUrls: imageUrls)
             }
         }
     }
@@ -157,56 +168,6 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func onPostNoticeSuccess(notice: Notice) {
-        print("노티스 작성 성공")
-        navigationController?.popViewControllerAnimated(true)
-        
-        do {
-            var count = 0
-            for url in imageUrls {
-                let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["noticeId":notice.id, "file": Upload(fileUrl: url)])
-                print("noticeId = \(notice.id)")
-                opt.start {
-                    response in
-                    count = count + 1
-                    if count == self.imageUrls.count {
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print("error = \(error)")
-        }
-    }
-    
-    func onPostNoticeException(code: Int) {
-        print("노티스 작성 실패")
-    }
-    
-    func onUpdateNoticeSuccess(notice: Notice) {
-        print("노티스 업데이트 성공")
-        
-        do {
-            var count = 0
-            for url in imageUrls {
-                let opt = try HTTP.POST("http://windsoft-oneday.herokuapp.com/upload_images", parameters: ["file": url, "noticeId":notice.id])
-                opt.start {
-                    response in
-                    count = count + 1
-                    if count == self.imageUrls.count {
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print("error = \(error)")
-        }
-    }
-    
-    func onUpdateNoticeException(code: Int) {
-        print("노티스 업데이트 실패")
     }
     
     func removeImage(index: Int) {

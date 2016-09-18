@@ -20,7 +20,7 @@ class AppDependencies {
         
         loginInteractor.output = loginPresenter
         loginPresenter.interactor = loginInteractor
-        loginPresenter.loginWireframe = loginWireframe
+        loginPresenter.wireframe = loginWireframe
         
         
         let signUpPresenter = SignUpPresenter()
@@ -50,11 +50,14 @@ class AppDependencies {
         findIdWireframe.presenter = findIdPresenter
         findIdInteractor.output = findIdPresenter
         
+        let mainWireframe = MainWireframe()
+        
         loginWireframe.findPasswordWireframe = findPasswordWireframe
         loginWireframe.findIdWireframe = findIdWireframe
         loginWireframe.signUpWireframe = signUpWireframe
         loginWireframe.rootWireframe = rootWireframe
         loginWireframe.loginPresenter = loginPresenter
+        loginWireframe.mainWireframe = mainWireframe
     }
     
     func installRootViewControllerInWindow(window: UIWindow) {

@@ -8,10 +8,21 @@
 
 import UIKit
 
-class SearchTimelineViewController: TimelineViewController, getUsersHandler {
+protocol SearchTimelineViewInput {
+    func search(user: User, content: String)
+}
 
+protocol SearchTimelineViewOutput {
+//    func
+}
+
+class SearchTimelineViewController: UITableViewController, getUsersHandler, UISearchBarDelegate {
+
+    var presenter: SearchTimelinePresenter!
     var users: [User]?
     var me: User?
+    var notices: [Notice]?
+    var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +41,10 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
         if let user = me {
             if let content = searchBar.text {
                 if !content.isEmpty {
-                    SocketIOManager.getAllNotices(user.id, count: 0, time: NSDate(), keyword: content, handler: self)
-                    SocketIOManager.getUsers(content, handler: self)
+                    presenter.search(user, content: content)
                 }
             }
         }
-    }
-    
-    override func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        return
     }
 
     // MARK: - Table view data source

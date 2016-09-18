@@ -13,6 +13,17 @@
 		900BA5E11D6DD784007589CD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 909E0B6D1D5212C000809F3C /* libsqlite3.tbd */; };
 		900BA5E31D6EE6CD007589CD /* TimelineImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900BA5E21D6EE6CD007589CD /* TimelineImageCell.swift */; };
 		900BA5E51D6EE8E8007589CD /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900BA5E41D6EE8E8007589CD /* Kingfisher.framework */; };
+		90131C691D8C00A000376480 /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90131C681D8C00A000376480 /* Timeline.xib */; };
+		90131C6B1D8C01E500376480 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6A1D8C01E500376480 /* ProfilePresenter.swift */; };
+		90131C6D1D8C01ED00376480 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6C1D8C01ED00376480 /* ProfileInteractor.swift */; };
+		90131C6F1D8C01F600376480 /* ProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6E1D8C01F600376480 /* ProfileWireframe.swift */; };
+		90131C701D8C12C900376480 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6A1D8C01E500376480 /* ProfilePresenter.swift */; };
+		90131C711D8C12C900376480 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6C1D8C01ED00376480 /* ProfileInteractor.swift */; };
+		90131C721D8C12C900376480 /* ProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C6E1D8C01F600376480 /* ProfileWireframe.swift */; };
+		90131C741D8CCCE800376480 /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C731D8CCCE800376480 /* UpdateProfilePresenter.swift */; };
+		90131C761D8CCCF300376480 /* UpdateProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C751D8CCCF300376480 /* UpdateProfileInteractor.swift */; };
+		90131C781D8CCD0200376480 /* UpdateProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C771D8CCD0200376480 /* UpdateProfileWireframe.swift */; };
+		90131C7A1D8D220E00376480 /* InsertTimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C791D8D220E00376480 /* InsertTimelineWireframe.swift */; };
 		90173D491D3B78B40054B0AF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D481D3B78B40054B0AF /* User.swift */; };
 		90173D4B1D3B92550054B0AF /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D4A1D3B92550054B0AF /* Notice.swift */; };
 		90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90173D4C1D3CB9B90054B0AF /* Comment.swift */; };
@@ -43,6 +54,12 @@
 		9018BE621D3D21FB0048004A /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE611D3D21FB0048004A /* SocketIOManager.swift */; };
 		9018BE641D3D2FB30048004A /* SocketIOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE631D3D2FB30048004A /* SocketIOProtocol.swift */; };
 		9018BE671D3E03660048004A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE661D3E03660048004A /* SignUpViewController.swift */; };
+		902148F91D8673C90037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
+		902148FA1D86741C0037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
+		902148FC1D8685100037D355 /* MainDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148FB1D8685100037D355 /* MainDependencies.swift */; };
+		902149021D86B8720037D355 /* FriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149011D86B8720037D355 /* FriendPresenter.swift */; };
+		902149041D86B87B0037D355 /* FriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149031D86B87B0037D355 /* FriendInteractor.swift */; };
+		902149061D86B88B0037D355 /* FriendWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149051D86B88B0037D355 /* FriendWireframe.swift */; };
 		903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */; };
 		903DBF471D6FCFF3005E9434 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF461D6FCFF3005E9434 /* Global.swift */; };
 		903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* NotificationViewController.swift */; };
@@ -143,6 +160,11 @@
 		907DC1EB1D80F7860069BC36 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E21D8052080069BC36 /* LoginWireframe.swift */; };
 		907DC1EC1D80F7890069BC36 /* SignUpWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1E61D805ED20069BC36 /* SignUpWireframe.swift */; };
 		907DC1EE1D811F8E0069BC36 /* FindIdWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1ED1D811F8E0069BC36 /* FindIdWireframe.swift */; };
+		907DC1F01D82C9BB0069BC36 /* TimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1EF1D82C9BB0069BC36 /* TimelineInteractor.swift */; };
+		907DC1F21D82C9C40069BC36 /* TimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */; };
+		907DC1F41D82CF680069BC36 /* SearchTimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F31D82CF680069BC36 /* SearchTimelinePresenter.swift */; };
+		907DC1F61D82CF720069BC36 /* SearchTimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F51D82CF720069BC36 /* SearchTimelineWireframe.swift */; };
+		907DC1F81D82D0380069BC36 /* SearchTimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F71D82D0380069BC36 /* SearchTimelineInteractor.swift */; };
 		909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3C1D52023A00809F3C /* DBManager.swift */; };
 		909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B3F1D520C7400809F3C /* UserDBManager.swift */; };
 		909E0B681D52111E00809F3C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B5E1D52111E00809F3C /* FMDatabase.m */; };
@@ -157,6 +179,8 @@
 		909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */; };
 		90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2F7141D5894C700E9CD66 /* CommentViewController.swift */; };
 		90B2F7171D5894D600E9CD66 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2F7161D5894D600E9CD66 /* CommentCell.swift */; };
+		90BF29541D8D8D0800418B14 /* InsertTimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF29531D8D8D0800418B14 /* InsertTimelinePresenter.swift */; };
+		90BF29561D8D8D1A00418B14 /* InsertTimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF29551D8D8D1A00418B14 /* InsertTimelineInteractor.swift */; };
 		A03C02FFB231A017ACAF3F55 /* Pods_OneDay_OneDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C4F66B1094765678AEA6C7 /* Pods_OneDay_OneDayTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +214,14 @@
 		900BA5D11D6DCD87007589CD /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = "../../Library/Developer/Xcode/DerivedData/OneDay-aahhygocqqosvudygwyxegoageul/Build/Products/Debug-iphonesimulator/SwiftHTTP/SwiftHTTP.framework"; sourceTree = "<group>"; };
 		900BA5E21D6EE6CD007589CD /* TimelineImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineImageCell.swift; sourceTree = "<group>"; };
 		900BA5E41D6EE8E8007589CD /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../Library/Developer/Xcode/DerivedData/OneDay-aahhygocqqosvudygwyxegoageul/Build/Products/Debug-iphoneos/Kingfisher/Kingfisher.framework"; sourceTree = "<group>"; };
+		90131C681D8C00A000376480 /* Timeline.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Timeline.xib; sourceTree = "<group>"; };
+		90131C6A1D8C01E500376480 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		90131C6C1D8C01ED00376480 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		90131C6E1D8C01F600376480 /* ProfileWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileWireframe.swift; sourceTree = "<group>"; };
+		90131C731D8CCCE800376480 /* UpdateProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilePresenter.swift; sourceTree = "<group>"; };
+		90131C751D8CCCF300376480 /* UpdateProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileInteractor.swift; sourceTree = "<group>"; };
+		90131C771D8CCD0200376480 /* UpdateProfileWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileWireframe.swift; sourceTree = "<group>"; };
+		90131C791D8D220E00376480 /* InsertTimelineWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelineWireframe.swift; sourceTree = "<group>"; };
 		90173D481D3B78B40054B0AF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90173D4A1D3B92550054B0AF /* Notice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		90173D4C1D3CB9B90054B0AF /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -220,6 +252,11 @@
 		9018BE611D3D21FB0048004A /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		9018BE631D3D2FB30048004A /* SocketIOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOProtocol.swift; sourceTree = "<group>"; };
 		9018BE661D3E03660048004A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		902148F81D8673C90037D355 /* MainWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
+		902148FB1D8685100037D355 /* MainDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDependencies.swift; sourceTree = "<group>"; };
+		902149011D86B8720037D355 /* FriendPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPresenter.swift; sourceTree = "<group>"; };
+		902149031D86B87B0037D355 /* FriendInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInteractor.swift; sourceTree = "<group>"; };
+		902149051D86B88B0037D355 /* FriendWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendWireframe.swift; sourceTree = "<group>"; };
 		903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		903DBF461D6FCFF3005E9434 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		903DBF491D703569005E9434 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +300,11 @@
 		907DC1E61D805ED20069BC36 /* SignUpWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpWireframe.swift; sourceTree = "<group>"; };
 		907DC1E81D80F4090069BC36 /* FindPasswordWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordWireframe.swift; sourceTree = "<group>"; };
 		907DC1ED1D811F8E0069BC36 /* FindIdWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdWireframe.swift; sourceTree = "<group>"; };
+		907DC1EF1D82C9BB0069BC36 /* TimelineInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineInteractor.swift; sourceTree = "<group>"; };
+		907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineWireframe.swift; sourceTree = "<group>"; };
+		907DC1F31D82CF680069BC36 /* SearchTimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTimelinePresenter.swift; sourceTree = "<group>"; };
+		907DC1F51D82CF720069BC36 /* SearchTimelineWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTimelineWireframe.swift; sourceTree = "<group>"; };
+		907DC1F71D82D0380069BC36 /* SearchTimelineInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTimelineInteractor.swift; sourceTree = "<group>"; };
 		909E0B2B1D51F9FD00809F3C /* OneDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneDay-Bridging-Header.h"; sourceTree = "<group>"; };
 		909E0B3C1D52023A00809F3C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		909E0B3F1D520C7400809F3C /* UserDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDBManager.swift; sourceTree = "<group>"; };
@@ -285,6 +327,8 @@
 		909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelineViewController.swift; sourceTree = "<group>"; };
 		90B2F7141D5894C700E9CD66 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		90B2F7161D5894D600E9CD66 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		90BF29531D8D8D0800418B14 /* InsertTimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelinePresenter.swift; sourceTree = "<group>"; };
+		90BF29551D8D8D1A00418B14 /* InsertTimelineInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertTimelineInteractor.swift; sourceTree = "<group>"; };
 		C7B97FED8D50ED30D4371F54 /* Pods-OneDay-OneDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDay-OneDayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDay-OneDayTests/Pods-OneDay-OneDayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE98E2F766728DFA11341334 /* Pods-OneDay-OneDayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDay-OneDayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDay-OneDayUITests/Pods-OneDay-OneDayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -364,6 +408,9 @@
 			children = (
 				904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */,
 				904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */,
+				902149011D86B8720037D355 /* FriendPresenter.swift */,
+				902149031D86B87B0037D355 /* FriendInteractor.swift */,
+				902149051D86B88B0037D355 /* FriendWireframe.swift */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -429,6 +476,16 @@
 			name = SignUp;
 			sourceTree = "<group>";
 		};
+		902148F71D8673B00037D355 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				909E0B731D522EA000809F3C /* MainViewController.swift */,
+				902148F81D8673C90037D355 /* MainWireframe.swift */,
+				902148FB1D8685100037D355 /* MainDependencies.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		903DBF481D70355A005E9434 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +530,7 @@
 		905297D31D33508700575A8B /* OneDay */ = {
 			isa = PBXGroup;
 			children = (
+				902148F71D8673B00037D355 /* Main */,
 				907DC1CF1D7FB8F20069BC36 /* FindPassword */,
 				907DC1C81D7FB8A80069BC36 /* FindId */,
 				907DC1811D7D0BAB0069BC36 /* Services */,
@@ -495,11 +553,11 @@
 				905297DB1D33508700575A8B /* Assets.xcassets */,
 				905297DD1D33508700575A8B /* LaunchScreen.storyboard */,
 				905297E01D33508700575A8B /* Info.plist */,
-				909E0B731D522EA000809F3C /* MainViewController.swift */,
 				903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */,
 				903DBF461D6FCFF3005E9434 /* Global.swift */,
 				907DC1E01D8051770069BC36 /* AppDependencies.swift */,
 				907DC1E41D8054F00069BC36 /* RootWireframe.swift */,
+				90131C681D8C00A000376480 /* Timeline.xib */,
 			);
 			path = OneDay;
 			sourceTree = "<group>";
@@ -529,6 +587,9 @@
 			isa = PBXGroup;
 			children = (
 				9059E2BD1D5C589500803ACC /* SearchTimelineViewController.swift */,
+				907DC1F31D82CF680069BC36 /* SearchTimelinePresenter.swift */,
+				907DC1F51D82CF720069BC36 /* SearchTimelineWireframe.swift */,
+				907DC1F71D82D0380069BC36 /* SearchTimelineInteractor.swift */,
 			);
 			name = SearchTimeline;
 			sourceTree = "<group>";
@@ -538,6 +599,9 @@
 			children = (
 				9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */,
 				9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */,
+				90131C6A1D8C01E500376480 /* ProfilePresenter.swift */,
+				90131C6C1D8C01ED00376480 /* ProfileInteractor.swift */,
+				90131C6E1D8C01F600376480 /* ProfileWireframe.swift */,
 			);
 			name = PresentProfile;
 			sourceTree = "<group>";
@@ -546,6 +610,9 @@
 			isa = PBXGroup;
 			children = (
 				9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */,
+				90131C731D8CCCE800376480 /* UpdateProfilePresenter.swift */,
+				90131C751D8CCCF300376480 /* UpdateProfileInteractor.swift */,
+				90131C771D8CCD0200376480 /* UpdateProfileWireframe.swift */,
 			);
 			name = UpdateProfile;
 			sourceTree = "<group>";
@@ -614,6 +681,8 @@
 				909E0B7E1D523CD200809F3C /* TimelinePresenter.swift */,
 				909E0B841D52431B00809F3C /* TimelineCell.swift */,
 				900BA5E21D6EE6CD007589CD /* TimelineImageCell.swift */,
+				907DC1EF1D82C9BB0069BC36 /* TimelineInteractor.swift */,
+				907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */,
 			);
 			name = PresentTimeline;
 			sourceTree = "<group>";
@@ -623,6 +692,9 @@
 			children = (
 				909E0B871D5300EE00809F3C /* InsertTimelineViewController.swift */,
 				9059E2C91D655B5400803ACC /* imageViewCell.swift */,
+				90131C791D8D220E00376480 /* InsertTimelineWireframe.swift */,
+				90BF29531D8D8D0800418B14 /* InsertTimelinePresenter.swift */,
+				90BF29551D8D8D1A00418B14 /* InsertTimelineInteractor.swift */,
 			);
 			name = InsertTimeline;
 			sourceTree = "<group>";
@@ -754,6 +826,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90131C691D8C00A000376480 /* Timeline.xib in Resources */,
 				905297DF1D33508700575A8B /* LaunchScreen.storyboard in Resources */,
 				905297DC1D33508700575A8B /* Assets.xcassets in Resources */,
 				905297DA1D33508700575A8B /* Main.storyboard in Resources */,
@@ -906,7 +979,9 @@
 			files = (
 				90173D941D3CCF5C0054B0AF /* String.swift in Sources */,
 				90173D8D1D3CCF5C0054B0AF /* SocketIOClientSpec.swift in Sources */,
+				90131C6D1D8C01ED00376480 /* ProfileInteractor.swift in Sources */,
 				904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */,
+				902149061D86B88B0037D355 /* FriendWireframe.swift in Sources */,
 				90173D7F1D3CCF5C0054B0AF /* NSCharacterSet.swift in Sources */,
 				905297D71D33508700575A8B /* LoginViewController.swift in Sources */,
 				90B2F7171D5894D600E9CD66 /* CommentCell.swift in Sources */,
@@ -915,26 +990,35 @@
 				907DC1E11D8051770069BC36 /* AppDependencies.swift in Sources */,
 				9059E2BE1D5C589500803ACC /* SearchTimelineViewController.swift in Sources */,
 				9059E2C51D6183FD00803ACC /* ProfileViewCell.swift in Sources */,
+				907DC1F81D82D0380069BC36 /* SearchTimelineInteractor.swift in Sources */,
 				90B2F7151D5894C700E9CD66 /* CommentViewController.swift in Sources */,
 				907DC1E91D80F4090069BC36 /* FindPasswordWireframe.swift in Sources */,
+				90131C6F1D8C01F600376480 /* ProfileWireframe.swift in Sources */,
+				907DC1F41D82CF680069BC36 /* SearchTimelinePresenter.swift in Sources */,
 				90173D801D3CCF5C0054B0AF /* SocketAckEmitter.swift in Sources */,
 				907DC1D31D7FB9120069BC36 /* FindPasswordInteractor.swift in Sources */,
 				90173D821D3CCF5C0054B0AF /* SocketAnyEvent.swift in Sources */,
 				9059E2C81D62ED9E00803ACC /* UpdateProfileViewController.swift in Sources */,
+				907DC1F01D82C9BB0069BC36 /* TimelineInteractor.swift in Sources */,
 				909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */,
 				905297D51D33508700575A8B /* AppDelegate.swift in Sources */,
+				90131C7A1D8D220E00376480 /* InsertTimelineWireframe.swift in Sources */,
 				90173D891D3CCF5C0054B0AF /* SocketEngineWebsocket.swift in Sources */,
 				9018BE621D3D21FB0048004A /* SocketIOManager.swift in Sources */,
 				907DC1D51D7FB91C0069BC36 /* FindPasswordViewController.swift in Sources */,
 				907DC1CA1D7FB8BD0069BC36 /* FindIdViewPresenter.swift in Sources */,
 				9018BE641D3D2FB30048004A /* SocketIOProtocol.swift in Sources */,
+				907DC1F61D82CF720069BC36 /* SearchTimelineWireframe.swift in Sources */,
 				90173D8A1D3CCF5C0054B0AF /* SocketEventHandler.swift in Sources */,
 				909E0B851D52431B00809F3C /* TimelineCell.swift in Sources */,
+				902149041D86B87B0037D355 /* FriendInteractor.swift in Sources */,
 				90173D4D1D3CB9B90054B0AF /* Comment.swift in Sources */,
 				909E0B691D52111E00809F3C /* FMDatabaseAdditions.m in Sources */,
 				909E0B681D52111E00809F3C /* FMDatabase.m in Sources */,
+				907DC1F21D82C9C40069BC36 /* TimelineWireframe.swift in Sources */,
 				907DC1CC1D7FB8D40069BC36 /* FindIdViewController.swift in Sources */,
 				903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */,
+				90131C6B1D8C01E500376480 /* ProfilePresenter.swift in Sources */,
 				907DC1E51D8054F00069BC36 /* RootWireframe.swift in Sources */,
 				9059E2C31D5FE04D00803ACC /* ProfileViewController.swift in Sources */,
 				909E0B881D5300EE00809F3C /* InsertTimelineViewController.swift in Sources */,
@@ -944,13 +1028,18 @@
 				90173D811D3CCF5C0054B0AF /* SocketAckManager.swift in Sources */,
 				90173D8F1D3CCF5C0054B0AF /* SocketLogger.swift in Sources */,
 				907DC1C31D7F3E500069BC36 /* SignUpPresenter.swift in Sources */,
+				902148FC1D8685100037D355 /* MainDependencies.swift in Sources */,
 				9059E2CA1D655B5400803ACC /* imageViewCell.swift in Sources */,
 				907DC17E1D7D0B4B0069BC36 /* LoginInteractor.swift in Sources */,
 				909E0B741D522EA000809F3C /* MainViewController.swift in Sources */,
+				90BF29541D8D8D0800418B14 /* InsertTimelinePresenter.swift in Sources */,
 				90173D951D3CCF5C0054B0AF /* SSLSecurity.swift in Sources */,
 				90173D921D3CCF5C0054B0AF /* SocketStringReader.swift in Sources */,
 				903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */,
+				90131C741D8CCCE800376480 /* UpdateProfilePresenter.swift in Sources */,
+				90BF29561D8D8D1A00418B14 /* InsertTimelineInteractor.swift in Sources */,
 				90173D901D3CCF5C0054B0AF /* SocketPacket.swift in Sources */,
+				90131C781D8CCD0200376480 /* UpdateProfileWireframe.swift in Sources */,
 				90173D4B1D3B92550054B0AF /* Notice.swift in Sources */,
 				907DC1D11D7FB9080069BC36 /* FindPasswordPresenter.swift in Sources */,
 				909E0B6B1D52111E00809F3C /* FMDatabaseQueue.m in Sources */,
@@ -961,6 +1050,9 @@
 				907DC1801D7D0B560069BC36 /* LoginPresenter.swift in Sources */,
 				909E0B6A1D52111E00809F3C /* FMDatabasePool.m in Sources */,
 				90173D491D3B78B40054B0AF /* User.swift in Sources */,
+				902149021D86B8720037D355 /* FriendPresenter.swift in Sources */,
+				902148F91D8673C90037D355 /* MainWireframe.swift in Sources */,
+				90131C761D8CCCF300376480 /* UpdateProfileInteractor.swift in Sources */,
 				909E0B7F1D523CD200809F3C /* TimelinePresenter.swift in Sources */,
 				904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */,
 				90173D831D3CCF5C0054B0AF /* SocketClientManager.swift in Sources */,
@@ -984,6 +1076,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				902148FA1D86741C0037D355 /* MainWireframe.swift in Sources */,
 				907DC18C1D7F24340069BC36 /* LoginInteractor.swift in Sources */,
 				907DC1D61D7FE78D0069BC36 /* FindIdViewPresenter.swift in Sources */,
 				907DC1A61D7F25100069BC36 /* SocketIOClientStatus.swift in Sources */,
@@ -995,6 +1088,7 @@
 				907DC1B91D7F25700069BC36 /* CommentCell.swift in Sources */,
 				907DC1901D7F24760069BC36 /* Notice.swift in Sources */,
 				907DC19A1D7F25100069BC36 /* SocketAckEmitter.swift in Sources */,
+				90131C721D8C12C900376480 /* ProfileWireframe.swift in Sources */,
 				907DC1BA1D7F25730069BC36 /* SearchTimelineViewController.swift in Sources */,
 				907DC1EC1D80F7890069BC36 /* SignUpWireframe.swift in Sources */,
 				907DC1DA1D7FE7910069BC36 /* FindPasswordInteractor.swift in Sources */,
@@ -1021,6 +1115,7 @@
 				907DC1C61D7F499D0069BC36 /* SignUpInteractor.swift in Sources */,
 				907DC1A31D7F25100069BC36 /* SocketEventHandler.swift in Sources */,
 				907DC1931D7F248D0069BC36 /* SocketIOClient.swift in Sources */,
+				90131C701D8C12C900376480 /* ProfilePresenter.swift in Sources */,
 				907DC1AB1D7F25170069BC36 /* SSLSecurity.swift in Sources */,
 				907DC1B61D7F256E0069BC36 /* InsertTimelineViewController.swift in Sources */,
 				907DC1D91D7FE7910069BC36 /* FindPasswordPresenter.swift in Sources */,
@@ -1029,6 +1124,7 @@
 				907DC1B71D7F256E0069BC36 /* imageViewCell.swift in Sources */,
 				907DC1B31D7F256A0069BC36 /* TimelinePresenter.swift in Sources */,
 				907DC1A21D7F25100069BC36 /* SocketEngineWebsocket.swift in Sources */,
+				90131C711D8C12C900376480 /* ProfileInteractor.swift in Sources */,
 				907DC19E1D7F25100069BC36 /* SocketEngine.swift in Sources */,
 				907DC1DF1D7FF1E00069BC36 /* FindPasswordTests.swift in Sources */,
 				907DC1AC1D7F25170069BC36 /* WebSocket.swift in Sources */,

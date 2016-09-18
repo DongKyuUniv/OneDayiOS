@@ -22,3 +22,12 @@ let MAIN_RED = UIColor.init(red: 253 / 255, green: 94 / 255, blue: 92 / 255, alp
 
 
 let NAV_BAR_BLACK = UIColor.init(red: 9 / 255, green: 9 / 255, blue: 9 / 255, alpha: 1)
+
+func getNavigationBar(width: CGFloat, title: String) -> UINavigationBar {
+    let navBar = UINavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 44.0))
+    let navItem = UINavigationItem(title: title)
+    navBar.setItems([navItem], animated: true)
+    navBar.barTintColor = NAV_BAR_BLACK
+    navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+    return navBar
+}

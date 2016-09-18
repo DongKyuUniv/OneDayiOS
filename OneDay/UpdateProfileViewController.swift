@@ -8,41 +8,30 @@
 
 import UIKit
 
-class UpdateProfileViewController: UIViewController, setNameHandler, setMailHandler, setBirthHandler {
+enum UpdateProfileError {
+    case NAME
+    case EMAIL
+    case BIRTH
+}
 
+protocol UpdateProfileViewInput {
+    func updateProfileSubmit(user: User, name: String?, email: String?, birth: NSDate)
+}
+
+protocol UpdateProfileViewOutput {
+    func updateProfileSuccess()
+    func updateProfileException(err: UpdateProfileError)
+}
+
+class UpdateProfileViewController: UIViewController, UpdateProfileViewOutput {
+
+    var presenter: UpdateProfilePresenter!
     var user: User?
-    var count = 0
     var userDelegate: UpdateUserDelegate?
     
     @IBAction func onSubmitClick(sender: UIBarButtonItem) {
         if let user = user {
-            if let name = nameLabel.text {
-                if !name.isEmpty && name != user.name {
-                    print("setName")
-                    SocketIOManager.setName(user.id, name: name, handler: self)
-                    user.name = name
-                    count += 1
-                }
-            }
-            
-            if let mail = mailLabel.text {
-                if !mail.isEmpty && mail != user.email {
-                    print("setMail")
-                    SocketIOManager.setMail(user.id, mail: mail, handler: self)
-                    user.email = mail
-                    count += 1
-                }
-            }
-            
-            if user.birth != birthDatePicker.date {
-                SocketIOManager.setBirth(user.id, birth: birthDatePicker.date, handler: self)
-                user.birth = birthDatePicker.date
-                count += 1
-            }
-            
-            if count == 0 {
-                dismissViewControllerAnimated(true, completion: nil)
-            }
+            presenter.updateProfileSubmit(user, name: nameLabel.text, email: mailLabel.text, birth: birthDatePicker.date)
         }
     }
     
@@ -61,67 +50,42 @@ class UpdateProfileViewController: UIViewController, setNameHandler, setMailHand
             birthDatePicker.date = user.birth
         }
     }
-    
-    func onSetMailSuccess() {
-        count -= 1
-        if count == 0 {
-            if let vc = navigationController {
-                vc.popViewControllerAnimated(true)
-                if let user = user {
-                    if let delegate = userDelegate {
-                        delegate.updateUser(user)
-                    }
-                }
-            }
-        }
-    }
-    
-    func onSetNameSuccess() {
-        count -= 1
-        if count == 0 {
-            if let vc = navigationController {
-                vc.popViewControllerAnimated(true)
-                if let user = user {
-                    if let delegate = userDelegate {
-                        delegate.updateUser(user)
-                    }
-                }
-            }
-        }
-    }
-    
-    func onSetMailException() {
-        let alert = UIAlertController(title: "에러", message: "메일 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func onSetNameException() {
-        let alert = UIAlertController(title: "에러", message: "이름 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func onSetBirthSuccess() {
-        count -= 1
-        if count == 0 {
-            if let vc = navigationController {
-                vc.popViewControllerAnimated(true)
-                if let user = user {
-                    if let delegate = userDelegate {
-                        delegate.updateUser(user)
-                    }
-                }
-            }
-        }
-    }
-    
-    func onSetBirthException() {
-        let alert = UIAlertController(title: "에러", message: "생일 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
 
+    
+    // UpdateProfileViewOutput
+    
+    func updateProfileException(err: UpdateProfileError) {
+        switch err {
+        case .EMAIL:
+            let alert = UIAlertController(title: "에러", message: "메일 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        case .NAME:
+            let alert = UIAlertController(title: "에러", message: "이름 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        case .BIRTH:
+            let alert = UIAlertController(title: "에러", message: "생일 설정 실패", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            print("")
+        }
+    }
+    
+    func updateProfileSuccess() {
+        if let vc = navigationController {
+            vc.popViewControllerAnimated(true)
+            if let user = user {
+                if let delegate = userDelegate {
+                    delegate.updateUser(user)
+                }
+            }
+        }
+    }
 }
 
 protocol UpdateUserDelegate {

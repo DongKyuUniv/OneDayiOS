@@ -14,7 +14,6 @@ protocol LoginViewOutput: class {
     func showPasswordEmptyError()
     func showLoginError(code: Int)
     func showDBError()
-    func showTimeline(user: User)
 }
 
 // 뷰 -> 프레젠터
@@ -115,11 +114,6 @@ class LoginViewController: UIViewController, LoginViewOutput {
     
     func showDBError() {
         self.showAlert("에러", message: "DB 생성에 문제가 발생했습니다.")
-    }
-    
-    func showTimeline(user: User) {
-        self.user = user
-        self.performSegueWithIdentifier("ShowTimelineSegue", sender: self)
     }
 }
 

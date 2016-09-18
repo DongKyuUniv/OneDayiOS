@@ -14,7 +14,7 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     
     var interactor: LoginInteractorInput!
     
-    var loginWireframe: LoginWireframe!
+    var wireframe: LoginWireframe!
     
     init () {
         SocketIOManager.create()
@@ -53,22 +53,24 @@ class LoginPresenter: LoginViewInput, LoginInteractorOutput {
     }
     
     func signUpClick() {
-        loginWireframe.presentSignUpInterface()
+        wireframe.presentSignUpInterface()
     }
     
     func findIdClick() {
-        loginWireframe.presentFindIdInterface()
+        wireframe.presentFindIdInterface()
     }
     
     func findPwClick() {
-        loginWireframe.presentFindPasswordInterface()
+        wireframe.presentFindPasswordInterface()
     }
     
     
     // LoginInteractorOutput
     
     func loginSuccess(user: User) {
-        view.showTimeline(user)
+//        wireframe.presentTimelineInterface()
+        wireframe.presentMainInterface(user)
+        print("로그인 성공")
     }
     
     func loginFailed(code: Int) {
