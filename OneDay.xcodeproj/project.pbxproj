@@ -788,15 +788,18 @@
 					905297D01D33508700575A8B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 8S882ZSFK3;
+						LastSwiftMigration = 0800;
 					};
 					905297E41D33508700575A8B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 8S882ZSFK3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 905297D01D33508700575A8B;
 					};
 					905297EF1D33508700575A8B = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 8S882ZSFK3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 905297D01D33508700575A8B;
 					};
 				};
@@ -1301,6 +1304,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDay-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -1325,6 +1329,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDay-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -1340,6 +1345,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneDay.app/OneDay";
 			};
 			name = Debug;
@@ -1355,6 +1361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayTests-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneDay.app/OneDay";
 			};
 			name = Release;
@@ -1370,6 +1377,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayUITests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = OneDay;
 			};
 			name = Debug;
@@ -1384,6 +1392,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ironfactory.OneDayUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OneDay/OneDayUITests-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = OneDay;
 			};
 			name = Release;

@@ -14,7 +14,7 @@ target 'OneDay' do
     
     target 'OneDayUITests' do
         pod 'SwiftHTTP', '~> 1.0.4'
-        pod 'Kingfisher', '~> 2.4'
+        pod 'Kingfisher', '~> 3.0'
         
     end
 end
