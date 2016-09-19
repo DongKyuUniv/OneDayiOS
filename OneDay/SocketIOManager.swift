@@ -11,7 +11,7 @@ class SocketIOManager {
     
     static func create() {
         if SocketIOManager.socket == nil {
-            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: rootServerURL)!, options: [.Log(true), .ForcePolling(true)])
+            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: rootServerURL)!, config: [.Log(true), .ForcePolling(true)])
         }
         SocketIOManager.socket!.connect()
     }
