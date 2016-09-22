@@ -54,12 +54,17 @@
 		9018BE621D3D21FB0048004A /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE611D3D21FB0048004A /* SocketIOManager.swift */; };
 		9018BE641D3D2FB30048004A /* SocketIOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE631D3D2FB30048004A /* SocketIOProtocol.swift */; };
 		9018BE671D3E03660048004A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018BE661D3E03660048004A /* SignUpViewController.swift */; };
+		901F73941D93C59000BB5903 /* CommentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73931D93C59000BB5903 /* CommentPresenter.swift */; };
+		901F73961D93C59B00BB5903 /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73951D93C59B00BB5903 /* CommentWireframe.swift */; };
+		901F73981D93C5A400BB5903 /* CommentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73971D93C5A400BB5903 /* CommentInteractor.swift */; };
 		902148F91D8673C90037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
 		902148FA1D86741C0037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
 		902148FC1D8685100037D355 /* MainDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148FB1D8685100037D355 /* MainDependencies.swift */; };
 		902149021D86B8720037D355 /* FriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149011D86B8720037D355 /* FriendPresenter.swift */; };
 		902149041D86B87B0037D355 /* FriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149031D86B87B0037D355 /* FriendInteractor.swift */; };
 		902149061D86B88B0037D355 /* FriendWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149051D86B88B0037D355 /* FriendWireframe.swift */; };
+		903C6B2A1D901ECD00AB0110 /* TimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1EF1D82C9BB0069BC36 /* TimelineInteractor.swift */; };
+		903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */; };
 		903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */; };
 		903DBF471D6FCFF3005E9434 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF461D6FCFF3005E9434 /* Global.swift */; };
 		903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* NotificationViewController.swift */; };
@@ -228,6 +233,9 @@
 		9018BE611D3D21FB0048004A /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		9018BE631D3D2FB30048004A /* SocketIOProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOProtocol.swift; sourceTree = "<group>"; };
 		9018BE661D3E03660048004A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		901F73931D93C59000BB5903 /* CommentPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentPresenter.swift; sourceTree = "<group>"; };
+		901F73951D93C59B00BB5903 /* CommentWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentWireframe.swift; sourceTree = "<group>"; };
+		901F73971D93C5A400BB5903 /* CommentInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentInteractor.swift; sourceTree = "<group>"; };
 		902148F81D8673C90037D355 /* MainWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
 		902148FB1D8685100037D355 /* MainDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDependencies.swift; sourceTree = "<group>"; };
 		902149011D86B8720037D355 /* FriendPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPresenter.swift; sourceTree = "<group>"; };
@@ -672,6 +680,9 @@
 			children = (
 				90B2F7141D5894C700E9CD66 /* CommentViewController.swift */,
 				90B2F7161D5894D600E9CD66 /* CommentCell.swift */,
+				901F73931D93C59000BB5903 /* CommentPresenter.swift */,
+				901F73951D93C59B00BB5903 /* CommentWireframe.swift */,
+				901F73971D93C5A400BB5903 /* CommentInteractor.swift */,
 			);
 			name = Comment;
 			sourceTree = "<group>";
@@ -750,7 +761,7 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "이동규";
 				TargetAttributes = {
 					905297D01D33508700575A8B = {
@@ -969,7 +980,9 @@
 				907DC1F41D82CF680069BC36 /* SearchTimelinePresenter.swift in Sources */,
 				900951591D8FE62400C524A3 /* SocketStringReader.swift in Sources */,
 				907DC1D31D7FB9120069BC36 /* FindPasswordInteractor.swift in Sources */,
+				901F73941D93C59000BB5903 /* CommentPresenter.swift in Sources */,
 				9009514A1D8FE62400C524A3 /* SocketEngineClient.swift in Sources */,
+				901F73981D93C5A400BB5903 /* CommentInteractor.swift in Sources */,
 				9059E2C81D62ED9E00803ACC /* UpdateProfileViewController.swift in Sources */,
 				907DC1F01D82C9BB0069BC36 /* TimelineInteractor.swift in Sources */,
 				909E0B401D520C7400809F3C /* UserDBManager.swift in Sources */,
@@ -1035,6 +1048,7 @@
 				9009515A1D8FE62400C524A3 /* SocketTypes.swift in Sources */,
 				909E0B3D1D52023A00809F3C /* DBManager.swift in Sources */,
 				907DC1CE1D7FB8DE0069BC36 /* FindIdInteractor.swift in Sources */,
+				901F73961D93C59B00BB5903 /* CommentWireframe.swift in Sources */,
 				900BA5E31D6EE6CD007589CD /* TimelineImageCell.swift in Sources */,
 				909E0B6C1D52111E00809F3C /* FMResultSet.m in Sources */,
 				907DC1E31D8052080069BC36 /* LoginWireframe.swift in Sources */,
@@ -1052,6 +1066,7 @@
 				907DC1D61D7FE78D0069BC36 /* FindIdViewPresenter.swift in Sources */,
 				907DC1C71D7F499D0069BC36 /* SignUpPresenter.swift in Sources */,
 				907DC1B91D7F25700069BC36 /* CommentCell.swift in Sources */,
+				903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */,
 				907DC1901D7F24760069BC36 /* Notice.swift in Sources */,
 				90131C721D8C12C900376480 /* ProfileWireframe.swift in Sources */,
 				907DC1BA1D7F25730069BC36 /* SearchTimelineViewController.swift in Sources */,
@@ -1080,6 +1095,7 @@
 				907DC1DF1D7FF1E00069BC36 /* FindPasswordTests.swift in Sources */,
 				907DC1C51D7F46B70069BC36 /* SignUpTests.swift in Sources */,
 				907DC1DD1D7FE7B10069BC36 /* FindIdTests.swift in Sources */,
+				903C6B2A1D901ECD00AB0110 /* TimelineInteractor.swift in Sources */,
 				907DC1BC1D7F25760069BC36 /* ProfileViewCell.swift in Sources */,
 				907DC1981D7F24C60069BC36 /* Global.swift in Sources */,
 				907DC1B51D7F256A0069BC36 /* TimelineImageCell.swift in Sources */,
@@ -1155,8 +1171,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1201,8 +1219,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1221,6 +1241,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1230,6 +1251,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A409BDEF46E5262F366B1E4 /* Pods-OneDay.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1256,6 +1278,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 639807AE8FE842DA5B3D6C74 /* Pods-OneDay.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1281,6 +1304,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C7B97FED8D50ED30D4371F54 /* Pods-OneDay-OneDayTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayTests/Info.plist;
@@ -1298,6 +1322,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22A16E1806383853686540A7 /* Pods-OneDay-OneDayTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayTests/Info.plist;
@@ -1314,6 +1339,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE98E2F766728DFA11341334 /* Pods-OneDay-OneDayUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1330,6 +1356,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 07DD66C763993448F3288035 /* Pods-OneDay-OneDayUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = OneDayUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

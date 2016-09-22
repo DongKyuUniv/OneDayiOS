@@ -11,19 +11,17 @@ import UIKit
 class TimelineWireframe {
     var presenter: TimelinePresenter!
     
-    var searchTimelineWireframe: SearchTimelineWireframe!
-    
-    var insertTimelineWireframe: InsertTimelineWireframe!
-    
     var presentViewController: UIViewController!
     
     func presentTimelineViewController(viewController: UITabBarController, user: User) {
+        let navigationController = getTimelineNavigationController()
         let newViewController = getTimelineViewController()
         newViewController.presenter = presenter
         presenter.view = newViewController
         newViewController.user = user
         
-        viewController.viewControllers = [newViewController]
+        navigationController.viewControllers = [newViewController]
+        viewController.viewControllers = [navigationController]
     }
     
     func presentSearchTimelineInterface(viewController: UITableViewController) {
@@ -40,12 +38,28 @@ class TimelineWireframe {
     }
     
     func presentInsertTimelineInterface(viewController: UITableViewController, user: User) {
+        let insertTimelinePresenter = InsertTimelinePresenter()
+        let insertTimelineInteractor = InsertTimelineInteractor()
+        let insertTimelineWireframe = InsertTimelineWireframe()
+        
+        insertTimelinePresenter.interactor = insertTimelineInteractor
+        insertTimelinePresenter.wireframe = insertTimelineWireframe
+        insertTimelineInteractor.presenter = insertTimelinePresenter
+        insertTimelineWireframe.presenter = insertTimelinePresenter
+        
         insertTimelineWireframe.presentInsertTimeline(viewController, user: user)
     }
     
     func getTimelineViewController() -> TimelineViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let vc = storyboard.instantiateViewControllerWithIdentifier("TimelineViewController") as! TimelineViewController
+        
+        return vc
+    }
+    
+    func getTimelineNavigationController() -> UINavigationController {
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let vc = storyboard.instantiateViewControllerWithIdentifier("NavigationController") as! UINavigationController
         return vc
     }
 }

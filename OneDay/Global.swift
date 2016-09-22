@@ -27,7 +27,6 @@ func getNavigationBar(width: CGFloat, title: String) -> UINavigationBar {
     let navBar = UINavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: width, height: 44.0))
     let navItem = UINavigationItem(title: title)
     navBar.setItems([navItem], animated: true)
-    navBar.barTintColor = NAV_BAR_BLACK
     navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     return navBar
 }

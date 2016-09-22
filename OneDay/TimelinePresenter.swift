@@ -12,7 +12,7 @@ class TimelinePresenter: TimelineViewInput {
     
     var view: TimelineViewOutput!
     
-    var interactor: TimelineInteractorInput!
+    var interactor: TimelineInteractor!
     
     var wireframe: TimelineWireframe!
     
@@ -20,10 +20,14 @@ class TimelinePresenter: TimelineViewInput {
     
     func searchBarClick(viewController: UITableViewController) {
         // 검색 바 클릭
-        wireframe.searchTimelineWireframe.presentSearchTimelineViewController(viewController: viewController)
+        wireframe.presentSearchTimelineInterface(viewController)
     }
     
     func addTimeline(viewController: UITableViewController, user: User) {
-        wireframe.insertTimelineWireframe.presentInsertTimeline(viewController, user: user)
+        wireframe.presentInsertTimelineInterface(viewController, user: user)
+    }
+    
+    func showComments(notice: Notice) {
+        
     }
 }

@@ -43,11 +43,6 @@ class MainDependencies {
         profileWireframe.presenter = profilePresenter
         
         profileWireframe.presentProfileViewController(viewController, user: user)
-        
-        
-        
-        let insertTimelinePresenter = InsertTimelinePresenter()
-        let insertTimelineInteractor = insertTimelineIn
     }
     
     func getNotificationViewController() -> NotificationViewController {

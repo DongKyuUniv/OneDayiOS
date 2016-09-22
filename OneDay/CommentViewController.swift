@@ -8,7 +8,17 @@
 
 import UIKit
 
-class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, commentHandler {
+protocol CommentViewInput {
+    func insertComment(user: User, notice: Notice, comment: String?)
+}
+
+protocol CommentViewOutput {
+    
+}
+
+class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, commentHandler, CommentViewOutput {
+    
+    var presenter: CommentPresenter!
     
     var notice: Notice?
     var user: User?
@@ -20,14 +30,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSubmit(sender: UIButton) {
         if let user = self.user {
             if let notice = self.notice {
-                if let comment = commentTextField.text {
-                    if !comment.isEmpty {
-                        SocketIOManager.comment(user.id, noticeId: notice.id, comment: comment, name: user.name, handler: self)
-                        notice.comments.append(Comment(id: user.id, notice_id: notice.id, authorId: user.id, authorProfileImage: user.profileImageUri, authorName: user.name, content: comment, created: NSDate()))
-                        tableView.reloadData()
-                        commentTextField.text = ""
-                    }
-                }
+                presenter
             }
         }
     }

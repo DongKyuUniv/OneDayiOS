@@ -79,6 +79,8 @@ class ProfileViewController: UITableViewController, UpdateUserDelegate, UpdatePr
         super.viewDidLoad()
         
         imagePicker.delegate = self
+        
+        self.tableView.registerNib(UINib(nibName: TimelineCell.CELL_ID, bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -11,6 +11,7 @@ import UIKit
 protocol TimelineViewInput {
     func searchBarClick(viewController: UITableViewController)
     func addTimeline(viewController: UITableViewController, user: User)
+    func showComments(notice: Notice)
 }
 
 protocol TimelineViewOutput {
@@ -32,27 +33,23 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let navBar = getNavigationBar(self.view.frame.width, title: "")
-        let button = UIBarButtonItem(barButtonSystemItem: .Add, target: nil, action: #selector(addTimeline))
-        button.tintColor = MAIN_RED
         searchBar.showsCancelButton = false
         searchBar.placeholder = "검색"
         searchBar.delegate = self
         searchBar.barStyle = UIBarStyle.BlackTranslucent
-        navBar.items?[0].titleView = searchBar
-        navBar.items?[0].rightBarButtonItem = button
-        self.view.addSubview(navBar)
+        self.navigationItem.titleView = searchBar
         
         view.backgroundColor = BLACK
         
         tableView.tableFooterView = UIView()
-        
+        self.navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
         self.tabBarItem = UITabBarItem(title: "타임라인", image: UIImage(named: "ic_face_white"), tag: 1)
         super.tabBarController?.selectedIndex = 0
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        self.tableView.registerNib(UINib(nibName: "Timeline", bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
     }
     
-    func addTimeline() {
+    @IBAction func onClickInsertTimeline(sender: AnyObject) {
         if let user = user {
             presenter.addTimeline(self, user: user)
         }
@@ -93,7 +90,9 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         if let notices = self.notices {
             let notice = notices[indexPath.row]
             if let user = user {
-                return TimelineCell.cell(tableView, cellForRowAtIndexPath: indexPath, notice: notice, user: user)
+                let cell = TimelineCell.cell(tableView, cellForRowAtIndexPath: indexPath, notice: notice, user: user)
+                cell.handler = self
+                return cell
             }
         }
         return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
@@ -141,7 +140,8 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     }
     
     func onCommentClick(notice: Notice) {
-        self.notice = notice
+//        self.notice = notice
+        presenter.showComments(notice)
     }
     
     func onSettingClick(cell: TimelineCell, notice: Notice) {

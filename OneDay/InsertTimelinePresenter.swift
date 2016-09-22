@@ -26,4 +26,9 @@ class InsertTimelinePresenter: InsertTimelineViewInput, InsertTimelineInteractor
         interactor.insertNotice(user, content: content, imageUrls: imageUrls)
     }
     
+    // InsertTimelineInteractorOutput
+    
+    func postNoticeComplete() {
+        view.insertTimelineComplete()
+    }
 }

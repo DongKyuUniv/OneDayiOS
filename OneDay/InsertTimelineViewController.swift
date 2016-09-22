@@ -15,11 +15,11 @@ protocol InsertTimelineViewInput {
 }
 
 protocol InsertTimelineViewOutput {
-    
+    func insertTimelineComplete()
 }
 
 
-class InsertTimelineViewController: UIViewController, postNoticeHandler, updateNoticeHandler, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, removeImageDelegate, InsertTimelineViewOutput {
+class InsertTimelineViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, removeImageDelegate, InsertTimelineViewOutput {
 
     var user: User?
     var notice: Notice?
@@ -122,7 +122,7 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("dddddd")
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
         
@@ -176,5 +176,10 @@ class InsertTimelineViewController: UIViewController, postNoticeHandler, updateN
         if images.count == 0 {
             imageCollectionViewHeight.constant = 0
         }
+    }
+    
+    // InsertTimelineViewOutput
+    func insertTimelineComplete() {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

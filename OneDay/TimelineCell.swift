@@ -11,6 +11,7 @@ import Kingfisher
 
 class TimelineCell: UITableViewCell, likeHandler, badHandler, removeNoticeHandler, UINavigationControllerDelegate, UICollectionViewDataSource {
     
+    static let CELL_ID = "TimelineCell"
     var notice: Notice?
     var user: User?
     var handler: OnCommentCellClickListener?
@@ -24,8 +25,7 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, removeNoticeHandle
     
     
     static func cell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, notice: Notice, user: User) -> TimelineCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID, forIndexPath: indexPath) as! TimelineCell
         cell.notice = notice
         cell.user = user
         cell.authorName.text = notice.authorName
