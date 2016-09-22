@@ -78,7 +78,7 @@ public struct SocketIOClientConfiguration : ArrayLiteralConvertible, CollectionT
         return backingArray.generate()
     }
     
-    public mutating func insert(_ element: Element, replacing replace: Bool = true) {
+    public mutating func insert(element: Element, replacing replace: Bool = true) {
         for i in 0..<backingArray.count where backingArray[i] == element {
             guard replace else { return }
             

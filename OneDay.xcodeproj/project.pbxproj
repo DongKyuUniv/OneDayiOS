@@ -67,7 +67,6 @@
 		903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */; };
 		903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */; };
 		903DBF471D6FCFF3005E9434 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF461D6FCFF3005E9434 /* Global.swift */; };
-		903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* NotificationViewController.swift */; };
 		904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */; };
 		904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */; };
 		905297D51D33508700575A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297D41D33508700575A8B /* AppDelegate.swift */; };
@@ -112,7 +111,6 @@
 		907DC1BB1D7F25760069BC36 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C21D5FE04D00803ACC /* ProfileViewController.swift */; };
 		907DC1BC1D7F25760069BC36 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C41D6183FD00803ACC /* ProfileViewCell.swift */; };
 		907DC1BD1D7F25780069BC36 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059E2C71D62ED9E00803ACC /* UpdateProfileViewController.swift */; };
-		907DC1BE1D7F257B0069BC36 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF491D703569005E9434 /* NotificationViewController.swift */; };
 		907DC1C11D7F3E480069BC36 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1C01D7F3E480069BC36 /* SignUpInteractor.swift */; };
 		907DC1C31D7F3E500069BC36 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1C21D7F3E500069BC36 /* SignUpPresenter.swift */; };
 		907DC1C51D7F46B70069BC36 /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1C41D7F46B70069BC36 /* SignUpTests.swift */; };
@@ -243,7 +241,6 @@
 		902149051D86B88B0037D355 /* FriendWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendWireframe.swift; sourceTree = "<group>"; };
 		903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		903DBF461D6FCFF3005E9434 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		903DBF491D703569005E9434 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewController.swift; sourceTree = "<group>"; };
 		904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		905297D11D33508700575A8B /* OneDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -462,14 +459,6 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
-		903DBF481D70355A005E9434 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				903DBF491D703569005E9434 /* NotificationViewController.swift */,
-			);
-			name = Notification;
-			sourceTree = "<group>";
-		};
 		9040CBF51D426815001AD800 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +499,6 @@
 				907DC1CF1D7FB8F20069BC36 /* FindPassword */,
 				907DC1C81D7FB8A80069BC36 /* FindId */,
 				907DC1811D7D0BAB0069BC36 /* Services */,
-				903DBF481D70355A005E9434 /* Notification */,
 				9059E2C61D62ED7F00803ACC /* UpdateProfile */,
 				9059E2C11D5FDFF100803ACC /* PresentProfile */,
 				9059E2BC1D5C584900803ACC /* SearchTimeline */,
@@ -1021,7 +1009,6 @@
 				900951471D8FE62400C524A3 /* SocketAnyEvent.swift in Sources */,
 				90BF29541D8D8D0800418B14 /* InsertTimelinePresenter.swift in Sources */,
 				900951481D8FE62400C524A3 /* SocketClientManager.swift in Sources */,
-				903DBF4A1D703569005E9434 /* NotificationViewController.swift in Sources */,
 				90131C741D8CCCE800376480 /* UpdateProfilePresenter.swift in Sources */,
 				900951491D8FE62400C524A3 /* SocketEngine.swift in Sources */,
 				90BF29561D8D8D1A00418B14 /* InsertTimelineInteractor.swift in Sources */,
@@ -1107,7 +1094,6 @@
 				907DC1B01D7F25520069BC36 /* SignUpViewController.swift in Sources */,
 				907DC1AE1D7F254F0069BC36 /* FriendTableViewController.swift in Sources */,
 				907DC1911D7F24760069BC36 /* Comment.swift in Sources */,
-				907DC1BE1D7F257B0069BC36 /* NotificationViewController.swift in Sources */,
 				907DC1921D7F24870069BC36 /* UserDBManager.swift in Sources */,
 				907DC1AD1D7F25460069BC36 /* ImageDetailViewController.swift in Sources */,
 				907DC18F1D7F24760069BC36 /* User.swift in Sources */,

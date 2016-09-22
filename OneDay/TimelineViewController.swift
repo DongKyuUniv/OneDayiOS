@@ -62,7 +62,7 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        if let user = user {
+        if user != nil {
             presenter.searchBarClick(self)
         }
     }

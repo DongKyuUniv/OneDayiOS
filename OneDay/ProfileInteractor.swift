@@ -34,7 +34,7 @@ class ProfileInteractor: ProfileInteractorInput, getProfileHandler {
                 let filename = res.text
                 if let code = code {
                     if code == 200 {
-                        if let filename = filename {
+                        if filename != nil {
                             SocketIOManager.getProfile(user.id, handler: self)
                             
                         }
