@@ -43,6 +43,25 @@ class MainDependencies {
         profileWireframe.presenter = profilePresenter
         
         profileWireframe.presentProfileViewController(viewController, user: user)
+        
+        
+        let insertTimelinePresenter = InsertTimelinePresenter()
+        let insertTimelineInteractor = InsertTimelineInteractor()
+        let insertTimelineWireframe = InsertTimelineWireframe()
+        
+        insertTimelinePresenter.interactor = insertTimelineInteractor
+        insertTimelinePresenter.wireframe = insertTimelineWireframe
+        insertTimelineInteractor.presenter = insertTimelinePresenter
+        insertTimelineWireframe.presenter = insertTimelinePresenter
+        
+        let searchTimelinePresenter = SearchTimelinePresenter()
+        let searchTimelineInteractor = SearchTimelineInteractor()
+        let searchTimelineWireframe = SearchTimelineWireframe()
+        
+        searchTimelineWireframe.presenter = searchTimelinePresenter
+        searchTimelinePresenter.wireframe = searchTimelineWireframe
+        searchTimelinePresenter.interactor = searchTimelineInteractor
+        searchTimelineInteractor.presenter = searchTimelinePresenter
     }
     
     func getNotificationViewController() -> NotificationViewController {

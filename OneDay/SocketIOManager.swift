@@ -208,7 +208,11 @@ class SocketIOManager {
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
                 if code == 200 {
-                    handler.onCommentSucces()
+                    let noticeId = resJson["noticeId"] as! String
+                    let commentId = resJson["commentId"] as! String
+                    let content = resJson["comment"] as! String
+                    let created = resJson["created"] as! NSDate
+                    handler.onCommentSuccess(noticeId, commentId: commentId, content: content, created: created)
                 } else {
                     handler.onCommentException(code)
                 }
@@ -231,7 +235,7 @@ class SocketIOManager {
                 return
             }
             
-            if let httpStatus = res as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+            if let httpStatus = res as? NSHTTPURLResponse  where httpStatus.statusCode != 200 {
                 print("status code is not 200!!")
                 print("res = \(res)")
             }

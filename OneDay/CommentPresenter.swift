@@ -18,6 +18,20 @@ class CommentPresenter: CommentViewInput, CommentInteractorOutput {
     // CommentViewInput
     
     func insertComment(user: User, notice: Notice, comment: String?) {
-        
+        if let comment = comment {
+            interactor.insertComment(user, notice: notice, comment: comment)
+        } else {
+            view.insertCommentError(InsertCommentError.EMPTY_COMMENT)
+        }
+    }
+    
+    // CommentInteractorOutput
+    
+    func insertCommentSuccess(comment: Comment) {
+        view.insertCommentSuccess(comment)
+    }
+    
+    func insertCommentException(err: InsertCommentError) {
+        view.insertCommentError(err)
     }
 }

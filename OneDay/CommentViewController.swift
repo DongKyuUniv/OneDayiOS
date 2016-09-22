@@ -8,15 +8,21 @@
 
 import UIKit
 
+enum InsertCommentError {
+    case EMPTY_COMMENT
+    case FAIL_TO_SERVER
+}
+
 protocol CommentViewInput {
     func insertComment(user: User, notice: Notice, comment: String?)
 }
 
 protocol CommentViewOutput {
-    
+    func insertCommentError(err: InsertCommentError)
+    func insertCommentSuccess(comment: Comment)
 }
 
-class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, commentHandler, CommentViewOutput {
+class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CommentViewOutput {
     
     var presenter: CommentPresenter!
     
@@ -30,7 +36,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSubmit(sender: UIButton) {
         if let user = self.user {
             if let notice = self.notice {
-                presenter
+                presenter.insertComment(user, notice: notice, comment: commentTextField.text)
             }
         }
     }
@@ -122,13 +128,28 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         return UITableViewAutomaticDimension
     }
     
+    // InsertCommentOutput
     
-    func onCommentSucces() {
-        print("댓글 달기 성공")
+    func insertCommentError(err: InsertCommentError) {
+        var alert: UIAlertController!
+        
+        switch err {
+        case .EMPTY_COMMENT:
+            alert = UIAlertController(title: "에러", message: "댓글을 입력해주세요", preferredStyle: .Alert)
+            
+        case .FAIL_TO_SERVER:
+            alert = UIAlertController(title: "에러", message: "서버등록에 실패했습니다", preferredStyle: .Alert)
+        default:
+            print("dd")
+        }
+        
+        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    
-    func onCommentException(code: Int) {
-        print("댓글 달기 실패")
+    func insertCommentSuccess(comment: Comment) {
+        if let notice = notice {
+            notice.comments.append(comment)
+        }
     }
 }

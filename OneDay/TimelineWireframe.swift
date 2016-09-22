@@ -13,6 +13,10 @@ class TimelineWireframe {
     
     var presentViewController: UIViewController!
     
+    var insertTimelineWireframe: InsertTimelineWireframe!
+    
+    var searchTimelineWireframe: SearchTimelineWireframe!
+    
     func presentTimelineViewController(viewController: UITabBarController, user: User) {
         let navigationController = getTimelineNavigationController()
         let newViewController = getTimelineViewController()
@@ -25,28 +29,10 @@ class TimelineWireframe {
     }
     
     func presentSearchTimelineInterface(viewController: UITableViewController) {
-        let searchTimelinePresenter = SearchTimelinePresenter()
-        let searchTimelineInteractor = SearchTimelineInteractor()
-        let searchTimelineWireframe = SearchTimelineWireframe()
-        
-        searchTimelineWireframe.presenter = searchTimelinePresenter
-        searchTimelinePresenter.wireframe = searchTimelineWireframe
-        searchTimelinePresenter.interactor = searchTimelineInteractor
-        searchTimelineInteractor.presenter = searchTimelinePresenter
-        
         searchTimelineWireframe.presentSearchTimelineViewController(viewController: viewController)
     }
     
     func presentInsertTimelineInterface(viewController: UITableViewController, user: User) {
-        let insertTimelinePresenter = InsertTimelinePresenter()
-        let insertTimelineInteractor = InsertTimelineInteractor()
-        let insertTimelineWireframe = InsertTimelineWireframe()
-        
-        insertTimelinePresenter.interactor = insertTimelineInteractor
-        insertTimelinePresenter.wireframe = insertTimelineWireframe
-        insertTimelineInteractor.presenter = insertTimelinePresenter
-        insertTimelineWireframe.presenter = insertTimelinePresenter
-        
         insertTimelineWireframe.presentInsertTimeline(viewController, user: user)
     }
     

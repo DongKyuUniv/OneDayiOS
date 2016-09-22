@@ -39,7 +39,7 @@ protocol badHandler {
 }
 
 protocol commentHandler {
-    func onCommentSucces()
+    func onCommentSuccess(noticeId: String, commentId: String, content: String, created: NSDate)
     func onCommentException(code: Int)
 }
 
