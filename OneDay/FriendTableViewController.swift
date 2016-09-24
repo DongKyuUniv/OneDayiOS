@@ -28,6 +28,8 @@ class FriendTableViewController: UITableViewController, getFriendProfileHandler,
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,7 +84,12 @@ class FriendTableViewController: UITableViewController, getFriendProfileHandler,
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Friend"
+        if section == 0 {
+            return "친구 추천"
+        } else if section == 1 {
+            return "친구 목록"
+        }
+        return ""
     }
     
     func loadImage(imageView: UIImageView, url: String) {

@@ -57,6 +57,19 @@
 		901F73941D93C59000BB5903 /* CommentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73931D93C59000BB5903 /* CommentPresenter.swift */; };
 		901F73961D93C59B00BB5903 /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73951D93C59B00BB5903 /* CommentWireframe.swift */; };
 		901F73981D93C5A400BB5903 /* CommentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73971D93C5A400BB5903 /* CommentInteractor.swift */; };
+		901F73991D9416FF00BB5903 /* CommentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73931D93C59000BB5903 /* CommentPresenter.swift */; };
+		901F739A1D9416FF00BB5903 /* CommentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73951D93C59B00BB5903 /* CommentWireframe.swift */; };
+		901F739B1D9416FF00BB5903 /* CommentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901F73971D93C5A400BB5903 /* CommentInteractor.swift */; };
+		901F739C1D94170C00BB5903 /* InsertTimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C791D8D220E00376480 /* InsertTimelineWireframe.swift */; };
+		901F739D1D94170C00BB5903 /* InsertTimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF29531D8D8D0800418B14 /* InsertTimelinePresenter.swift */; };
+		901F739E1D94170C00BB5903 /* InsertTimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF29551D8D8D1A00418B14 /* InsertTimelineInteractor.swift */; };
+		901F739F1D94171500BB5903 /* SearchTimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F31D82CF680069BC36 /* SearchTimelinePresenter.swift */; };
+		901F73A01D94171500BB5903 /* SearchTimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F51D82CF720069BC36 /* SearchTimelineWireframe.swift */; };
+		901F73A11D94171500BB5903 /* SearchTimelineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F71D82D0380069BC36 /* SearchTimelineInteractor.swift */; };
+		901F73A21D94269B00BB5903 /* FriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149011D86B8720037D355 /* FriendPresenter.swift */; };
+		901F73A31D94269B00BB5903 /* FriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149031D86B87B0037D355 /* FriendInteractor.swift */; };
+		901F73A41D94269B00BB5903 /* FriendWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902149051D86B88B0037D355 /* FriendWireframe.swift */; };
+		901F73A51D942E3500BB5903 /* MainDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148FB1D8685100037D355 /* MainDependencies.swift */; };
 		902148F91D8673C90037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
 		902148FA1D86741C0037D355 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148F81D8673C90037D355 /* MainWireframe.swift */; };
 		902148FC1D8685100037D355 /* MainDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902148FB1D8685100037D355 /* MainDependencies.swift */; };
@@ -496,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				902148F71D8673B00037D355 /* Main */,
+				909E0B751D52301D00809F3C /* PresentTimeline */,
 				907DC1CF1D7FB8F20069BC36 /* FindPassword */,
 				907DC1C81D7FB8A80069BC36 /* FindId */,
 				907DC1811D7D0BAB0069BC36 /* Services */,
@@ -504,7 +518,6 @@
 				9059E2BC1D5C584900803ACC /* SearchTimeline */,
 				90B2F70F1D58927D00E9CD66 /* Comment */,
 				909E0B861D5300C900809F3C /* InsertTimeline */,
-				909E0B751D52301D00809F3C /* PresentTimeline */,
 				909E0B3E1D520C5800809F3C /* DBManagers */,
 				909E0B1A1D51F85A00809F3C /* FMDB */,
 				9040CBF51D426815001AD800 /* Login */,
@@ -1048,15 +1061,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				901F73A31D94269B00BB5903 /* FriendInteractor.swift in Sources */,
 				902148FA1D86741C0037D355 /* MainWireframe.swift in Sources */,
 				907DC18C1D7F24340069BC36 /* LoginInteractor.swift in Sources */,
+				901F73A01D94171500BB5903 /* SearchTimelineWireframe.swift in Sources */,
 				907DC1D61D7FE78D0069BC36 /* FindIdViewPresenter.swift in Sources */,
 				907DC1C71D7F499D0069BC36 /* SignUpPresenter.swift in Sources */,
 				907DC1B91D7F25700069BC36 /* CommentCell.swift in Sources */,
 				903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */,
 				907DC1901D7F24760069BC36 /* Notice.swift in Sources */,
 				90131C721D8C12C900376480 /* ProfileWireframe.swift in Sources */,
+				901F739B1D9416FF00BB5903 /* CommentInteractor.swift in Sources */,
 				907DC1BA1D7F25730069BC36 /* SearchTimelineViewController.swift in Sources */,
+				901F73A11D94171500BB5903 /* SearchTimelineInteractor.swift in Sources */,
 				907DC1EC1D80F7890069BC36 /* SignUpWireframe.swift in Sources */,
 				907DC1DA1D7FE7910069BC36 /* FindPasswordInteractor.swift in Sources */,
 				907DC1B81D7F25700069BC36 /* CommentViewController.swift in Sources */,
@@ -1081,6 +1098,7 @@
 				90131C711D8C12C900376480 /* ProfileInteractor.swift in Sources */,
 				907DC1DF1D7FF1E00069BC36 /* FindPasswordTests.swift in Sources */,
 				907DC1C51D7F46B70069BC36 /* SignUpTests.swift in Sources */,
+				901F73A51D942E3500BB5903 /* MainDependencies.swift in Sources */,
 				907DC1DD1D7FE7B10069BC36 /* FindIdTests.swift in Sources */,
 				903C6B2A1D901ECD00AB0110 /* TimelineInteractor.swift in Sources */,
 				907DC1BC1D7F25760069BC36 /* ProfileViewCell.swift in Sources */,
@@ -1088,14 +1106,22 @@
 				907DC1B51D7F256A0069BC36 /* TimelineImageCell.swift in Sources */,
 				907DC18A1D7F0A7F0069BC36 /* LoginPresenter.swift in Sources */,
 				907DC1971D7F24BA0069BC36 /* MainViewController.swift in Sources */,
+				901F739E1D94170C00BB5903 /* InsertTimelineInteractor.swift in Sources */,
 				907DC1891D7F08500069BC36 /* LoginPresenterTests.swift in Sources */,
 				907DC1D81D7FE78D0069BC36 /* FindIdInteractor.swift in Sources */,
 				907DC1AF1D7F254F0069BC36 /* FriendTableViewCell.swift in Sources */,
+				901F739F1D94171500BB5903 /* SearchTimelinePresenter.swift in Sources */,
+				901F739D1D94170C00BB5903 /* InsertTimelinePresenter.swift in Sources */,
+				901F739C1D94170C00BB5903 /* InsertTimelineWireframe.swift in Sources */,
+				901F739A1D9416FF00BB5903 /* CommentWireframe.swift in Sources */,
+				901F73A21D94269B00BB5903 /* FriendPresenter.swift in Sources */,
 				907DC1B01D7F25520069BC36 /* SignUpViewController.swift in Sources */,
 				907DC1AE1D7F254F0069BC36 /* FriendTableViewController.swift in Sources */,
 				907DC1911D7F24760069BC36 /* Comment.swift in Sources */,
 				907DC1921D7F24870069BC36 /* UserDBManager.swift in Sources */,
+				901F73A41D94269B00BB5903 /* FriendWireframe.swift in Sources */,
 				907DC1AD1D7F25460069BC36 /* ImageDetailViewController.swift in Sources */,
+				901F73991D9416FF00BB5903 /* CommentPresenter.swift in Sources */,
 				907DC18F1D7F24760069BC36 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

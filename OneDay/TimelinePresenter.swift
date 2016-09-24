@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelinePresenter: TimelineViewInput {
+class TimelinePresenter: TimelineViewInput, TimelineInteractorOutput {
     
     var view: TimelineViewOutput!
     
@@ -27,7 +27,7 @@ class TimelinePresenter: TimelineViewInput {
         wireframe.presentInsertTimelineInterface(viewController, user: user)
     }
     
-    func showComments(notice: Notice) {
-        
+    func showComments(viewController: UIViewController, user: User, notice: Notice) {
+        wireframe.presentCommentInterface(viewController, user: user, notice: notice)
     }
 }

@@ -16,6 +16,7 @@ class FriendWireframe {
         let newViewController = getFriendViewController()
         newViewController.user = user
         newViewController.presenter = presenter
+        newViewController.tabBarItem = UITabBarItem(title: "친구", image: UIImage(named: "ic_people_white"), tag: 2)
         
         viewController.viewControllers?.append(newViewController)
     }

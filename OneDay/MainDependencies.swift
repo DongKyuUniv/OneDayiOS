@@ -62,11 +62,19 @@ class MainDependencies {
         searchTimelinePresenter.wireframe = searchTimelineWireframe
         searchTimelinePresenter.interactor = searchTimelineInteractor
         searchTimelineInteractor.presenter = searchTimelinePresenter
-    }
-    
-    func getNotificationViewController() -> NotificationViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("NotificationViewController") as! NotificationViewController
-        return viewController
+        
+        
+        let commentPresenter = CommentPresenter()
+        let commentWireframe = CommentWireframe()
+        let commentInteractor = CommentInteractor()
+        
+        commentPresenter.interactor = commentInteractor
+        commentPresenter.wireframe = commentWireframe
+        commentWireframe.presenter = commentPresenter
+        commentInteractor.presenter = commentPresenter
+        
+        timelineWireframe.searchTimelineWireframe = searchTimelineWireframe
+        timelineWireframe.insertTimelineWireframe = insertTimelineWireframe
+        timelineWireframe.commentWireframe = commentWireframe
     }
 }

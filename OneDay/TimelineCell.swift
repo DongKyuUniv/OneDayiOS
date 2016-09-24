@@ -12,7 +12,17 @@ import Kingfisher
 class TimelineCell: UITableViewCell, likeHandler, badHandler, removeNoticeHandler, UINavigationControllerDelegate, UICollectionViewDataSource {
     
     static let CELL_ID = "TimelineCell"
-    var notice: Notice?
+    var notice: Notice? {
+        didSet(oldVal) {
+            if let notice = notice {
+                if notice.images.count == 0 {
+                    imageCollectionViewHeight.constant = 0
+                } else {
+                    imageCollectionViewHeight.constant = 220
+                }
+            }
+        }
+    }
     var user: User?
     var handler: OnCommentCellClickListener?
     var imageTabHandler: ImageTabDelegate?
@@ -45,14 +55,6 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, removeNoticeHandle
         
         likeImage.image = likeImage.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         likeImage.tintColor = MAIN_RED
-        
-        if let notice = notice {
-            if notice.images.count == 0 {
-                imageCollectionViewHeight.constant = 0
-            } else {
-                imageCollectionViewHeight.constant = 220
-            }
-        }
     }
     
     @IBOutlet weak var profileImage: UIImageView!

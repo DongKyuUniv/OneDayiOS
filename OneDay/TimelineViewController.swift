@@ -11,7 +11,7 @@ import UIKit
 protocol TimelineViewInput {
     func searchBarClick(viewController: UITableViewController)
     func addTimeline(viewController: UITableViewController, user: User)
-    func showComments(notice: Notice)
+    func showComments(viewController: UIViewController, user: User, notice: Notice)
 }
 
 protocol TimelineViewOutput {
@@ -43,7 +43,6 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         
         tableView.tableFooterView = UIView()
         self.navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
-        self.tabBarItem = UITabBarItem(title: "타임라인", image: UIImage(named: "ic_face_white"), tag: 1)
         super.tabBarController?.selectedIndex = 0
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.tableView.registerNib(UINib(nibName: "Timeline", bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
@@ -118,30 +117,11 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         print("글 다 받아오기 실패")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("segue id = \(segue.identifier)")
-        if let id = segue.identifier {
-            if id == "CommentSegue" {
-                let vc = segue.destinationViewController as! CommentViewController
-                vc.notice = notice
-                vc.user = user
-            } else if id == "insertTimeline" {
-                let vc = segue.destinationViewController as! InsertTimelineViewController
-                vc.user = user
-            } else if id == "updateTimeline" {
-                let vc = segue.destinationViewController as! InsertTimelineViewController
-                vc.user = user
-                vc.notice = notice
-            } else if id == "ImageDetailSegue" {
-                let vc = segue.destinationViewController as! ImageDetailViewController
-                vc.image = self.image
-            }
-        }
-    }
-    
     func onCommentClick(notice: Notice) {
 //        self.notice = notice
-        presenter.showComments(notice)
+        if let user = self.user {
+            presenter.showComments(self, user: user, notice: notice)
+        }
     }
     
     func onSettingClick(cell: TimelineCell, notice: Notice) {

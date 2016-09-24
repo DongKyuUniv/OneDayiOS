@@ -12,7 +12,14 @@ class CommentWireframe {
     
     var presenter: CommentPresenter!
     
-    
+    func presentCommentViewController(viewController: UIViewController, user: User, notice: Notice) {
+        let newViewController = getCommentViewController()
+        newViewController.user = user
+        newViewController.notice = notice
+        newViewController.presenter = presenter
+        presenter.view = newViewController
+        viewController.navigationController?.pushViewController(newViewController, animated: true)
+    }
     
     func getCommentViewController() -> CommentViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())

@@ -17,6 +17,7 @@ class ProfileWireframe {
         newViewController.presenter = presenter
         newViewController.user = user
         presenter?.view = newViewController
+        newViewController.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(named: "ic_person_outline_white"), tag: 3)
         viewController.viewControllers?.append(newViewController)
     }
     
