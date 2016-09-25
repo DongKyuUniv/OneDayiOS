@@ -12,10 +12,11 @@ class SearchTimelineWireframe {
     
     var presenter: SearchTimelinePresenter!
     
-    func presentSearchTimelineViewController(viewController vc: UITableViewController) {
+    func presentSearchTimelineViewController(viewController vc: UITableViewController, user: User) {
         let newViewController = getSearchTimelineViewController()
         newViewController.presenter = presenter
-        
+        newViewController.me = user
+        vc.navigationController?.pushViewController(newViewController, animated: false)
     }
     
     func getSearchTimelineViewController() -> SearchTimelineViewController {

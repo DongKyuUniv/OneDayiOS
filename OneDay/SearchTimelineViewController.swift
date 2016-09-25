@@ -27,9 +27,13 @@ class SearchTimelineViewController: UITableViewController, getUsersHandler, UISe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar = UISearchBar()
         searchBar.becomeFirstResponder()
+        searchBar.delegate = self
+        self.navigationItem.titleView = searchBar
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SearchTimelineViewController.dismissKeyboard)))
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
     func dismissKeyboard() {

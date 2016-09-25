@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TimelineViewInput {
-    func searchBarClick(viewController: UITableViewController)
+    func searchBarClick(viewController: UITableViewController, user: User)
     func addTimeline(viewController: UITableViewController, user: User)
     func showComments(viewController: UIViewController, user: User, notice: Notice)
 }
@@ -39,8 +39,6 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
         searchBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationItem.titleView = searchBar
         
-        view.backgroundColor = BLACK
-        
         tableView.tableFooterView = UIView()
         self.navigationController?.navigationBar.barTintColor = NAV_BAR_BLACK
         super.tabBarController?.selectedIndex = 0
@@ -61,8 +59,8 @@ class TimelineViewController: UITableViewController, getAllNoticeHandler, OnComm
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        if user != nil {
-            presenter.searchBarClick(self)
+        if let user = user {
+            presenter.searchBarClick(self, user: user)
         }
     }
 

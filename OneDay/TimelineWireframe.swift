@@ -31,8 +31,8 @@ class TimelineWireframe {
         viewController.viewControllers = [navigationController]
     }
     
-    func presentSearchTimelineInterface(viewController: UITableViewController) {
-        searchTimelineWireframe.presentSearchTimelineViewController(viewController: viewController)
+    func presentSearchTimelineInterface(viewController: UITableViewController, user: User) {
+        searchTimelineWireframe.presentSearchTimelineViewController(viewController: viewController, user: user)
     }
     
     func presentInsertTimelineInterface(viewController: UITableViewController, user: User) {

@@ -69,6 +69,14 @@ class ProfileViewController: UITableViewController, UpdateUserDelegate, UpdatePr
         return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     override func viewDidAppear(animated: Bool) {
         if let user = user {
             presenter.getProfile(user)
@@ -80,7 +88,9 @@ class ProfileViewController: UITableViewController, UpdateUserDelegate, UpdatePr
         
         imagePicker.delegate = self
         
-        self.tableView.registerNib(UINib(nibName: TimelineCell.CELL_ID, bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
+        self.tableView.tableFooterView = UIView()
+        self.tableView.registerNib(UINib(nibName: "Timeline", bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

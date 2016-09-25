@@ -25,6 +25,7 @@ class SearchTimelineInteractor: SearchTimelineInteractorInput, getAllNoticeHandl
     // SearchTimelineInteractorInput
     
     func search(user: User, content: String) {
+        print("search")
         SocketIOManager.getAllNotices(user.id, count: 0, time: NSDate(), keyword: content, handler: self)
         SocketIOManager.getUsers(content, handler: self)
     }

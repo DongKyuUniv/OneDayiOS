@@ -836,7 +836,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="463" sectionHeaderHeight="28" sectionFooterHeight="28" id="beb-vn-JE5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineCell" id="2O5-U5-BQ8" customClass="TimelineCell" customModule="OneDay" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="463"/>
@@ -993,11 +993,11 @@
         <!--타임라인 검색-->
         <scene sceneID="IVg-DP-10M">
             <objects>
-                <tableViewController title="타임라인 검색" id="tKC-SX-tXn" customClass="SearchTimelineViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTimelineViewController" title="타임라인 검색" id="tKC-SX-tXn" customClass="SearchTimelineViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="v8G-1m-eYJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="60" id="JNt-R8-QmZ" customClass="FriendTableViewCell" customModule="OneDay" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -1014,11 +1014,12 @@
                                             <frame key="frameInset" minX="70" minY="18" width="266" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="tTE-0O-FiN" id="I00-QJ-dlP"/>
                                     <outlet property="profileImage" destination="aa7-cT-fIG" id="cOM-dP-D2Y"/>
@@ -1057,7 +1058,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSK-Dx-eDP">
-                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.98431372549999996" green="0.36862745099999999" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1085,7 +1086,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="R7v-Ys-1lF">
-                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="219" id="gH8-q5-MMy"/>
                                 </constraints>
@@ -1130,7 +1131,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="9Yf-Kd-dVM" firstAttribute="top" secondItem="8IT-uf-9Ux" secondAttribute="bottom" constant="17" id="4pl-JX-URJ"/>
                             <constraint firstItem="RSK-Dx-eDP" firstAttribute="trailing" secondItem="xju-Mf-8qb" secondAttribute="trailingMargin" id="6rE-6u-cg9"/>
@@ -1188,7 +1189,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U8B-gu-EOk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="146" id="QwY-zg-Xvr" customClass="ProfileViewCell" customModule="OneDay" customModuleProvider="target">
@@ -1257,7 +1258,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="gVg-RC-avU" secondAttribute="bottom" constant="36.5" id="tAF-Pm-ems"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="birthLabel" destination="Ua1-fw-aub" id="VEU-Ru-Qk6"/>
                                     <outlet property="emailLabel" destination="hZB-vN-Mpe" id="3uw-7d-Z8Q"/>
@@ -1358,7 +1359,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="WYk-xt-HLc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.13986141979694366" green="0.13986141979694366" blue="0.13986141979694366" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.10196078568696976" blue="0.10196078568696976" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="75" id="rRO-MF-OvK" customClass="FriendTableViewCell" customModule="OneDay" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="75"/>
@@ -1408,7 +1409,7 @@
                                         <constraint firstItem="CQY-dF-udD" firstAttribute="leading" secondItem="3KV-Pf-zpn" secondAttribute="trailing" constant="15" id="w1N-tl-9pV"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.13986141979694366" green="0.13986141979694366" blue="0.13986141979694366" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="friendRequestWidth" destination="z6J-ck-5U5" id="hbU-2v-qIp"/>
                                     <outlet property="nameLabel" destination="CQY-dF-udD" id="cIh-Ty-uwW"/>

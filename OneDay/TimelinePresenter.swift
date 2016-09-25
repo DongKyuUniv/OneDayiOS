@@ -18,9 +18,9 @@ class TimelinePresenter: TimelineViewInput, TimelineInteractorOutput {
     
     // TimelineViewInput
     
-    func searchBarClick(viewController: UITableViewController) {
+    func searchBarClick(viewController: UITableViewController, user: User) {
         // 검색 바 클릭
-        wireframe.presentSearchTimelineInterface(viewController)
+        wireframe.presentSearchTimelineInterface(viewController, user: user)
     }
     
     func addTimeline(viewController: UITableViewController, user: User) {
