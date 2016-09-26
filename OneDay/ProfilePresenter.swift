@@ -26,6 +26,10 @@ class ProfilePresenter: ProfileViewInput, ProfileInteractorOutput {
         interactor?.getProfile(user)
     }
     
+    func onUpdateProfileClick(viewController: UIViewController, user: User) {
+        wireframe?.presentUpdateProfileInterface(viewController, user: user)
+    }
+    
     
     // ProfileInteractorOutput
     

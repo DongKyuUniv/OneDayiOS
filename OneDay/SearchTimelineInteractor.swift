@@ -13,7 +13,8 @@ protocol SearchTimelineInteractorInput {
 }
 
 protocol SearchTimelineInteractorOutput {
-    
+    func setUsers(users: [User])
+    func setNotices(notices: [Notice])
 }
 
 class SearchTimelineInteractor: SearchTimelineInteractorInput, getAllNoticeHandler, getUsersHandler {
@@ -25,17 +26,17 @@ class SearchTimelineInteractor: SearchTimelineInteractorInput, getAllNoticeHandl
     // SearchTimelineInteractorInput
     
     func search(user: User, content: String) {
-        print("search")
+        print("search       ")
         SocketIOManager.getAllNotices(user.id, count: 0, time: NSDate(), keyword: content, handler: self)
         SocketIOManager.getUsers(content, handler: self)
     }
     
     func onGetUserSuccess(users: [User]) {
-        
+        presenter.setUsers(users)
     }
     
     func onGetAllNoticeSuccess(notices: [Notice]) {
-        
+        presenter.setNotices(notices)
     }
     
     func onGetUserException(code: Int) {

@@ -73,6 +73,17 @@ class MainDependencies {
         commentWireframe.presenter = commentPresenter
         commentInteractor.presenter = commentPresenter
         
+        let updateProfilePresenter = UpdateProfilePresenter()
+        let updateProfileInteractor = UpdateProfileIneteractor()
+        let updateProfileWireframe = UpdateProfileWireframe()
+        
+        updateProfilePresenter.interactor = updateProfileInteractor
+        updateProfilePresenter.wireframe = updateProfileWireframe
+        updateProfileWireframe.presenter = updateProfilePresenter
+        updateProfileInteractor.presenter = updateProfilePresenter
+        
+        profileWireframe.updateProfileWireframe = updateProfileWireframe
+        
         timelineWireframe.searchTimelineWireframe = searchTimelineWireframe
         timelineWireframe.insertTimelineWireframe = insertTimelineWireframe
         timelineWireframe.commentWireframe = commentWireframe

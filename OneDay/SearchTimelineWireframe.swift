@@ -16,6 +16,7 @@ class SearchTimelineWireframe {
         let newViewController = getSearchTimelineViewController()
         newViewController.presenter = presenter
         newViewController.me = user
+        presenter.view = newViewController
         vc.navigationController?.pushViewController(newViewController, animated: false)
     }
     

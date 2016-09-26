@@ -12,6 +12,8 @@ class ProfileWireframe {
     
     var presenter: ProfilePresenter?
     
+    var updateProfileWireframe: UpdateProfileWireframe!
+    
     func presentProfileViewController(viewController: UITabBarController, user: User) {
         let newViewController = getProfileViewContrller()
         newViewController.presenter = presenter
@@ -19,6 +21,10 @@ class ProfileWireframe {
         presenter?.view = newViewController
         newViewController.tabBarItem = UITabBarItem(title: "프로필", image: UIImage(named: "ic_person_outline_white"), tag: 3)
         viewController.viewControllers?.append(newViewController)
+    }
+    
+    func presentUpdateProfileInterface(viewController: UIViewController, user: User) {
+        updateProfileWireframe.presentUpdateProfileViewController(viewController, user: user)
     }
     
     func getProfileViewContrller() -> ProfileViewController {

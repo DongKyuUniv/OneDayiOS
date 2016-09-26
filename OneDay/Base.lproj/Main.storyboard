@@ -1289,7 +1289,7 @@
         <!--프로필 수정-->
         <scene sceneID="uh5-N7-4X8">
             <objects>
-                <viewController title="프로필 수정" id="o0M-8F-J1g" customClass="UpdateProfileViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdateProfileViewController" title="프로필 수정" id="o0M-8F-J1g" customClass="UpdateProfileViewController" customModule="OneDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wiY-gW-lwO"/>
                         <viewControllerLayoutGuide type="bottom" id="6Fb-r2-kmu"/>
@@ -1350,7 +1350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOU-5C-CMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-914" y="2625"/>
+            <point key="canvasLocation" x="2148" y="1149"/>
         </scene>
         <!--친구-->
         <scene sceneID="JDH-Oz-Wry">

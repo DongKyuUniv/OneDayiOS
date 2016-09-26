@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4qe-5g-bXl" id="90n-40-I17">
-                <frame key="frameInset" width="600" height="462"/>
+                <frame key="frameInset" width="600" height="462.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y2h-gE-I5s">
@@ -98,7 +98,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelimeImageCell" id="iKL-BX-Rlh" customClass="TimelineImageCell" customModule="OneDay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1" width="220" height="220"/>
+                                <rect key="frame" x="0.0" y="0.5" width="220" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
@@ -211,6 +211,7 @@
                 <outlet property="likeImage" destination="d58-VI-sQI" id="U4t-rg-3Va"/>
                 <outlet property="profileImage" destination="Y2h-gE-I5s" id="hDg-Fr-xr5"/>
             </connections>
+            <point key="canvasLocation" x="34" y="77.5"/>
         </tableViewCell>
     </objects>
     <resources>

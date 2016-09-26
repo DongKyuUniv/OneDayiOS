@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileViewInput {
     func imagePickerController(localPath: String, user: User)
     func getProfile(user: User)
+    func onUpdateProfileClick(viewController: UIViewController, user:User)
 }
 
 protocol ProfileViewOutput{
@@ -93,17 +94,6 @@ class ProfileViewController: UITableViewController, UpdateUserDelegate, UpdatePr
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
-        if let id = segue.identifier {
-            if id == "updateProfileSegue" {
-                print("data 전송 성공")
-                let vc = segue.destinationViewController as! UpdateProfileViewController
-                vc.user = user
-                vc.userDelegate = self
-            }
-        }
-    }
     
     func updateUser(user: User) {
         self.user = user
@@ -142,6 +132,12 @@ class ProfileViewController: UITableViewController, UpdateUserDelegate, UpdatePr
     func getProfile(notices: [Notice]) {
         self.notices = notices
         tableView.reloadData()
+    }
+    
+    func onUpdateProfileClick() {
+        if let user = user {
+            presenter.onUpdateProfileClick(self, user: user)
+        }
     }
     
     func setProfileImage(filename: String) {

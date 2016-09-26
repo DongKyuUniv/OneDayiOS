@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchTimelinePresenter: SearchTimelineViewInput {
+class SearchTimelinePresenter: SearchTimelineViewInput, SearchTimelineInteractorOutput {
     
     var view: SearchTimelineViewOutput!
     
@@ -20,5 +20,16 @@ class SearchTimelinePresenter: SearchTimelineViewInput {
     
     func search(user: User, content: String) {
         interactor.search(user, content: content)
+    }
+    
+    
+    // SearchTimelineInteractorOutput
+    
+    func setUsers(users: [User]) {
+        view.setUsers(users)
+    }
+    
+    func setNotices(notices: [Notice]) {
+        view.setNotices(notices)
     }
 }

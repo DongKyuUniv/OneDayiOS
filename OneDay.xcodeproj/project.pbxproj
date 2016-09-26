@@ -80,6 +80,9 @@
 		903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907DC1F11D82C9C40069BC36 /* TimelineWireframe.swift */; };
 		903DBF451D6F1014005E9434 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF441D6F1014005E9434 /* ImageDetailViewController.swift */; };
 		903DBF471D6FCFF3005E9434 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DBF461D6FCFF3005E9434 /* Global.swift */; };
+		9042C2D31D98C95E000C9A2F /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C731D8CCCE800376480 /* UpdateProfilePresenter.swift */; };
+		9042C2D41D98C95E000C9A2F /* UpdateProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C751D8CCCF300376480 /* UpdateProfileInteractor.swift */; };
+		9042C2D51D98C95E000C9A2F /* UpdateProfileWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90131C771D8CCD0200376480 /* UpdateProfileWireframe.swift */; };
 		904BACB31D3A50E800AB72A8 /* FriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB21D3A50E800AB72A8 /* FriendTableViewController.swift */; };
 		904BACB51D3A659600AB72A8 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904BACB41D3A659600AB72A8 /* FriendTableViewCell.swift */; };
 		905297D51D33508700575A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905297D41D33508700575A8B /* AppDelegate.swift */; };
@@ -1068,6 +1071,7 @@
 				907DC1D61D7FE78D0069BC36 /* FindIdViewPresenter.swift in Sources */,
 				907DC1C71D7F499D0069BC36 /* SignUpPresenter.swift in Sources */,
 				907DC1B91D7F25700069BC36 /* CommentCell.swift in Sources */,
+				9042C2D41D98C95E000C9A2F /* UpdateProfileInteractor.swift in Sources */,
 				903C6B2B1D901ECD00AB0110 /* TimelineWireframe.swift in Sources */,
 				907DC1901D7F24760069BC36 /* Notice.swift in Sources */,
 				90131C721D8C12C900376480 /* ProfileWireframe.swift in Sources */,
@@ -1082,6 +1086,7 @@
 				907DC1D71D7FE78D0069BC36 /* FindIdViewController.swift in Sources */,
 				907DC1B21D7F256A0069BC36 /* TimelineViewController.swift in Sources */,
 				907DC1EB1D80F7860069BC36 /* LoginWireframe.swift in Sources */,
+				9042C2D31D98C95E000C9A2F /* UpdateProfilePresenter.swift in Sources */,
 				907DC1BD1D7F25780069BC36 /* UpdateProfileViewController.swift in Sources */,
 				907DC1EA1D80F77C0069BC36 /* FindPasswordWireframe.swift in Sources */,
 				907DC1B41D7F256A0069BC36 /* TimelineCell.swift in Sources */,
@@ -1105,6 +1110,7 @@
 				907DC1981D7F24C60069BC36 /* Global.swift in Sources */,
 				907DC1B51D7F256A0069BC36 /* TimelineImageCell.swift in Sources */,
 				907DC18A1D7F0A7F0069BC36 /* LoginPresenter.swift in Sources */,
+				9042C2D51D98C95E000C9A2F /* UpdateProfileWireframe.swift in Sources */,
 				907DC1971D7F24BA0069BC36 /* MainViewController.swift in Sources */,
 				901F739E1D94170C00BB5903 /* InsertTimelineInteractor.swift in Sources */,
 				907DC1891D7F08500069BC36 /* LoginPresenterTests.swift in Sources */,
