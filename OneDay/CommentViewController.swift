@@ -8,7 +8,23 @@
 
 import UIKit
 
-class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, commentHandler {
+enum InsertCommentError {
+    case EMPTY_COMMENT
+    case FAIL_TO_SERVER
+}
+
+protocol CommentViewInput {
+    func insertComment(user: User, notice: Notice, comment: String?)
+}
+
+protocol CommentViewOutput {
+    func insertCommentError(err: InsertCommentError)
+    func insertCommentSuccess(comment: Comment)
+}
+
+class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CommentViewOutput {
+    
+    var presenter: CommentPresenter!
     
     var notice: Notice?
     var user: User?
@@ -20,18 +36,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSubmit(sender: UIButton) {
         if let user = self.user {
             if let notice = self.notice {
-                if let comment = commentTextField.text {
-                    if !comment.isEmpty {
-                        SocketIOManager.comment(user.id, noticeId: notice.id, comment: comment, name: user.name, handler: self)
-                        notice.comments.append(Comment(id: user.id, notice_id: notice.id, authorId: user.id, authorProfileImage: user.profileImageUri, authorName: user.name, content: comment, created: NSDate()))
-                        tableView.reloadData()
-                        commentTextField.text = ""
-                    }
-                }
+                presenter.insertComment(user, notice: notice, comment: commentTextField.text)
             }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +47,9 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.tintColor = ULTRA_LIGHT_BLACK
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CommentViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CommentViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
@@ -119,13 +130,28 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         return UITableViewAutomaticDimension
     }
     
+    // InsertCommentOutput
     
-    func onCommentSucces() {
-        print("댓글 달기 성공")
+    func insertCommentError(err: InsertCommentError) {
+        var alert: UIAlertController!
+        
+        switch err {
+        case .EMPTY_COMMENT:
+            alert = UIAlertController(title: "에러", message: "댓글을 입력해주세요", preferredStyle: .Alert)
+            
+        case .FAIL_TO_SERVER:
+            alert = UIAlertController(title: "에러", message: "서버등록에 실패했습니다", preferredStyle: .Alert)
+        default:
+            print("dd")
+        }
+        
+        alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    
-    func onCommentException(code: Int) {
-        print("댓글 달기 실패")
+    func insertCommentSuccess(comment: Comment) {
+        if let notice = notice {
+            notice.comments.append(comment)
+        }
     }
 }

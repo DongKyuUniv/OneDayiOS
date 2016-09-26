@@ -8,17 +8,48 @@
 
 import UIKit
 
-class SearchTimelineViewController: TimelineViewController, getUsersHandler {
+protocol SearchTimelineViewInput {
+    func search(user: User, content: String)
+}
 
+protocol SearchTimelineViewOutput {
+    func setUsers(users: [User])
+    func setNotices(notices: [Notice])
+}
+
+class SearchTimelineViewController: UITableViewController, getUsersHandler, UISearchBarDelegate, SearchTimelineViewOutput {
+
+    var presenter: SearchTimelinePresenter!
     var users: [User]?
     var me: User?
+    var notices: [Notice]?
+    var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar = UISearchBar()
         searchBar.becomeFirstResponder()
+        searchBar.delegate = self
+        searchBar.barStyle = .BlackTranslucent
+        searchBar.tintColor = MAIN_RED
+        self.navigationItem.titleView = searchBar
+        self.navigationController?.navigationBar.tintColor = MAIN_RED
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+        self.tableView.registerNib(UINib(nibName: "Timeline", bundle: nil), forCellReuseIdentifier: TimelineCell.CELL_ID)
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        self.tableView.tableFooterView = UIView()
+        
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SearchTimelineViewController.dismissKeyboard)))
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func dismissKeyboard() {
@@ -30,15 +61,10 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
         if let user = me {
             if let content = searchBar.text {
                 if !content.isEmpty {
-                    SocketIOManager.getAllNotices(user.id, count: 0, time: NSDate(), keyword: content, handler: self)
-                    SocketIOManager.getUsers(content, handler: self)
+                    presenter.search(user, content: content)
                 }
             }
         }
-    }
-    
-    override func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        return
     }
 
     // MARK: - Table view data source
@@ -57,9 +83,13 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as! TimelineCell
-            cell.user = me
-            return cell
+            if let notices = notices {
+                if let user = me {
+                    let cell = TimelineCell.cell(tableView, cellForRowAtIndexPath: indexPath, notice: notices[indexPath.row], user: user)
+                    cell.user = user
+                    return cell
+                }
+            }
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell") as! FriendTableViewCell
             if let users = users {
@@ -68,6 +98,7 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
             }
             return cell
         }
+        return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,5 +122,17 @@ class SearchTimelineViewController: TimelineViewController, getUsersHandler {
     
     func onGetUserException(code: Int) {
         print("getUsers 실패")
+    }
+    
+    //  SearchTimelineViewOutput
+    
+    func setUsers(users: [User]) {
+        self.users = users
+        self.tableView.reloadData()
+    }
+    
+    func setNotices(notices: [Notice]) {
+        self.notices = notices
+        self.tableView.reloadData()
     }
 }

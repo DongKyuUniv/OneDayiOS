@@ -11,7 +11,7 @@ class SocketIOManager {
     
     static func create() {
         if SocketIOManager.socket == nil {
-            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: rootServerURL)!, options: [.Log(true), .ForcePolling(true)])
+            SocketIOManager.socket = SocketIOClient(socketURL: NSURL(string: rootServerURL)!, config: [.Log(true), .ForcePolling(true)])
         }
         SocketIOManager.socket!.connect()
     }
@@ -69,7 +69,7 @@ class SocketIOManager {
     
     static func getAllNotices(userId: String, count: Int, time: NSDate, handler: getAllNoticeHandler) {
         do {
-            let reqData = ["userId": userId, "count": count, "time": (time.timeIntervalSince1970 * 1000) as! NSNumber]
+            let reqData = ["userId": userId, "count": count, "time": (time.timeIntervalSince1970 * 1000) as NSNumber]
             let reqDataStr = try NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted)
             let reqDataJson = try NSJSONSerialization.JSONObjectWithData(reqDataStr, options: [])
             socket?.emit("getAllNotices", reqDataJson)
@@ -208,7 +208,11 @@ class SocketIOManager {
                 let resJson = data[0]
                 let code = resJson["code"] as! Int
                 if code == 200 {
-                    handler.onCommentSucces()
+                    let noticeId = resJson["noticeId"] as! String
+                    let commentId = resJson["commentId"] as! String
+                    let content = resJson["comment"] as! String
+                    let created = resJson["created"] as! NSDate
+                    handler.onCommentSuccess(noticeId, commentId: commentId, content: content, created: created)
                 } else {
                     handler.onCommentException(code)
                 }
@@ -231,7 +235,7 @@ class SocketIOManager {
                 return
             }
             
-            if let httpStatus = res as? NSHTTPURLResponse where httpStatus.statusCode != 200 {
+            if let httpStatus = res as? NSHTTPURLResponse  where httpStatus.statusCode != 200 {
                 print("status code is not 200!!")
                 print("res = \(res)")
             }
@@ -455,6 +459,50 @@ class SocketIOManager {
             }
         } catch let err {
             print(err)
+        }
+    }
+    
+    static func findId(email: String, handler: findIdHandler) {
+        do {
+            let reqData = ["userMail": email]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("findId", reqJson)
+                socket.once("findId", callback: { data, _ in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        let id = resJson["userId"] as! String
+                        handler.onFindIdSuccess(id)
+                    } else {
+                        handler.onFindIdException(code)
+                    }
+                })
+            }
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    static func findPassword(userId id: String, email: String, handler: findPasswordHandler) {
+        do {
+            let reqData = ["userMail": email, "userId": id]
+            let reqJson = try NSJSONSerialization.JSONObjectWithData(NSJSONSerialization.dataWithJSONObject(reqData, options: .PrettyPrinted), options: [])
+            if let socket = socket {
+                socket.emit("findPw", reqJson)
+                socket.once("findPw", callback: { data, _ in
+                    let resJson = data[0]
+                    let code = resJson["code"] as! Int
+                    if code == 200 {
+                        let password = resJson["password"] as! String
+                        handler.onFindPasswordSuccess(password)
+                    } else {
+                        handler.onFindPasswordException(code)
+                    }
+                })
+            }
+        } catch let error {
+            print(error)
         }
     }
 }

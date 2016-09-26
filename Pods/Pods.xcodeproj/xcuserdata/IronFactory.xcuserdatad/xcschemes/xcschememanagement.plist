@@ -2,19 +2,47 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OneDay-OneDayTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OneDay-OneDayUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OneDay.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftHTTP.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>24F0D7FAE0DDF85ADF6954A777D4DF0C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>491950E1C462501D57A1E2C06A36EE57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5696DD605C4CA292F02B0CB61FC555E8</key>
+		<key>6F9D4849BFB032FF1950FD15BD4ECBB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C60BA314D8950F598E8C040A17435B67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -25,11 +53,6 @@
 			<true/>
 		</dict>
 		<key>E96E13C4D3B5B5FC0651440734C2BF4D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F20ADA174C7EEF2135BCCC43BAA7EF6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

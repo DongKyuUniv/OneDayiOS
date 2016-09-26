@@ -7,45 +7,36 @@
 //
 
 import UIKit
-import Contacts
 
-class FriendTableViewController: UITableViewController, getFriendProfileHandler, recommendFriendByPhoneNumberHandler {
+protocol FriendTableViewInput {
+    func getFriendsPhone(friends: [String])
+}
+
+protocol FriendTableViewOutput {
+    func setFriendsPhone(friends: [String]);
+}
+
+class FriendTableViewController: UITableViewController, getFriendProfileHandler, recommendFriendByPhoneNumberHandler, FriendTableViewOutput {
     
     var user: User?
     var friends: [User]?
     var recommendFriends: [User]?
     
+    var presenter: FriendPresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
     override func viewDidAppear(animated: Bool) {
         if let user = user {
-            SocketIOManager.getFriendProfile(user.friends, handler: self)
+            presenter?.getFriendsPhone(user.friends)
             
-            // 연락처 동기화
-            var friends = [String]()
-            let store = CNContactStore()
-            let fetchRequest = CNContactFetchRequest(keysToFetch: [CNContactPhoneNumbersKey])
-            do {
-                try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: {contact, stop in
-                    if let phoneNumContact = contact.phoneNumbers.first {
-                        let number = phoneNumContact.value as! CNPhoneNumber
-                        if let phoneNumber = number.valueForKey("digits") {
-                            print(phoneNumber)
-                            friends.append(phoneNumber as! String)
-                        }
-                    }
-                })
-            } catch let err {
-                print(err)
-                let alert = UIAlertController(title: "에러", message: "에러", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "주소록 접근 실패", style: .Default, handler: nil))
-                presentViewController(alert, animated: true, completion: nil)
-            }
-            SocketIOManager.recommendFriendByPhoneNumber(user.id, friendPhoneNumbers: friends, handler: self)
+            SocketIOManager.getFriendProfile(user.friends, handler: self)
         }
     }
 
@@ -93,7 +84,12 @@ class FriendTableViewController: UITableViewController, getFriendProfileHandler,
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Friend"
+        if section == 0 {
+            return "친구 추천"
+        } else if section == 1 {
+            return "친구 목록"
+        }
+        return ""
     }
     
     func loadImage(imageView: UIImageView, url: String) {
@@ -126,5 +122,13 @@ class FriendTableViewController: UITableViewController, getFriendProfileHandler,
     
     func onRecommendFriendByPhoneNumberException() {
         print("친구 추천 실패")
+    }
+    
+    // FriendTableViewOutput
+    
+    func setFriendsPhone(friends: [String]) {
+        if let user = user {
+            SocketIOManager.recommendFriendByPhoneNumber(user.id, friendPhoneNumbers: friends, handler: self)
+        }
     }
 }

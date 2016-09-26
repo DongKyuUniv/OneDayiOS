@@ -6,10 +6,28 @@
 //  Copyright © 2016년 이동규. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class TimelinePresenter {
+class TimelinePresenter: TimelineViewInput, TimelineInteractorOutput {
     
+    var view: TimelineViewOutput!
     
+    var interactor: TimelineInteractor!
     
+    var wireframe: TimelineWireframe!
+    
+    // TimelineViewInput
+    
+    func searchBarClick(viewController: UITableViewController, user: User) {
+        // 검색 바 클릭
+        wireframe.presentSearchTimelineInterface(viewController, user: user)
+    }
+    
+    func addTimeline(viewController: UITableViewController, user: User) {
+        wireframe.presentInsertTimelineInterface(viewController, user: user)
+    }
+    
+    func showComments(viewController: UIViewController, user: User, notice: Notice) {
+        wireframe.presentCommentInterface(viewController, user: user, notice: notice)
+    }
 }

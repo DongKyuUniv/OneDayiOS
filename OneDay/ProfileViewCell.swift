@@ -21,7 +21,9 @@ class ProfileViewCell: UITableViewCell {
     var handler: UpdateProfileDelegate?
     
     @IBAction func onUpdateProfileClick(sender: UIButton) {
-        
+        if let handler = handler {
+            handler.onUpdateProfileClick()
+        }
     }
     
     @IBAction func updateProfileImage(sender: UIButton) {
@@ -44,4 +46,5 @@ class ProfileViewCell: UITableViewCell {
 
 protocol UpdateProfileDelegate {
     func onPickImage()
+    func onUpdateProfileClick()
 }

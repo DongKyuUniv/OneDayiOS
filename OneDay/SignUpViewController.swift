@@ -8,9 +8,31 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, signUpHandler {
+enum SignUpError {
+    case EMPTY_ID
+    case EMPTY_PASSWORD
+    case EMPTY_CONFIRM
+    case EMPTY_EMAIL
+    case EMPTY_BIRTH
+    case EMPTY_NAME
+    case PASSWORD_IS_NOT_EQUAL_CONFIRM
+    case INVALID_PHONE
+    case ID_IS_ALREADY_USED
+}
+
+protocol SignUpViewOutput: class {
+    func showError(err: SignUpError)
+}
+
+protocol SignUpViewInput: class {
+    func signUp(user: User, password: String, confirm: String) -> Bool
+}
+
+class SignUpViewController: UIViewController, SignUpViewOutput {
     
     var isKeyboardShow = false
+    
+    var presenter: SignUpPresenter!
     
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var idInput: UITextField!
@@ -30,31 +52,8 @@ class SignUpViewController: UIViewController, signUpHandler {
         let birth = birthPicker.date
         let phoneNum = phone.text
         
-        if let  phoneNum = phoneNum {
-            if !phoneNum.isEmpty {
-                if let number = Int(phoneNum) {
-                } else {
-                    showError("번호 형식이 맞지 않습니다.")
-                }
-            }
-        }
-        
-        print("name = \(name)")
-        if name.isEmpty {
-            showError("이름을 입력하세요")
-        } else if id.isEmpty {
-            showError("아이디를 입력하세요")
-        } else if password.isEmpty {
-            showError("비밀번호를 입력하세요")
-        } else if confirm.isEmpty {
-            showError("비밀번호 확인을 입력하세요")
-        } else if email.isEmpty {
-            showError("이메일을 입력하세요")
-        } else if password != confirm {
-            showError("비밀번호가 일치하지 않습니다")
-        } else {
-            SocketIOManager.signUp(id, password: password, birth: birth, email: email, name: name, phone: phoneNum, handler: self)
-        }
+        let user = User(id: id, name: name, profileImageUri: "", birth: birth, email: email, likes: [], bads: [], comments: [], notices: [], friends: [], phone: phoneNum!)
+        presenter.signUp(user, password: password, confirm: confirm)
     }
     
     @IBAction func tab(sender: UITapGestureRecognizer) {
@@ -105,16 +104,30 @@ class SignUpViewController: UIViewController, signUpHandler {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func onSignUpSuccess() {
-        navigationController?.popViewControllerAnimated(true)
-    }
+    // SignUpViewOutput
     
-    func onSignUpException(code: Int) {
-        if code == 300 {
-            // 아이디 이미 있음
+    func showError(err: SignUpError) {
+        switch err {
+        case SignUpError.INVALID_PHONE:
+            showError("번호 형식이 맞지 않습니다.")
+        case SignUpError.EMPTY_NAME:
+            showError("이름을 입력하세요")
+        case SignUpError.EMPTY_ID:
+            showError("아이디를 입력하세요")
+        case SignUpError.EMPTY_PASSWORD:
+            showError("비밀번호를 입력하세요")
+        case SignUpError.EMPTY_CONFIRM:
+            showError("비밀번호 확인을 입력하세요")
+        case SignUpError.EMPTY_EMAIL:
+            showError("이메일을 입력하세요")
+        case SignUpError.PASSWORD_IS_NOT_EQUAL_CONFIRM:
+            showError("비밀번호가 일치하지 않습니다")
+        case SignUpError.ID_IS_ALREADY_USED:
             let alert = UIAlertController(title: "회원가입", message: "이미 사용중인 아이디입니다.", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "확인", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+        default:
+            print("dd")
         }
     }
 }

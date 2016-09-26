@@ -77,7 +77,7 @@ public class HTTPSecurity {
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), {
                 var collect = Array<SecKeyRef>()
                 for cert in certs {
-                    if let data = cert.certData where cert.key == nil  {
+                    if let data = cert.certData  where cert.key == nil  {
                         cert.key = self.extractPublicKey(data)
                     }
                     if let k = cert.key {
@@ -147,10 +147,10 @@ public class HTTPSecurity {
                 collect.append(SecCertificateCreateWithData(nil,cert)!)
             }
             SecTrustSetAnchorCertificates(trust,collect)
-            var result: SecTrustResultType = 0
+            var result: SecTrustResultType = SecTrustResultType(rawValue: 0)!
             SecTrustEvaluate(trust,&result)
-            let r = Int(result)
-            if r == kSecTrustResultUnspecified || r == kSecTrustResultProceed {
+//            let r = Int(result.rawValue)
+            if result == SecTrustResultType.Unspecified || result == SecTrustResultType.Proceed {
                 var trustedCount = 0
                 for serverCert in serverCerts {
                     for cert in certs {
@@ -194,7 +194,7 @@ public class HTTPSecurity {
         var possibleTrust: SecTrust?
         SecTrustCreateWithCertificates(cert, policy, &possibleTrust)
         if let trust = possibleTrust {
-            var result: SecTrustResultType = 0
+            var result: SecTrustResultType = SecTrustResultType(rawValue: 0)!
             SecTrustEvaluate(trust, &result)
             return SecTrustCopyPublicKey(trust)
         }

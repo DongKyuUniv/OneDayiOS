@@ -39,7 +39,7 @@ protocol badHandler {
 }
 
 protocol commentHandler {
-    func onCommentSucces()
+    func onCommentSuccess(noticeId: String, commentId: String, content: String, created: NSDate)
     func onCommentException(code: Int)
 }
 
@@ -101,4 +101,14 @@ protocol setBirthHandler {
 protocol recommendFriendByPhoneNumberHandler {
     func onRecommendFriendByPhoneNumberSuccess(user: [User])
     func onRecommendFriendByPhoneNumberException()
+}
+
+protocol findIdHandler {
+    func onFindIdSuccess(id: String)
+    func onFindIdException(code: Int)
+}
+
+protocol findPasswordHandler {
+    func onFindPasswordSuccess(password: String)
+    func onFindPasswordException(code: Int)
 }

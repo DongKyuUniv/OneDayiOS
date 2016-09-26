@@ -9,31 +9,52 @@
 import UIKit
 import Kingfisher
 
-class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationControllerDelegate, UICollectionViewDataSource {
+class TimelineCell: UITableViewCell, likeHandler, badHandler, removeNoticeHandler, UINavigationControllerDelegate, UICollectionViewDataSource {
     
-    var notice: Notice?
+    static let CELL_ID = "TimelineCell"
+    var notice: Notice? {
+        didSet(oldVal) {
+            if let notice = notice {
+                if notice.images.count == 0 {
+                    imageCollectionViewHeight.constant = 0
+                } else {
+                    imageCollectionViewHeight.constant = 220
+                }
+            }
+        }
+    }
     var user: User?
     var handler: OnCommentCellClickListener?
     var imageTabHandler: ImageTabDelegate?
+    
+    
     @IBOutlet var likeImage: UIImageView!
     @IBOutlet var likeButtonImage: UIImageView!
     @IBOutlet var likeBtn: UIButton!
     
     
     
+    static func cell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, notice: Notice, user: User) -> TimelineCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID, forIndexPath: indexPath) as! TimelineCell
+        cell.notice = notice
+        cell.user = user
+        cell.authorName.text = notice.authorName
+        cell.content.text = notice.content
+        cell.created.text = dateToString(notice.created)
+        cell.likeCount.text = "\(notice.likes.count)"
+        cell.badCount.text = "\(notice.bads.count)"
+        cell.commentCount.text = "\(notice.comments.count)"
+        if let image = notice.authorProfileImage {
+            cell.profileImage.kf_setImageWithURL(NSURL(string: "\(imageURL)\(image)"))
+        }
+        return cell
+    }
+    
     override func layoutSubviews() {
         imageCollectionView.dataSource = self
         
         likeImage.image = likeImage.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         likeImage.tintColor = MAIN_RED
-        
-        if let notice = notice {
-            if notice.images.count == 0 {
-                imageCollectionViewHeight.constant = 0
-            } else {
-                imageCollectionViewHeight.constant = 220
-            }
-        }
     }
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -43,9 +64,26 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     @IBAction func setting(sender: UIButton) {
         if let handler = self.handler {
             if let notice = self.notice {
-                handler.onSettingClick(notice)
+                handler.onSettingClick(self, notice: notice)
             }
         }
+    }
+    
+    func presentSetting(viewController vc: UIViewController, notice: Notice, user: User) {
+        let alert = UIAlertController(title: "설정", message: nil, preferredStyle: .Alert)
+        if notice.author == user.id {
+            alert.addAction(UIAlertAction(title: "삭제", style: .Default, handler: {
+                action in
+                SocketIOManager.removeNotice(notice, handler: self)
+            }))
+            alert.addAction(UIAlertAction(title: "수정", style: .Default, handler: {
+                action in
+                // 수정
+                vc.performSegueWithIdentifier("updateTimeline", sender: self)
+            }))
+        }
+        alert.addAction(UIAlertAction(title: "취소", style: .Default, handler: nil))
+        vc.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBOutlet weak var created: UILabel!
@@ -124,7 +162,7 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TimelimeImageCell", forIndexPath: indexPath) as! TimelineImageCell
         if let notice = notice {
-            if let imageTabHandler = imageTabHandler {
+            if imageTabHandler != nil {
                 cell.handler = self.imageTabHandler
             }
             cell.imageView.kf_setImageWithURL(NSURL(string: "\(imageURL)\(notice.images[indexPath.row])"))
@@ -147,11 +185,47 @@ class TimelineCell: UITableViewCell, likeHandler, badHandler, UINavigationContro
     func onBadException(code: Int) {
         print("싫어요 실패")
     }
+    
+    static func dateToString(date: NSDate) -> String {
+        var sec = (Int(NSDate().timeIntervalSince1970) - Int(date.timeIntervalSince1970))
+        var hour = 0
+        var min = 0
+        if sec < 86400 {
+            hour = sec / 3600
+            if hour > 0 {
+                sec /= hour
+            }
+            min = sec / 60
+            
+            if hour == 0 && min == 0 {
+                return "얼마 전"
+            } else if hour == 0 {
+                return "\(min)분 전"
+            } else {
+                return "\(hour)시간 전"
+            }
+        }
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분"
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    func onRemoveNoticeException(code: Int) {
+        print("게시글 삭제 에러")
+    }
+    
+    func onRemoveNoticeSuccess(notice: Notice) {
+        print("게시글 삭제 성공")
+        if let handler = handler {
+            handler.onRemoveNotice(notice)
+        }
+    }
 }
 
 
 
 protocol OnCommentCellClickListener {
     func onCommentClick(notice: Notice)
-    func onSettingClick(notice: Notice)
+    func onSettingClick(cell: TimelineCell, notice: Notice)
+    func onRemoveNotice(notice: Notice)
 }

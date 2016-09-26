@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UITabBarController, UpdateUserDelegate {
 
     var user:User?
+    
     @IBAction func insertNotice(sender: UIBarButtonItem) {
         performSegueWithIdentifier("insertTimeline", sender: self)
     }
@@ -18,23 +19,15 @@ class MainViewController: UITabBarController, UpdateUserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let vcs = viewControllers {
-            let navigationVC = vcs[0] as! UINavigationController
-            print("뷰컨트롤러 \(vcs)")
-            let timelineVC = navigationVC.viewControllers[0] as! TimelineViewController
-            
-            let friendNavigationVC = vcs[1] as! UINavigationController
-            let friendsVC = friendNavigationVC.viewControllers[0] as! FriendTableViewController
-            
-            let profileNavigationVC = vcs[2] as! UINavigationController
-            let profileVC = profileNavigationVC.viewControllers[0] as! ProfileViewController
-            
-            timelineVC.user = user
-            tabHeight = self.tabBar.frame.size.height
-            friendsVC.user = user
-            profileVC.user = user
-            profileVC.userDelegate = self
+        self.tabBarController?.selectedIndex = 0
+        self.selectedIndex = 0
+        
+        let mainDependencies = MainDependencies()
+        if let user = user {
+            mainDependencies.setEnvironment(self, user: user)
         }
+        
+        tabHeight = self.tabBar.frame.size.height
         
         tabBar.tintColor = MAIN_RED
         tabBar.barTintColor = LIGHT_BLACK
